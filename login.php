@@ -4,6 +4,11 @@ Author URL: http://w3layouts.com
 License: Creative Commons Attribution 3.0 Unported
 License URL: http://creativecommons.org/licenses/by/3.0/
 -->
+<?php
+
+session_start();
+
+?>
 <!DOCTYPE html>
 <html>
 <head>
@@ -20,7 +25,7 @@ License URL: http://creativecommons.org/licenses/by/3.0/
 <script src="js/jquery.min.js"></script>
 </head>
 <body> 
-	<!--header-->
+	<!--header
 	<div class="header">
 		<div class="top-header">
 			<div class="container">
@@ -83,7 +88,15 @@ License URL: http://creativecommons.org/licenses/by/3.0/
 			</div>
 		</div>
 	</div>
-	<!---->
+-->	<!---->
+
+<?php
+
+include 'header.php';
+
+
+?>
+<form action="" method="post">
 	<div class="container">
 		
       	   <div class="account_grid">
@@ -93,195 +106,94 @@ License URL: http://creativecommons.org/licenses/by/3.0/
 				<form>
 				  <div>
 					<span>Email Address<label>*</label></span>
-					<input type="text"> 
+					<input type="email" style="width: 550px; height: 40px;" name="txtid"  placeholder="Enter Email Id" required> 
 				  </div>
 				  <div>
 					<span>Password<label>*</label></span>
-					<input type="text"> 
+					<input type="password" style="width: 550px; height: 40px;" name="txtpass" placeholder="Enter password" required> 
 				  </div>
 				  <a class="forgot" href="#">Forgot Your Password?</a>
-				  <input type="submit" value="Login">
+				  <input type="submit" value="Login" style="margin-top: 18px;" name="btnlogin">
 			    </form>
 			   </div>	
 			    <div class=" login-left">
 			  	 <h3>NEW CUSTOMERS</h3>
-				 <p>By creating an account with our store, you will be able to move through the checkout process faster, store multiple shipping addresses, view and track your orders in your account and more.</p>
-				 <a class="acount-btn" href="register.html">Create an Account</a>
+				 <p>By creating an account with our store, you will be able to move through the checkout process faster, view and track your orders in your account and more.</p>
+				 <a class="acount-btn" href="register.php">Create an Account</a>
 			   </div>
-			   <div class="clearfix"> </div>
-			 </div>
-			 <div class="sub-cate">
-				<div class=" top-nav rsidebar span_1_of_left">
-					<h3 class="cate">CATEGORIES</h3>
-		 <ul class="menu">
-		<li class="item1"><a href="#">Curabitur sapien<img class="arrow-img" src="images/arrow1.png" alt=""/> </a>
-			<ul class="cute">
-				<li class="subitem1"><a href="product.html">Cute Kittens </a></li>
-				<li class="subitem2"><a href="product.html">Strange Stuff </a></li>
-				<li class="subitem3"><a href="product.html">Automatic Fails </a></li>
-			</ul>
-		</li>
-		<li class="item2"><a href="#">Dignissim purus <img class="arrow-img " src="images/arrow1.png" alt=""/></a>
-			<ul class="cute">
-				<li class="subitem1"><a href="product.html">Cute Kittens </a></li>
-				<li class="subitem2"><a href="product.html">Strange Stuff </a></li>
-				<li class="subitem3"><a href="product.html">Automatic Fails </a></li>
-			</ul>
-		</li>
-		<li class="item3"><a href="#">Ultrices id du<img class="arrow-img img-arrow" src="images/arrow1.png" alt=""/> </a>
-			<ul class="cute">
-				<li class="subitem1"><a href="product.html">Cute Kittens </a></li>
-				<li class="subitem2"><a href="product.html">Strange Stuff </a></li>
-				<li class="subitem3"><a href="product.html">Automatic Fails</a></li>
-			</ul>
-		</li>
-		<li class="item4"><a href="#">Cras iacaus rhone <img class="arrow-img img-left-arrow" src="images/arrow1.png" alt=""/></a>
-			<ul class="cute">
-				<li class="subitem1"><a href="product.html">Cute Kittens </a></li>
-				<li class="subitem2"><a href="product.html">Strange Stuff </a></li>
-				<li class="subitem3"><a href="product.html">Automatic Fails </a></li>
-			</ul>
-		</li>
-				<li>
-			<ul class="kid-menu">
-				<li><a href="product.html">Tempus pretium</a></li>
-				<li ><a href="product.html">Dignissim neque</a></li>
-				<li ><a href="product.html">Ornared id aliquet</a></li>
-			</ul>
-		</li>
-		<ul class="kid-menu ">
-				<li><a href="product.html">Commodo sit</a></li>
-				<li ><a href="product.html">Urna ac tortor sc</a></li>
-				<li><a href="product.html">Ornared id aliquet</a></li>
-				<li><a href="product.html">Urna ac tortor sc</a></li>
-				<li ><a href="product.html">Eget nisi laoreet</a></li>
-				<li><a href="product.html">Faciisis ornare</a></li>
-				<li class="menu-kid-left"><a href="contact.html">Contact us</a></li>
-			</ul>
+			   
+			   
+			   
+			   
+			   
+			   
+			   		<?php
 		
-	</ul>
-					</div>
-				<!--initiate accordion-->
-		<script type="text/javascript">
-			$(function() {
-			    var menu_ul = $('.menu > li > ul'),
-			           menu_a  = $('.menu > li > a');
-			    menu_ul.hide();
-			    menu_a.click(function(e) {
-			        e.preventDefault();
-			        if(!$(this).hasClass('active')) {
-			            menu_a.removeClass('active');
-			            menu_ul.filter(':visible').slideUp('normal');
-			            $(this).addClass('active').next().stop(true,true).slideDown('normal');
-			        } else {
-			            $(this).removeClass('active');
-			            $(this).next().stop(true,true).slideUp('normal');
-			        }
-			    });
+if(isset($_POST["btnlogin"]))
+{
+	 $name=$_POST["txtid"];
+	  $passs=$_POST["txtpass"];
+
+$con=mysql_connect('localhost','root','');
+   mysql_select_db('medicine',$con);
+   $res=mysql_query("select * from user_tbl where email_id='$name' and  password='$passs' ",$con);
+   $count=mysql_num_rows($res); 
+
+	  if ($count==1) 
+	{
+        $con=mysql_connect('localhost','root','');
+       mysql_select_db('medicine',$con);
+       $res=mysql_query("select type from user_tbl where email_id='$name' and password='$passs'",$con);
+   while($row=mysql_fetch_assoc($res))
+   {
+	   $ty=$row["type"];
+   }
+   if($ty=='user')
+   {
+       $_SESSION["uname"]=$_POST["txtid"];
+		  //header('location:user/pro.php');
+		  header('location:main.php');
+	}	
+	else
+		{
 			
-			});
-		</script>
-					<div class=" chain-grid menu-chain">
-	   		     		<a href="single.html"><img class="img-responsive chain" src="images/wat.jpg" alt=" " /></a>	   		     		
-	   		     		<div class="grid-chain-bottom chain-watch">
-		   		     		<span class="actual dolor-left-grid">300$</span>
-		   		     		<span class="reducedfrom">500$</span>  
-		   		     		<h6>Lorem ipsum dolor</h6>  		     			   		     										
-	   		     		</div>
-	   		     	</div>
-	   		     	 <a class="view-all all-product" href="product.html">VIEW ALL PRODUCTS<span> </span></a> 	
-			</div>
-			  <div class="clearfix"> </div>
-      	 </div>
-	<!---->
-	<div class="footer">
-		<div class="footer-top">
-			<div class="container">
-				<div class="latter">
-					<h6>NEWS-LETTER</h6>
-					<div class="sub-left-right">
-						<form>
-							<input type="text" value="Enter email here"onfocus="this.value = '';" onblur="if (this.value == '') {this.value = 'Enter email here';}" />
-							<input type="submit" value="SUBSCRIBE" />
-						</form>
-					</div>
-					<div class="clearfix"> </div>
-				</div>
-				<div class="latter-right">
-					<p>FOLLOW US</p>
-					<ul class="face-in-to">
-						<li><a href="#"><span> </span></a></li>
-						<li><a href="#"><span class="facebook-in"> </span></a></li>
-						<div class="clearfix"> </div>
-					</ul>
-					<div class="clearfix"> </div>
-				</div>
-				<div class="clearfix"> </div>
-			</div>
-		</div>
-		<div class="footer-bottom">
-			<div class="container">
-				<div class="footer-bottom-cate">
-					<h6>CATEGORIES</h6>
-					<ul>
-						<li><a href="#">Curabitur sapien</a></li>
-						<li><a href="#">Dignissim purus</a></li>
-						<li><a href="#">Tempus pretium</a></li>
-						<li ><a href="#">Dignissim neque</a></li>
-						<li ><a href="#">Ornared id aliquet</a></li>
-						<li><a href="#">Ultrices id du</a></li>
-						<li><a href="#">Commodo sit</a></li>
-						<li ><a href="#">Urna ac tortor sc</a></li>
-						<li><a href="#">Ornared id aliquet</a></li>
-						<li><a href="#">Urna ac tortor sc</a></li>
-						<li ><a href="#">Eget nisi laoreet</a></li>
-						<li ><a href="#">Faciisis ornare</a></li>
-					</ul>
-				</div>
-				<div class="footer-bottom-cate bottom-grid-cat">
-					<h6>FEATURE PROJECTS</h6>
-					<ul>
-						<li><a href="#">Curabitur sapien</a></li>
-						<li><a href="#">Dignissim purus</a></li>
-						<li><a href="#">Tempus pretium</a></li>
-						<li ><a href="#">Dignissim neque</a></li>
-						<li ><a href="#">Ornared id aliquet</a></li>
-						<li><a href="#">Ultrices id du</a></li>
-						<li><a href="#">Commodo sit</a></li>
-					</ul>
-				</div>
-				<div class="footer-bottom-cate">
-					<h6>TOP BRANDS</h6>
-					<ul>
-						<li><a href="#">Curabitur sapien</a></li>
-						<li><a href="#">Dignissim purus</a></li>
-						<li><a href="#">Tempus pretium</a></li>
-						<li ><a href="#">Dignissim neque</a></li>
-						<li ><a href="#">Ornared id aliquet</a></li>
-						<li><a href="#">Ultrices id du</a></li>
-						<li><a href="#">Commodo sit</a></li>
-						<li ><a href="#">Urna ac tortor sc</a></li>
-						<li><a href="#">Ornared id aliquet</a></li>
-						<li><a href="#">Urna ac tortor sc</a></li>
-						<li ><a href="#">Eget nisi laoreet</a></li>
-						<li ><a href="#">Faciisis ornare</a></li>
-					</ul>
-				</div>
-				<div class="footer-bottom-cate cate-bottom">
-					<h6>OUR ADDERSS</h6>
-					<ul>
-						<li>Aliquam metus  dui. </li>
-						<li>orci, ornareidquet</li>
-						<li> ut,DUI.</li>
-						<li >nisi, dignissim</li>
-						<li >gravida at.</li>
-						<li class="phone">PH : 6985792466</li>
-						<li class="temp"> <p class="footer-class">Design by <a href="http://w3layouts.com/" target="_blank">W3layouts</a> </p></li>
-					</ul>
-				</div>
-				<div class="clearfix"> </div>
-			</div>
-		</div>
-	</div>
+			
+			echo '<script type="text/javascript">';
+ echo "alert('Please enter corrcet information');";
+   echo "</script>";
+			//echo "<h1>Invalid</h1> ";
+		}
+	
+	
+	}//if(count)
+		else
+		{
+			
+			echo '<script type="text/javascript">';
+ echo "alert('Please enter corrcet information');";
+   echo "</script>";
+	
+		//	echo "<h1>Invalid</h1> ";
+		}
+}
+?>
+
+			   
+			   
+			   
+			   <?php
+			   
+			   include 'sidebar.php';
+			   
+			   ?>
+			   
+			   
+			   
+			   
+			   <?php
+	
+	include 'footer.php';
+	
+	?>
 </body>
 </html>

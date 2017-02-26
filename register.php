@@ -4,6 +4,12 @@ Author URL: http://w3layouts.com
 License: Creative Commons Attribution 3.0 Unported
 License URL: http://creativecommons.org/licenses/by/3.0/
 -->
+
+<?php
+
+session_start();
+
+?>
 <!DOCTYPE html>
 <html>
 <head>
@@ -20,193 +26,315 @@ License URL: http://creativecommons.org/licenses/by/3.0/
 <script src="js/jquery.min.js"></script>
 
 
+	<script type="text/javascript">
+	
+	function allLetter(uname)
+{
+	var letters=/^[A-Za-z]+$/;
+	if(uname.value.match(letters))
+	{
+			return true;
+	}
+	else
+	{
+			uname.focus();
+			
+			alert('username must have alphabetic charcters only');
+			return false;
+	}
+}
+
+
+
+
+
+function passid_validation(passid,mx,my)
+{
+	var pl=passid.value.length;
+	if(pl==0 || pl>=my || pl<mx)
+	{
+		alert("password should not be empty/length must be between "+5+" to "+12);
+		passid.focus();
+		return false;
+	}
+	return true;
+}
+
+function allnumeric(unum)
+{
+		var number=/^[0-9]+$/;
+		if(unum.value.match(number))
+		{
+			return true;
+		}
+		else
+		{
+				alert('Mobile number must have numeric characters only');
+				unum.focus();
+				return false;
+				
+		}
+}
+
+function mess()
+{
+	alert("enter correct captcha code");
+
+}
+
+function allzip(uzip)
+{
+		var numbers=/^[0-9]+$/;
+		if(uzip.value.match(numbers))
+		{
+			return true;
+		}
+		else
+		{
+				alert('ZIP code must have numeric characters only');
+				uzip.focus();
+				return false;
+				
+		}
+}
+
+
+
+</script>
+
+
 </head>
 <body> 
-	<!--header-->
-	<div class="header">
-		<div class="top-header">
-			<div class="container">
-				<div class="top-header-left">
-					<ul class="support">
-						<li><a href="#"><label> </label></a></li>
-						<li><a href="#">24x7 live<span class="live"> support</span></a></li>
-					</ul>
-					<ul class="support">
-						<li class="van"><a href="#"><label> </label></a></li>
-						<li><a href="#">Free shipping <span class="live">on order over 500</span></a></li>
-					</ul>
-					<div class="clearfix"> </div>
-				</div>
-				<div class="top-header-right">
-					<div class="down-top">		
-						  <select class="in-drop">
-							  <option value="English" class="in-of">English</option>
-							  <option value="Japanese" class="in-of">Japanese</option>
-							  <option value="French" class="in-of">French</option>
-							  <option value="German" class="in-of">German</option>
-							</select>
-					 </div>
-					<div class="down-top top-down">
-						  <select class="in-drop">
-						  
-						  <option value="Dollar" class="in-of">Dollar</option>
-						  <option value="Yen" class="in-of">Yen</option>
-						  <option value="Euro" class="in-of">Euro</option>
-							</select>
-					 </div>
-					<div class="clearfix"> </div>	
-				</div>
-				<div class="clearfix"> </div>		
-			</div>
-		</div>
-		<div class="bottom-header">
-			<div class="container">
-				<div class="header-bottom-left">
-					<div class="logo">
-						<a href="index.html"><img src="images/logo.png" alt=" " /></a>
-					</div>
-					<div class="search">
-						<input type="text" value="" onfocus="this.value = '';" onblur="if (this.value == '') {this.value = '';}" >
-						<input type="submit"  value="SEARCH">
-
-					</div>
-					<div class="clearfix"> </div>
-				</div>
-				<div class="header-bottom-right">					
-						<div class="account"><a href="login.html"><span> </span>YOUR ACCOUNT</a></div>
-							<ul class="login">
-								<li><a href="login.html"><span> </span>LOGIN</a></li> |
-								<li ><a href="register.html">SIGNUP</a></li>
-							</ul>
-						<div class="cart"><a href="#"><span> </span>CART</a></div>
-					<div class="clearfix"> </div>
-				</div>
-				<div class="clearfix"> </div>	
-			</div>
-		</div>
-	</div>
-	<!---->
+	<?php
+	
+	
+	include 'header.php';
+	
+	
+	?>
 	<div class="container"> 
 			         
 		<div class="register">
-		  	  <form> 
+		  	  <form enctype="multipart/form-data" action="" method="post"> 
 				 <div class="  register-top-grid">
-					<h3>PERSONAL INFORMATION</h3>
-					<div class="mation">
-						<span>First Name<label>*</label></span>
-						<input type="text"> 
+					<h1 style="color:#F97E76;">Sign Up</h1>
+					<div>
+					<span>Email Address<label>*</label></span>
+					<input type="email" style="width: 550px; height: 40px;" name="txtid"  placeholder="Enter Email Id" required> 
+				  </div>
+				  <hr/>
 					
-						<span>Last Name<label>*</label></span>
-						<input type="text"> 
-					 
-						 <span>Email Address<label>*</label></span>
-						 <input type="text"> 
+				  <div>
+					<span>User Name<label>*</label></span>
+					<input type="text" style="width: 550px; height: 40px;" name="txtname" onblur="return allLetter(txtname);"  placeholder="Enter User name" required> 
+				  </div>
+				  <hr/>
+					
+				    
+				  <div>
+					<span>Password<label>*</label></span>
+					<input type="password" style="width: 550px; height: 40px;" name="txtpaswd" onblur="return passid_validation(txtpaswd);"placeholder="Enter password" required> 
+				  </div>
+				  
+				  <hr/>
+					
+				   
+				  <div>
+					<span>Confirm Password<label>*</label></span>
+					<input type="password"  style="width: 550px; height: 40px;" name="txtpass" onblur="return passid_validation(txtpass);"placeholder="Enter password" required>
+                
 					</div>
+				  <hr/>
+					
+				
+  <div>
+					<span>Address<label>*</label></span>
+				<textarea   name="txtadd" col="0" style="width: 550px; height: 64px;" onblur="return addressid_validation(txtadd);" placeholder="Enter Address" required>
+                
+                </textarea>
+				
+					</div>
+								
+					<hr/>
+								
+				  <div>
+					<span>Area<label>*</label></span>
+					
+				<select name="txtcity" autocomplete="off" style="width: 550px; height: 40px;">
+<option value="Kankaria">Kankaria</option>
+<option value="Maninagar">Maninagar</option>
+<option value="Jaymala">Jaymala</option>
+<option value="Isanpur">Isanpur</option>
+<option value="Ghodasar">Ghodasar</option>
+<option value="Dakshini">Dakshini</option>
+<option value="Khokhara">Khokhara</option>
+<option value="Raipur">Raipur</option>
+<option value="Bhulabhai">Bhulabhai</option>
+
+
+</select>
+					</div>
+					
+					<hr/>
+					
+					
+					
+					
+				  <div>
+					<span>Zipcode<label>*</label></span>
+					 <input type="text" maxlength='6' style="width: 550px; height: 40px;" onblur="return allzip(txtzip);"  name="txtzip"  placeholder="Enter zipcode number" required>
+                       
+					</div>
+				  <hr/>
+					
+					
+				  <div>
+					<span>Gender<label>*</label></span>
+					<input type="radio" name="txtgen" checked value="M">Male
+					<br/>
+					
+					<br/>
+					<input type="radio" name="txtgen"  value="F">Female
+					</div>
+				  
+				  
+				  <hr/>
+					
+				  <div>
+				  <span>Mobile Number<label>*</label></span>
+					<input  type="text"  name="txtno" maxlength="10" style="width: 550px; height: 40px;" onblur="return allnumeric(txtno);" placeholder="Enter mobile number" required>
+                   
+					</div>
+					
+					<hr/>
+					
+				  <div>
+					<span>Captcha Code<label>*</label></span>
+						<input  class="form-control" name="captcha_code" style="width: 550px; height: 40px;" type="text">
+                     <img src="captcha_code.php" />
+					</div>
+					
+					
 					 <div class="clearfix"> </div>
-					   <a class="news-letter" href="#">
-						 <label class="checkbox"><input type="checkbox" name="checkbox" checked=""><i> </i>Sign Up</label>
-					   </a>
+					  
 					 </div>
-				     <div class="  register-bottom-grid">
-						    <h3>LOGIN INFORMATION</h3>
-							<div class="mation">
-								<span>Password<label>*</label></span>
-								<input type="text">
-								<span>Confirm Password<label>*</label></span>
-								<input type="text">
-							</div>
-					 </div>
-				</form>
 				<div class="clearfix"> </div>
 				<div class="register-but">
-				   <form>
-					   <input type="submit" value="submit">
+					   <input type="submit" name="txtsign" value="Sign up">
+					   <input type="submit" name="txtcancle" value="Cancle">
+					   
+					   
+					   
+					   
+			 <?php
+
+			 
+
+
+if(isset($_POST["txtsign"]))
+{
+	
+	   $id=$_POST["txtid"];
+   $uname=$_POST["txtname"];
+   $pass=$_POST["txtpass"];
+   $add=$_POST["txtadd"];
+   $city=$_POST["txtcity"];
+   $zip=$_POST["txtzip"];
+   $gen=$_POST["txtgen"];
+   
+   $mob=$_POST["txtno"];
+   
+   
+   $random_alpha = md5(rand());
+   $captcha = substr($random_alpha, 0, 10);
+   $code=$_POST["txtid"].$captcha;
+	$temp="null";
+
+if(count($_POST)>0) {
+if($_POST["captcha_code"]==$_SESSION["captcha_code"]){	
+  $pass=$_POST["txtpaswd"];
+  $pass1=$_POST["txtpass"];
+  
+  if($pass==$pass1)
+  {
+	//  include 'database.php';
+//$res=new  database();
+//$res->signup($id,$uname,$pass,$add,$city,$zip,$gen,$mob,$temp);
+
+   $con=mysql_connect('localhost','root','');
+   mysql_select_db('medicine',$con);
+   $res=mysql_query("insert into user_tbl values('$id','$uname','$pass','$add','$city','$zip','$gen','$mob','$temp','user')");
+   
+
+
+header('location:login.php');
+  }	  
+  
+
+else
+{
+	/*
+	echo "<h3>";
+	echo "Please confirm correct password";
+	echo "</h3>";
+	*/
+	echo '<script type="text/javascript">';
+ echo "alert('Please Confirm the correct password');";
+   echo "</script>";
+	
+}
+}
+
+else{
+//echo "<h3>";
+//echo "Enter Correct Captcha Code";
+//echo "</h3>";
+
+
+	echo '<script type="text/javascript">';
+ echo "alert('Please enter the correct Capthcha code');";
+   echo "</script>";
+	
+
+
+
+
+}
+}
+else if(isset($_POST["txtcancle"]))
+{
+	header('location:main.php');
+}
+/*
+else{
+echo "<h3>";
+echo "Enter Correct Captcha Code";
+echo "</h3>";
+
+}*/
+}
+
+
+
+?>
+
+
+					   
+					   
+					   
+					   
+					   
 					   <div class="clearfix"> </div>
 				   </form>
 				</div>
+				<?php
+	
+			include 'sidebar.php';
+	
+				?>
+	
 		   </div>
-		   <div class="sub-cate">
-				<div class=" top-nav rsidebar span_1_of_left">
-					<h3 class="cate">CATEGORIES</h3>
-		 <ul class="menu">
-		<li class="item1"><a href="#">Curabitur sapien<img class="arrow-img" src="images/arrow1.png" alt=""/> </a>
-			<ul class="cute">
-				<li class="subitem1"><a href="product.html">Cute Kittens </a></li>
-				<li class="subitem2"><a href="product.html">Strange Stuff </a></li>
-				<li class="subitem3"><a href="product.html">Automatic Fails </a></li>
-			</ul>
-		</li>
-		<li class="item2"><a href="#">Dignissim purus <img class="arrow-img " src="images/arrow1.png" alt=""/></a>
-			<ul class="cute">
-				<li class="subitem1"><a href="product.html">Cute Kittens </a></li>
-				<li class="subitem2"><a href="product.html">Strange Stuff </a></li>
-				<li class="subitem3"><a href="product.html">Automatic Fails </a></li>
-			</ul>
-		</li>
-		<li class="item3"><a href="#">Ultrices id du<img class="arrow-img img-arrow" src="images/arrow1.png" alt=""/> </a>
-			<ul class="cute">
-				<li class="subitem1"><a href="product.html">Cute Kittens </a></li>
-				<li class="subitem2"><a href="product.html">Strange Stuff </a></li>
-				<li class="subitem3"><a href="product.html">Automatic Fails</a></li>
-			</ul>
-		</li>
-		<li class="item4"><a href="#">Cras iacaus rhone <img class="arrow-img img-left-arrow" src="images/arrow1.png" alt=""/></a>
-			<ul class="cute">
-				<li class="subitem1"><a href="product.html">Cute Kittens </a></li>
-				<li class="subitem2"><a href="product.html">Strange Stuff </a></li>
-				<li class="subitem3"><a href="product.html">Automatic Fails </a></li>
-			</ul>
-		</li>
-				<li>
-			<ul class="kid-menu">
-				<li><a href="product.html">Tempus pretium</a></li>
-				<li ><a href="product.html">Dignissim neque</a></li>
-				<li ><a href="product.html">Ornared id aliquet</a></li>
-			</ul>
-		</li>
-		<ul class="kid-menu ">
-				<li><a href="product.html">Commodo sit</a></li>
-				<li ><a href="product.html">Urna ac tortor sc</a></li>
-				<li><a href="product.html">Ornared id aliquet</a></li>
-				<li><a href="product.html">Urna ac tortor sc</a></li>
-				<li ><a href="product.html">Eget nisi laoreet</a></li>
-				<li><a href="product.html">Faciisis ornare</a></li>
-				<li class="menu-kid-left"><a href="contact.html">Contact us</a></li>
-			</ul>
-		
-	</ul>
-					</div>
-				<!--initiate accordion-->
-		<script type="text/javascript">
-			$(function() {
-			    var menu_ul = $('.menu > li > ul'),
-			           menu_a  = $('.menu > li > a');
-			    menu_ul.hide();
-			    menu_a.click(function(e) {
-			        e.preventDefault();
-			        if(!$(this).hasClass('active')) {
-			            menu_a.removeClass('active');
-			            menu_ul.filter(':visible').slideUp('normal');
-			            $(this).addClass('active').next().stop(true,true).slideDown('normal');
-			        } else {
-			            $(this).removeClass('active');
-			            $(this).next().stop(true,true).slideUp('normal');
-			        }
-			    });
-			
-			});
-		</script>
-					<div class=" chain-grid menu-chain">
-	   		     		<a href="single.html"><img class="img-responsive chain" src="images/wat.jpg" alt=" " /></a>	   		     		
-	   		     		<div class="grid-chain-bottom chain-watch">
-		   		     		<span class="actual dolor-left-grid">300$</span>
-		   		     		<span class="reducedfrom">500$</span>  
-		   		     		<h6>Lorem ipsum dolor</h6>  		     			   		     										
-	   		     		</div>
-	   		     	</div>
-	   		     	 <a class="view-all all-product" href="product.html">VIEW ALL PRODUCTS<span> </span></a> 	
-			</div>      
-	</div>
+		  
 	<!---->
 	<div class="footer">
 		<div class="footer-top">

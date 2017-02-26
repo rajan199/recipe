@@ -107,6 +107,15 @@ include 'alphaser.php';
 	            </div>
 	          </div>
 	           	</a>
+				
+				<div class="products">
+	   		     	<h5 class="latest-product">LATEST PRODUCTS</h5>	
+	   		     	  <a class="view-all" href="product.html">VIEW ALL<span> </span></a> 		     
+	   		     </div>
+<div class="panel panel-default">
+  <div class="panel-body">
+    <div class="row">
+		
 
 	<?php
 				
@@ -128,12 +137,12 @@ $con=mysql_connect('localhost','root','');
         <h3>'.$row["product_name"].'</h3>
   <h3>'.$row["product_price"].'</h3>
                
-        <p><button type="button" style="width: 200px;" name="btnbuy" class="btn btn-default btn-lg">
-  <span class="glyphicon glyphicon-buy" aria-hidden="true"></span> Buy
-</button>
-<button type="button" style="width: 200px; background:#323A45; color:white; " name="btncar" class="btn btn-default btn-lg">
+        <p><a href="single.php?id='.$row["product_id"].'"><button type="button" style="width: 200px;" name="btnbuy" class="btn btn-default btn-lg">
+  <span class="glyphicon glyphicon-buy" aria-hidden="true"></span> Preview
+</button></a>
+<a href="login.php"><button type="button" style="width: 200px; background:#323A45; color:white; " name="btncar" class="btn btn-default btn-lg">
   <span class="glyphicon glyphicon-shopping-cart" aria-hidden="true"></span> Add to cart
-</button>
+</button></a>
 </p>
 
 	<div class="star-price">
@@ -161,7 +170,9 @@ $con=mysql_connect('localhost','root','');
 	
 }	
 ?>				
-
+</div>
+</div>
+</div>
 
 
 <?php

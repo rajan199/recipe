@@ -33,12 +33,12 @@ $con=mysql_connect('localhost','root','');
         <h3>'.$row["product_name"].'</h3>
   <h3>'.$row["product_price"].'</h3>
                
-        <p><button type="button" style="width: 200px;" name="btnbuy" class="btn btn-default btn-lg">
-  <span class="glyphicon glyphicon-buy" aria-hidden="true"></span> Buy
-</button>
-<button type="button" style="width: 200px; background:#323A45; color:white; " name="btncar" class="btn btn-default btn-lg">
+        <p><a href="single.php?id='.$row["product_id"].'"><button type="button" style="width: 200px;" name="btnbuy" class="btn btn-default btn-lg">
+  <span class="glyphicon glyphicon-buy" aria-hidden="true"></span> Preview
+</button></a>
+<a href="login.php"><button type="button" style="width: 200px; background:#323A45; color:white; " name="btncar" class="btn btn-default btn-lg">
   <span class="glyphicon glyphicon-shopping-cart" aria-hidden="true"></span> Add to cart
-</button>
+</button></a>
 </p>
 
 	<div class="star-price">

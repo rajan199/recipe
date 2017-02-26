@@ -119,7 +119,7 @@ include 'alphaser.php';
 	$con=mysql_connect('localhost','root','');
     mysql_select_db('medicine',$con);
      
- $res1=mysql_query("select * from product_tbl",$con);
+ $res1=mysql_query("select * from product_tbl where category_id='10'",$con);
 $cnt=mysql_num_rows($res1);
 
 
@@ -127,7 +127,7 @@ $cnt=mysql_num_rows($res1);
 				?>
 				<div class=" w_content">
 			<div class="women">
-				<a href="#"><h4>Total Products <span><?php echo $cnt; ?></span> </h4></a>
+				<a href="#"><h4>Total Products of Baby care <span><?php echo $cnt; ?></span> </h4></a>
 				<ul class="w_nav">
 					<li>Other Products: </li>
 			     	<li><a class="active" href="#">Injections</a></li> |
@@ -182,7 +182,7 @@ $cnt=mysql_num_rows($res1);
 				 $con=mysql_connect('localhost','root','');
     mysql_select_db('medicine',$con);
      
-$cnt1=mysql_query("select p.*,c.company_name from product_tbl as p,company_tbl as c where p.company_id=c.company_id",$con);
+$cnt1=mysql_query("select * from product_tbl where category_id='10'",$con);
 
 while($row=mysql_fetch_assoc($cnt1))
   {

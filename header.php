@@ -41,7 +41,7 @@
 			<div class="container">
 				<div class="header-bottom-left">
 					<div class="logo">
-						<a href="index.html"><img src="images/logo.png" alt=" " /></a>
+						<a href="main.php"><img src="images/logo.png" alt=" " /></a>
 					</div>
 					<div class="search">
 						<input type="text" value="" onfocus="this.value = '';" onblur="if (this.value == '') {this.value = '';}" >
@@ -51,16 +51,30 @@
 					<div class="clearfix"> </div>
 				</div>
 				<div class="header-bottom-right">					
-						<div class="account"><a href="login.html"><span> </span>YOUR ACCOUNT</a></div>
-							<ul class="login">
-								<li><a href="login.html"><span> </span>LOGIN</a></li> |
-								<li ><a href="register.html">SIGNUP</a></li>
+					<!--	<div class="account"><a href="login.html"><span> </span>YOUR ACCOUNT</a></div>
+						-->	<ul class="login">
+								<li><a href="login.php"><span> </span>LOGIN</a></li> |
+								<li ><a href="register.php">SIGNUP</a></li>
 							</ul>
-						<div class="cart"><a href="#"><span> </span>CART</a></div>
+						<div class="cart"><a href="login.php"><span> </span>CART</a></div>
 					<div class="clearfix"> </div>
 				</div>
 				<div class="clearfix"> </div>	
 			</div>
 		</div>
 	</div>
+	<ul class="nav nav-tabs" style="background-color:white;">
+  <li role="presentation"><a href="main.php" style="color:black; margin-right: 20;">Home</a></li>
+  
+  <li role="presentation"><a href="skin.php" style="color:black; margin-right: 20;">Skin Care</a></li>
+  <li role="presentation"><a href="baby.php" style="color:black; margin-right: 20;">Baby Care</a></li>
+  
+  <li role="presentation"><a href="hair.php" style="color:black; margin-right: 20;">Hair Care</a></li>
+
+  <li role="presentation"><a href="question.php" style="color:black; margin-right: 20;">Question</a></li>
+  
+  
+  </ul>
+
+	
 	
