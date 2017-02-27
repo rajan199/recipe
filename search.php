@@ -7,6 +7,7 @@ License URL: http://creativecommons.org/licenses/by/3.0/
 <?php
 
 session_start();
+
 ?>
 
 <!DOCTYPE html>
@@ -24,11 +25,6 @@ session_start();
 <!--//fonts-->
 <script src="js/jquery.min.js"></script>
 <!--script-->
-
-
-
-
-
 </head>
 <body> 
 
@@ -120,6 +116,34 @@ include 'alphaser.php';
 	            </div>
 	          </div>
 	           	</a>
+				
+				<?php
+				
+				
+	$con=mysql_connect('localhost','root','');
+    mysql_select_db('medicine',$con);
+     
+ $res1=mysql_query("select * from product_tbl",$con);
+$cnt=mysql_num_rows($res1);
+
+
+				
+				?>
+				<div class=" w_content">
+			<div class="women">
+				<a href="#"><h4>Total Products <span><?php echo $cnt; ?></span> </h4></a>
+				<ul class="w_nav">
+					<li>Other Products: </li>
+			     	<li><a class="active" href="#">Injections</a></li> |
+			     	<li><a href="skin.php">Skin care </a></li> |
+			     	<li><a href="baby.php">Baby care</a></li> |
+			     	<li><a href="hair.php">Hair care </a></li> 
+			     <div class="clearfix"> </div>	
+			     </ul>
+			     <div class="clearfix"> </div>	
+			</div>
+		</div>
+				
 	   		      <!----
 	   		     <div class="shoes-grid-left">
 			<a href="single.html">				 
@@ -152,20 +176,19 @@ include 'alphaser.php';
 	   		     	</div>
 					</a>
 	   		     </div>-->
-	   		     <div class="products">
-	   		     	<h5 class="latest-product">LATEST PRODUCTS</h5>	
-	   		     	  <a class="view-all" href="product.php">VIEW ALL<span> </span></a> 		     
-	   		     </div>
+	   		    
 <div class="panel panel-default">
   <div class="panel-body">
     <div class="row">
 	
 
 				 <?php
+				 
+				 $x1=$_SESSION["search"];
 				 $con=mysql_connect('localhost','root','');
-    mysql_select_db('medicine',$con);
+				 mysql_select_db('medicine',$con);
      
-$cnt1=mysql_query("select p.*,c.company_name from product_tbl as p,company_tbl as c where p.company_id=c.company_id",$con);
+$cnt1=mysql_query("select * from product_tbl  where product_name LIKE '$x1%'",$con);
 
 while($row=mysql_fetch_assoc($cnt1))
   {
@@ -181,7 +204,7 @@ while($row=mysql_fetch_assoc($cnt1))
                
         <p><a href="single.php?id='.$row["product_id"].'"><button type="button" style="width: 200px;" name="btnbuy" class="btn btn-default btn-lg">
   <span class="glyphicon glyphicon-buy" aria-hidden="true"></span> Preview
-</button></a>
+</button>
 <a href="login.php"><button type="button" style="width: 200px; background:#323A45; color:white; " name="btncar" class="btn btn-default btn-lg">
   <span class="glyphicon glyphicon-shopping-cart" aria-hidden="true"></span> Add to cart
 </button></a>

@@ -149,9 +149,9 @@ function allzip(uzip)
 				
   <div>
 					<span>Address<label>*</label></span>
-				<textarea   name="txtadd" col="0" style="width: 550px; height: 64px;" onblur="return addressid_validation(txtadd);" placeholder="Enter Address" required>
+				<textarea   name="txtadd" col="0" style="width: 550px; height: 64px;" onblur="return addressid_validation(txtadd);" placeholder="Enter Address" required></textarea>
                 
-                </textarea>
+                
 				
 					</div>
 								

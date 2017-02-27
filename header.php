@@ -43,11 +43,26 @@
 					<div class="logo">
 						<a href="main.php"><img src="images/logo.png" alt=" " /></a>
 					</div>
-					<div class="search">
-						<input type="text" value="" onfocus="this.value = '';" onblur="if (this.value == '') {this.value = '';}" >
-						<input type="submit"  value="SEARCH">
+<form action="" method="post">				
+				<div class="search">
+						<input type="text" value="" name="serch" id="search-box"  >
+						<input type="submit" name="btnser" value="SEARCH">
+		
+							<?php
+				if(isset($_POST["btnser"]))
+				{
+					$_SESSION["search"]=$_POST["serch"];
+					header('location:search.php');
+				}
+			
+			?>
+		
+						
+					</div>				
 
-					</div>
+					
+					
+					</form>
 					<div class="clearfix"> </div>
 				</div>
 				<div class="header-bottom-right">					
