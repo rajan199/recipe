@@ -1,9 +1,4 @@
-<!--A Design by W3layouts 
-Author: W3layout
-Author URL: http://w3layouts.com
-License: Creative Commons Attribution 3.0 Unported
-License URL: http://creativecommons.org/licenses/by/3.0/
--->
+
 <!DOCTYPE html>
 <html>
 <head>
@@ -107,7 +102,7 @@ License URL: http://creativecommons.org/licenses/by/3.0/
 	
 	<?php
 	
-	
+	include 'database.php';
 	include 'header.php';
 	
 	?>
@@ -132,13 +127,14 @@ include 'alphaser.php';
 		$id=$_REQUEST["id"];
 		
 		
-
+/*
 	$con=mysql_connect('localhost','root','');
     mysql_select_db('medicine',$con);
-     
+    $cnt1=mysql_query("select * from product_tbl where product_id=$id",$con);
+*/	
 
-	$cnt1=mysql_query("select * from product_tbl where product_id=$id",$con);
-	
+$obj=new database();
+$cnt1=$obj->product_by_id($id);
 	while($row=mysql_fetch_assoc($cnt1))	
 	{
 	 echo '	<div class=" single_top">

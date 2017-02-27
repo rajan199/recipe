@@ -29,6 +29,7 @@ session_start();
 <body> 
 
 <?php
+include 'database.php';
 
 include 'header.php';
 

@@ -25,7 +25,7 @@ License URL: http://creativecommons.org/licenses/by/3.0/
 <body> 
 
 <?php
-
+include 'database.php';
 include 'header.php';
 
 ?>
@@ -115,12 +115,14 @@ include 'alphaser.php';
 				
 				<?php
 				
+				$obj=new database();
+				$cnt=$obj->product_display();
 				
-	$con=mysql_connect('localhost','root','');
-    mysql_select_db('medicine',$con);
+	//$con=mysql_connect('localhost','root','');
+   // mysql_select_db('medicine',$con);
      
- $res1=mysql_query("select * from product_tbl",$con);
-$cnt=mysql_num_rows($res1);
+ //$res1=mysql_query("select * from product_tbl",$con);
+//$cnt=mysql_num_rows($res1);
 
 
 				
@@ -179,10 +181,12 @@ $cnt=mysql_num_rows($res1);
 	
 
 				 <?php
-				 $con=mysql_connect('localhost','root','');
-    mysql_select_db('medicine',$con);
+			//	 $con=mysql_connect('localhost','root','');
+    //mysql_select_db('medicine',$con);
      
-$cnt1=mysql_query("select p.*,c.company_name from product_tbl as p,company_tbl as c where p.company_id=c.company_id",$con);
+//$cnt1=mysql_query("select p.*,c.company_name from product_tbl as p,company_tbl as c where p.company_id=c.company_id",$con);
+	$obj=new database();
+				$cnt1=$obj->view_products();
 
 while($row=mysql_fetch_assoc($cnt1))
   {

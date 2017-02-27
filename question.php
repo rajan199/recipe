@@ -19,7 +19,7 @@
 <body> 
 
 <?php
-
+include 'database.php';
 include 'header.php';
 
 ?>
@@ -33,10 +33,11 @@ include 'header.php';
 
 <h1 align="center">---------FAQ---------</h1>
 <?php
-
-$con=mysql_connect('localhost','root','');
-       mysql_select_db('medicine',$con);
-      $res=mysql_query("select q.*,u.* from question_tbl as q,user_tbl as u  where q.email_id=u.email_id and question_status='accept' order by question_id desc ",$con);
+$obj=new database();
+$res=$obj->question_display();
+//$con=mysql_connect('localhost','root','');
+  //     mysql_select_db('medicine',$con);
+    //  $res=mysql_query("select q.*,u.* from question_tbl as q,user_tbl as u  where q.email_id=u.email_id and question_status='accept' order by question_id desc ",$con);
 	
 
 while($row=mysql_fetch_assoc($res))
