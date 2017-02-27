@@ -1,11 +1,3 @@
-<!--A Design by W3layouts 
-Author: W3layout
-Author URL: http://w3layouts.com
-License: Creative Commons Attribution 3.0 Unported
-License URL: http://creativecommons.org/licenses/by/3.0/
--->
-
-
 <!DOCTYPE html>
 <html>
 <head>
@@ -25,7 +17,7 @@ License URL: http://creativecommons.org/licenses/by/3.0/
 <body> 
 
 <?php
-
+include 'database.php';
 include 'header.php';
 
 ?>
@@ -42,7 +34,7 @@ include 'alphaser.php';
 </div>
 </div>
 </div>
-<!---->
+
 	<div class="container">
 			<div class="shoes-grid">
 			<a href="single.html">
@@ -112,7 +104,7 @@ include 'alphaser.php';
 	            </div>
 	          </div>
 	           	</a>
-	   		      <!----
+	   		      
 	   		     <div class="shoes-grid-left">
 			<a href="single.html">				 
 	   		     	<div class="col-md-6 con-sed-grid">
@@ -143,7 +135,7 @@ include 'alphaser.php';
 						<div class="clearfix"> </div>
 	   		     	</div>
 					</a>
-	   		     </div>-->
+	   		     </div>
 	   		     <div class="products">
 	   		     	<h5 class="latest-product">LATEST PRODUCTS</h5>	
 	   		     	  <a class="view-all" href="product.php">VIEW ALL<span> </span></a> 		     
@@ -152,17 +144,24 @@ include 'alphaser.php';
   <div class="panel-body">
     <div class="row">
 	
+<?php
+/*			 
+$con=mysql_connect('localhost','root','');
+mysql_select_db('medicine',$con);
+$cnt=mysql_query("select p.*,c.company_name from product_tbl as p,company_tbl as c where p.company_id=c.company_id",$con);
+*/
 
-				 <?php
-				 $con=mysql_connect('localhost','root','');
-    mysql_select_db('medicine',$con);
-     
-$cnt1=mysql_query("select p.*,c.company_name from product_tbl as p,company_tbl as c where p.company_id=c.company_id",$con);
+//include 'database.php';
 
-while($row=mysql_fetch_assoc($cnt1))
+$obj=new database();
+$cnt=$obj->view_products();
+
+//include 'C:\wamp\www\phpmedicine\database.php';
+//echo '<h1>'.meet.'</h1>';
+
+
+while($row=mysql_fetch_array($cnt))
   {
-
-
 
  echo' <div class="col-sm-6 col-md-4">';
    echo  '<div class="thumbnail">';
@@ -199,23 +198,15 @@ while($row=mysql_fetch_assoc($cnt1))
     </div>
   </div>
   ';
-  }
-
-   		     	
+  }   		     	
 ?>		
 </div>
 </div>
 </div>
-			<!--   	
-			  
-			  
-			  
-			  
-			  
-			  
-	   		     </div>-->
+	<!--   	  
+	</div>-->
 <?php
-
+//include 'database.php';
 include 'sidebar.php';
 
 ?>	   		    

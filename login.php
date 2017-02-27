@@ -91,7 +91,7 @@ session_start();
 -->	<!---->
 
 <?php
-
+include 'database.php';
 include 'header.php';
 
 
@@ -134,16 +134,20 @@ if(isset($_POST["btnlogin"]))
 	 $name=$_POST["txtid"];
 	  $passs=$_POST["txtpass"];
 
-$con=mysql_connect('localhost','root','');
-   mysql_select_db('medicine',$con);
-   $res=mysql_query("select * from user_tbl where email_id='$name' and  password='$passs' ",$con);
-   $count=mysql_num_rows($res); 
+$obj=new database();
+$count=$obj->login($name,$passs);
+//$con=mysql_connect('localhost','root','');
+  // mysql_select_db('medicine',$con);
+   //$res=mysql_query("select * from user_tbl where email_id='$name' and  password='$passs' ",$con);
+   //$count=mysql_num_rows($res); 
 
 	  if ($count==1) 
 	{
-        $con=mysql_connect('localhost','root','');
-       mysql_select_db('medicine',$con);
-       $res=mysql_query("select type from user_tbl where email_id='$name' and password='$passs'",$con);
+		$obj1=new database();
+		$res=$obj1->check_type($name,$passs);
+        //$con=mysql_connect('localhost','root','');
+       //mysql_select_db('medicine',$con);
+       //$res=mysql_query("select type from user_tbl where email_id='$name' and password='$passs'",$con);
    while($row=mysql_fetch_assoc($res))
    {
 	   $ty=$row["type"];

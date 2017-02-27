@@ -1,21 +1,53 @@
 <?php
 class database
 {
+
+    public function sidebar_product_count()
+    {
+        
+	$con=mysql_connect('localhost','root','');
+    mysql_select_db('medicine',$con);
+    $res1=mysql_query("select * from company_tbl",$con);
+    $cnt=mysql_num_rows($res1);
+    return $cnt;
+    }
+
+    public function sidebar_product_display()
+    {
+
+	$con=mysql_connect('localhost','root','');
+    mysql_select_db('medicine',$con);
+	$cnt1=mysql_query('select count(p.product_id) "cnt",c.* from product_tbl as p,company_tbl as c where p.company_id=c.company_id group by c.company_name',$con);
+    return $cnt1;
+
+    }
+    public function alphabetic_search($ch)
+    {
+
+    $con=mysql_connect('localhost','root','');
+    mysql_select_db('medicine',$con);
+    $res=mysql_query("select * from product_tbl where product_name LIKE '$ch%'");
+    return $res;
+
+    }
+    public function view_products()
+    { 
+         
+    $con=mysql_connect('localhost','root','');
+    mysql_select_db('medicine',$con); 
+    $res=mysql_query("select p.*,c.company_name from product_tbl as p,company_tbl as c where p.company_id=c.company_id",$con);
+    return $res;
+    }
    public function signup($id,$uname,$pass,$add,$city,$zip,$gen,$mob,$temp)
    {
-	   
 	
-
    $con=mysql_connect('localhost','root','');
    mysql_select_db('medicine',$con);
    $res=mysql_query("insert into user_tbl values('$id','$uname','$pass','$add','$city','$zip','$gen','$mob','$temp','user')");
+   
    }
 
- 
- 
- 
-
-	public function login($name,$passs)
+    public function login($name,$passs)
    {
 	$con=mysql_connect('localhost','root','');
    mysql_select_db('medicine',$con);
@@ -25,6 +57,13 @@ class database
    
    } 
    
+   public function check_type($name,$passs)
+   {
+       $con=mysql_connect('localhost','root','');
+       mysql_select_db('medicine',$con);
+       $res=mysql_query("select type from user_tbl where email_id='$name' and password='$passs'",$con);
+       return $res;
+   }
 
 public function connection()
 {
@@ -33,15 +72,44 @@ public function connection()
     mysql_select_db('medicine',$con);
     return $con;
 }
-
-
-
-
    public function companybyid($id)
    {
 	   
-	   $res=mysql_query("select * from product_tbl where company_id='$id'");
-	   return $res;
+    $con=mysql_connect('localhost','root','');
+    mysql_select_db('medicine',$con);
+	$res=mysql_query("select * from product_tbl where company_id='$id'");
+	return $res;
+   }
+
+   public function product_display()
+   {
+        $con=mysql_connect('localhost','root','');
+        mysql_select_db('medicine',$con);  
+        $res1=mysql_query("select * from product_tbl",$con);
+        $cnt=mysql_num_rows($res1);
+        return $cnt;
+   }
+   public function question_display()
+   {
+
+       $con=mysql_connect('localhost','root','');
+       mysql_select_db('medicine',$con);
+      $res=mysql_query("select q.*,u.* from question_tbl as q,user_tbl as u  where q.email_id=u.email_id and question_status='accept' order by question_id desc ",$con);
+      return $res;
+   }
+   public function insert_user($id,$uname,$pass,$add,$city,$zip,$gen,$mob,$temp)
+   {
+    $con=mysql_connect('localhost','root','');
+   mysql_select_db('medicine',$con);
+   $res=mysql_query("insert into user_tbl values('$id','$uname','$pass','$add','$city','$zip','$gen','$mob','$temp','user')");
+   
+   }
+   public function product_by_id($id)
+   {
+    $con=mysql_connect('localhost','root','');
+    mysql_select_db('medicine',$con);
+	$cnt1=mysql_query("select * from product_tbl where product_id=$id",$con);
+    return $cnt1;
    }
 
 }

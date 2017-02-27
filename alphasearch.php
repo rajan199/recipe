@@ -18,7 +18,7 @@
 <body> 
 
 <?php
-
+include 'database.php';
 include 'header.php';
 
 ?>
@@ -118,16 +118,21 @@ include 'alphaser.php';
 		
 
 	<?php
-				
-				
+	//require 'database.php';
+	//$obj=new database();
+			
 if(isset($_GET['letter']))
 {
-$con=mysql_connect('localhost','root','');
-    mysql_select_db('medicine',$con);
-    $ch=$_GET['letter'];
-	$res=mysql_query("select * from product_tbl where product_name LIKE '$ch%'");
+//$con=mysql_connect('localhost','root','');
+  //  mysql_select_db('medicine',$con);
+  //include 'database.php';
 
-	  while($row=mysql_fetch_assoc($res))
+    $ch=$_GET['letter'];
+	$obj=new database();
+	$res=$obj->alphabetic_search($ch);
+	//$res=mysql_query("select * from product_tbl where product_name LIKE '$ch%'");
+
+	while($row=mysql_fetch_array($res))
   {
 	
  echo' <div class="col-sm-6 col-md-4">';
