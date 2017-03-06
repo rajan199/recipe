@@ -1,5 +1,4 @@
 <?php
-
 session_start();
 ?>
 <!DOCTYPE html>
@@ -22,11 +21,6 @@ session_start();
 <!--//fonts-->
 <script src="../js/jquery.min.js"></script>
 <!--script-->
-
-
-
-
-
 </head>
 <body> 
 
@@ -41,13 +35,11 @@ include 'user_header.php';
 
 <div class="row">
 <div class="col-md-12">
-<?php
-include 'alphaser.php';
 
-?>
 </div>
 </div>
 </div>
+<!---->
 
 	<div class="container">
 			<div class="shoes-grid">
@@ -116,33 +108,86 @@ include 'alphaser.php';
 	            </div>
 	          </div>
 	           	</a>
-	   		      
-	   		     <div class="products">
-	   		     	<h5 class="latest-product">LATEST PRODUCTS</h5>	
-	   		     	  <a class="view-all" href="product.php">VIEW ALL<span> </span></a> 		     
-	   		     </div>
+	   						
+				<?php
+				
+				$obj=new database();
+				$cnt=$obj->product_display();
+				
+	//$con=mysql_connect('localhost','root','');
+   // mysql_select_db('medicine',$con);
+     
+ //$res1=mysql_query("select * from product_tbl",$con);
+//$cnt=mysql_num_rows($res1);
+
+
+				
+				?>
+				<div class=" w_content">
+			<div class="women">
+				<a href="#"><h4>Total Products <span><?php echo $cnt; ?></span> </h4></a>
+				<ul class="w_nav">
+					<li>Other Products: </li>
+			     	<li><a class="active" href="#">Injections</a></li> |
+			     	<li><a href="skin.php">Skin care </a></li> |
+			     	<li><a href="baby.php">Baby care</a></li> |
+			     	<li><a href="hair.php">Hair care </a></li> 
+			     <div class="clearfix"> </div>	
+			     </ul>
+			     <div class="clearfix"> </div>	
+			</div>
+		</div>
+				
+	   		      <!----
+	   		     <div class="shoes-grid-left">
+			<a href="single.html">				 
+	   		     	<div class="col-md-6 con-sed-grid">
+					
+	   		     		<div class=" elit-grid"> 
+						
+		   		     		<h4>consectetur  elit</h4>
+		   		     		<label>FOR ALL PURCHASE VALUE</label>
+							<p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, </p>
+							<span class="on-get">GET NOW</span>						
+						</div>						
+						<img class="img-responsive shoe-left" src="images/sh.jpg" alt=" " />
+							
+						<div class="clearfix"> </div>
+						
+	   		     	</div>
+					</a>
+					<a href="single.html">	
+	   		     	<div class="col-md-6 con-sed-grid sed-left-top">
+	   		     		<div class=" elit-grid"> 
+		   		     		<h4>consectetur  elit</h4>
+		   		     		<label>FOR ALL PURCHASE VALUE</label>
+							<p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, </p>
+							<span class="on-get">GET NOW</span>
+						</div>		
+						<img class="img-responsive shoe-left" src="images/wa.jpg" alt=" " />
+						
+						<div class="clearfix"> </div>
+	   		     	</div>
+					</a>
+	   		     </div>-->
+	   		    
 <div class="panel panel-default">
   <div class="panel-body">
     <div class="row">
 	
-<?php
-/*			 
-$con=mysql_connect('localhost','root','');
-mysql_select_db('medicine',$con);
-$cnt=mysql_query("select p.*,c.company_name from product_tbl as p,company_tbl as c where p.company_id=c.company_id",$con);
-*/
 
-//include 'database.php';
+				 <?php
+			//	 $con=mysql_connect('localhost','root','');
+    //mysql_select_db('medicine',$con);
+     
+//$cnt1=mysql_query("select p.*,c.company_name from product_tbl as p,company_tbl as c where p.company_id=c.company_id",$con);
+	$obj=new database();
+				$cnt1=$obj->view_products();
 
-$obj=new database();
-$cnt=$obj->view_products();
-
-//include 'C:\wamp\www\phpmedicine\database.php';
-//echo '<h1>'.meet.'</h1>';
-
-
-while($row=mysql_fetch_array($cnt))
+while($row=mysql_fetch_assoc($cnt1))
   {
+
+
 
  echo' <div class="col-sm-6 col-md-4">';
    echo  '<div class="thumbnail">';
@@ -153,8 +198,8 @@ while($row=mysql_fetch_array($cnt))
                
         <p><a href="single.php?id='.$row["product_id"].'"><button type="button" style="width: 200px;" name="btnbuy" class="btn btn-default btn-lg">
   <span class="glyphicon glyphicon-buy" aria-hidden="true"></span> Preview
-</button></a>
-<a href="wishlist1.php?pid='.$row["product_id"].'"><button type="button" style="width: 200px; background:#323A45; color:white; " name="btncar" class="btn btn-default btn-lg">
+</button>
+<a href="#"><button type="button" style="width: 200px; background:#323A45; color:white; " name="btncar" class="btn btn-default btn-lg">
   <span class="glyphicon glyphicon-shopping-cart" aria-hidden="true"></span> Add to cart
 </button></a>
 </p>
@@ -179,22 +224,30 @@ while($row=mysql_fetch_array($cnt))
     </div>
   </div>
   ';
-  }   		     	
+  }
+
+   		     	
 ?>		
 </div>
 </div>
 </div>
-	<!--   	  
-	</div>-->
+			<!--   	
+			  
+			  
+			  
+			  
+			  
+			  
+	   		     </div>-->
 <?php
-//include 'database.php';
+
 include 'sidebar.php';
 
 ?>	   		    
 <!--
 				
 	
-	<!----><?php
+<?php
 	
 	include '../footer.php';
 	
