@@ -41,12 +41,14 @@
 			<div class="container">
 				<div class="header-bottom-left">
 					<div class="logo">
-						<a href="main.php"><img src="images/logo.png" alt=" " /></a>
+						<a href="main.php"><img src="images/jay_Jalaram.jpg" style="width:250px;" alt=" " /></a>
 					</div>
 <form action="" method="post">				
 				<div class="search">
 						<input type="text" value="" name="serch" id="search-box"  >
-						<input type="submit" name="btnser" value="SEARCH">
+						<input type="submit" name="btnser" value="SEARCH" style="font-size: 15px;color: black;">
+		
+		
 		
 							<?php
 				if(isset($_POST["btnser"]))
@@ -79,14 +81,14 @@
 		</div>
 	</div>
 	<ul class="nav nav-tabs" style="background-color:white;">
-  <li role="presentation"><a href="main.php" style="color:black; margin-right: 20;">Home</a></li>
+  <li role="presentation"><a href="main.php" style="color:black;font-size:18px; margin-right: 20;">Home</a></li>
   
-  <li role="presentation"><a href="skin.php" style="color:black; margin-right: 20;">Skin Care</a></li>
-  <li role="presentation"><a href="baby.php" style="color:black; margin-right: 20;">Baby Care</a></li>
+  <li role="presentation"><a href="skin.php" style="color:black;font-size:18px; margin-right: 20;">Skin Care</a></li>
+  <li role="presentation"><a href="baby.php" style="color:black;font-size:18px; margin-right: 20;">Baby Care</a></li>
   
-  <li role="presentation"><a href="hair.php" style="color:black; margin-right: 20;">Hair Care</a></li>
+  <li role="presentation"><a href="hair.php" style="color:black;font-size:18px; margin-right: 20;">Hair Care</a></li>
 
-  <li role="presentation"><a href="question.php" style="color:black; margin-right: 20;">Question</a></li>
+  <li role="presentation"><a href="question.php" style="color:black;font-size:18px; margin-right: 20;">Question</a></li>
   
   
   </ul>

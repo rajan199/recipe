@@ -65,5 +65,12 @@ User Name='.$row["user_name"].'
 </div>	
 </div>
 </div>
+<?php
+
+
+include 'footer.php';
+
+
+?>
 </body>
 </html>

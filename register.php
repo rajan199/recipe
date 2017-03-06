@@ -109,25 +109,25 @@ function allzip(uzip)
 	<div class="container"> 
 			         
 		<div class="register">
-		  	  <form enctype="multipart/form-data" action="" method="post"> 
+		  	  <form enctype="multipart/form-data" action="mail1.php" method="post"> 
 				 <div class="  register-top-grid">
 					<h1 style="color:#F97E76;">Sign Up</h1>
 
 					<div>
-					<span>Email Address<label>*</label></span>
+					<b><span style="color: black;font-size:15px;">Email Address<label>*</label></span></b>
 					<input type="email" class="form-control" style="width: 550px; height: 40px;" name="txtid"  placeholder="Enter Email Id" required> 
 				  </div>
 				  <hr/>
 					
 				  <div>
-					<span>User Name<label>*</label></span>
+					<b><span style="color: black;font-size:15px;">User Name<label>*</label></span></b>
 					<input type="text" class="form-control" style="width: 550px; height: 40px;" name="txtname" onblur="return allLetter(txtname);"  placeholder="Enter User name" required> 
 				  </div>
 				  <hr/>
 					
 				    
 				  <div>
-					<span>Password<label>*</label></span>
+					<b><span style="color: black;font-size:15px;">Password<label>*</label></span></b>
 					<input type="password" class="form-control" style="width: 550px; height: 40px;" name="txtpaswd" onblur="return passid_validation(txtpaswd);"placeholder="Enter password" required> 
 				  </div>
 				  
@@ -135,7 +135,7 @@ function allzip(uzip)
 					
 				   
 				  <div>
-					<span>Confirm Password<label>*</label></span>
+					<b><span style="color: black;font-size:15px;">Confirm Password<label>*</label></span></b>
 					<input type="password" class="form-control" style="width: 550px; height: 40px;" name="txtpass" onblur="return passid_validation(txtpass);"placeholder="Enter password" required>
                 
 					</div>
@@ -143,7 +143,7 @@ function allzip(uzip)
 					
 				
   <div>
-					<span>Address<label>*</label></span>
+					<b><span style="color: black;font-size:15px;">Address<label>*</label></span></b>
                 
                 
 				<textarea name="txtadd" col="5" class="form-control" style="width: 550px;height: 60px;" placeholder="Enter Address" required></textarea>
@@ -153,7 +153,7 @@ function allzip(uzip)
 					<hr/>
 								
 				  <div>
-					<span>Area<label>*</label></span>
+					<b><span style="color: black;font-size:15px;">Area<label>*</label></span></b>
 					
 				<select name="txtcity" class="form-control" autocomplete="off" style="width: 550px; height: 40px;">
 <option value="Kankaria">Kankaria</option>
@@ -176,7 +176,7 @@ function allzip(uzip)
 					
 					
 				  <div>
-					<span>Zipcode<label>*</label></span>
+					<b><span style="color: black;font-size:15px;">Zipcode<label>*</label></span></b>
 					 <input type="text" class="form-control" maxlength='6' style="width: 550px; height: 40px;" onblur="return allzip(txtzip);"  name="txtzip"  placeholder="Enter zipcode number" required>
                        
 					</div>
@@ -184,7 +184,7 @@ function allzip(uzip)
 					
 					
 				  <div>
-					<span>Gender<label>*</label></span>
+					<b><span style="color: black;font-size:15px;">Gender<label>*</label></span></b>
 					<input type="radio"  name="txtgen" checked value="M">Male
 					<br/>
 					
@@ -196,7 +196,7 @@ function allzip(uzip)
 				  <hr/>
 					
 				  <div>
-				  <span>Mobile Number<label>*</label></span>
+				  <b><span style="color: black;font-size:15px;">Mobile Number<label>*</label></span></b>
 					<input  type="text" class="form-control" name="txtno" maxlength="10" style="width: 550px; height: 40px;" onblur="return allnumeric(txtno);" placeholder="Enter mobile number" required>
                    
 					</div>
@@ -204,7 +204,7 @@ function allzip(uzip)
 					<hr/>
 					
 				  <div>
-					<span>Captcha Code<label>*</label></span>
+					<b><span style="color: black;font-size:15px;">Captcha Code<label>*</label></span></b>
 						<input  class="form-control" name="captcha_code" style="width: 550px; height: 40px;" type="text">
                      <img src="captcha_code.php" />
 					</div>
@@ -221,7 +221,7 @@ function allzip(uzip)
 					   
 					   
 					   
-			 <?php
+			 <!--?php
 
 			 
 
@@ -316,7 +316,7 @@ echo "</h3>";
 ?>
 
 
-					   
+				-->	   
 					   
 					   
 					   
@@ -333,94 +333,13 @@ echo "</h3>";
 		   </div>
 		  
 	<!---->
-	<div class="footer">
-		<div class="footer-top">
-			<div class="container">
-				<div class="latter">
-					<h6>NEWS-LETTER</h6>
-					<div class="sub-left-right">
-						<form>
-							<input type="text" value="Enter email here"onfocus="this.value = '';" onblur="if (this.value == '') {this.value = 'Enter email here';}" />
-							<input type="submit" value="SUBSCRIBE" />
-						</form>
-					</div>
-					<div class="clearfix"> </div>
-				</div>
-				<div class="latter-right">
-					<p>FOLLOW US</p>
-					<ul class="face-in-to">
-						<li><a href="#"><span> </span></a></li>
-						<li><a href="#"><span class="facebook-in"> </span></a></li>
-						<div class="clearfix"> </div>
-					</ul>
-					<div class="clearfix"> </div>
-				</div>
-				<div class="clearfix"> </div>
-			</div>
-		</div>
-		<div class="footer-bottom">
-			<div class="container">
-				<div class="footer-bottom-cate">
-					<h6>CATEGORIES</h6>
-					<ul>
-						<li><a href="#">Curabitur sapien</a></li>
-						<li><a href="#">Dignissim purus</a></li>
-						<li><a href="#">Tempus pretium</a></li>
-						<li ><a href="#">Dignissim neque</a></li>
-						<li ><a href="#">Ornared id aliquet</a></li>
-						<li><a href="#">Ultrices id du</a></li>
-						<li><a href="#">Commodo sit</a></li>
-						<li ><a href="#">Urna ac tortor sc</a></li>
-						<li><a href="#">Ornared id aliquet</a></li>
-						<li><a href="#">Urna ac tortor sc</a></li>
-						<li ><a href="#">Eget nisi laoreet</a></li>
-						<li ><a href="#">Faciisis ornare</a></li>
-					</ul>
-				</div>
-				<div class="footer-bottom-cate bottom-grid-cat">
-					<h6>FEATURE PROJECTS</h6>
-					<ul>
-						<li><a href="#">Curabitur sapien</a></li>
-						<li><a href="#">Dignissim purus</a></li>
-						<li><a href="#">Tempus pretium</a></li>
-						<li ><a href="#">Dignissim neque</a></li>
-						<li ><a href="#">Ornared id aliquet</a></li>
-						<li><a href="#">Ultrices id du</a></li>
-						<li><a href="#">Commodo sit</a></li>
-					</ul>
-				</div>
-				<div class="footer-bottom-cate">
-					<h6>TOP BRANDS</h6>
-					<ul>
-						<li><a href="#">Curabitur sapien</a></li>
-						<li><a href="#">Dignissim purus</a></li>
-						<li><a href="#">Tempus pretium</a></li>
-						<li ><a href="#">Dignissim neque</a></li>
-						<li ><a href="#">Ornared id aliquet</a></li>
-						<li><a href="#">Ultrices id du</a></li>
-						<li><a href="#">Commodo sit</a></li>
-						<li ><a href="#">Urna ac tortor sc</a></li>
-						<li><a href="#">Ornared id aliquet</a></li>
-						<li><a href="#">Urna ac tortor sc</a></li>
-						<li ><a href="#">Eget nisi laoreet</a></li>
-						<li ><a href="#">Faciisis ornare</a></li>
-					</ul>
-				</div>
-				<div class="footer-bottom-cate cate-bottom">
-					<h6>OUR ADDERSS</h6>
-					<ul>
-						<li>Aliquam metus  dui. </li>
-						<li>orci, ornareidquet</li>
-						<li> ut,DUI.</li>
-						<li >nisi, dignissim</li>
-						<li >gravida at.</li>
-						<li class="phone">PH : 6985792466</li>
-						<li class="temp"> <p class="footer-class">Design by <a href="http://w3layouts.com/" target="_blank">W3layouts</a> </p></li>
-					</ul>
-				</div>
-				<div class="clearfix"> </div>
-			</div>
-		</div>
-	</div>
-</body>
+<?php
+
+
+include 'footer.php';
+
+
+?>
+	
+	</body>
 </html>

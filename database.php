@@ -2,6 +2,15 @@
 class database
 {
 
+
+public function connection()
+{
+    
+	$con=mysql_connect('localhost','root','');
+    mysql_select_db('medicine',$con);
+    return $con;
+}
+   
     public function sidebar_product_count()
     {
         
@@ -51,7 +60,7 @@ class database
    {
 	$con=mysql_connect('localhost','root','');
    mysql_select_db('medicine',$con);
-   $res=mysql_query("select * from user_tbl where email_id='$name' and  password='$passs' ",$con);
+   $res=mysql_query("select * from user_tbl where email_id='$name' and  password='$passs' and status='true' ",$con);
    $count=mysql_num_rows($res);  
    return $count;  
    
@@ -65,13 +74,6 @@ class database
        return $res;
    }
 
-public function connection()
-{
-    
-	$con=mysql_connect('localhost','root','');
-    mysql_select_db('medicine',$con);
-    return $con;
-}
    public function companybyid($id)
    {
 	   
@@ -97,11 +99,11 @@ public function connection()
       $res=mysql_query("select q.*,u.* from question_tbl as q,user_tbl as u  where q.email_id=u.email_id and question_status='accept' order by question_id desc ",$con);
       return $res;
    }
-   public function insert_user($id,$uname,$pass,$add,$city,$zip,$gen,$mob,$temp)
+   public function insert_user($id,$uname,$pass,$add,$city,$zip,$gen,$mob,$temp,$active,$code)
    {
     $con=mysql_connect('localhost','root','');
    mysql_select_db('medicine',$con);
-   $res=mysql_query("insert into user_tbl values('$id','$uname','$pass','$add','$city','$zip','$gen','$mob','$temp','user')");
+   $res=mysql_query("insert into user_tbl values('$id','$uname','$pass','$add','$city','$zip','$gen','$mob','$temp','user','$active','$code')");
    
    }
    public function product_by_id($id)
@@ -111,6 +113,37 @@ public function connection()
 	$cnt1=mysql_query("select * from product_tbl where product_id=$id",$con);
     return $cnt1;
    }
+   
+   public function getUserName($id)
+   {
+	   $con=mysql_connect("localhost","root","");
+	mysql_select_db("medicine",$con);
+	$res=mysql_query("select * from user_tbl where email_id='$id'",$con);
+	return $res;
+   }
+   
+   
+   		public function getuserbycode($code)
+	{
+		
+		$res=mysql_query("select * from user_tbl where link='$code'",$this->connection());
+
+		$count=mysql_num_rows($res);
+		
+		return $count;
+	
+	}
+	public function activateuser($code)
+	{
+	
+		$res=mysql_query("update user_tbl set status='true' where link='$code'",$this->connection());
+		return $res;
+	
+	}
+	
+   
+   
+   
 
 }
    

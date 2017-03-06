@@ -105,11 +105,14 @@ include 'header.php';
 				<p>If you have an account with us, please log in.</p>
 				<form>
 				  <div>
-					<span>Email Address<label>*</label></span>
+					<b><span style="color: black;font-size:15px;">Email Address<label>*</label></span></b>
 					<input type="email" style="width: 550px; height: 40px;" name="txtid"  placeholder="Enter Email Id" required> 
 				  </div>
+				  
+				  <br/>
+				  
 				  <div>
-					<span>Password<label>*</label></span>
+					<b><span style="color: black;font-size:15px;">Password<label>*</label></span></b>
 					<input type="password" style="width: 550px; height: 40px;" name="txtpass" placeholder="Enter password" required> 
 				  </div>
 				  <a class="forgot" href="#">Forgot Your Password?</a>
@@ -151,32 +154,58 @@ $count=$obj->login($name,$passs);
    while($row=mysql_fetch_assoc($res))
    {
 	   $ty=$row["type"];
+	   $active=$row["status"];
    }
    if($ty=='user')
    {
        $_SESSION["uname"]=$_POST["txtid"];
 		  //header('location:user/pro.php');
-		  header('location:main.php');
+		  header('location:user/user_profile.php');
 	}	
 	else
 		{
 			
-			
+			if($active=='false')
+			{
+			echo '<script type="text/javascript">';
+			echo "alert('First You should have to verify your email address than you can able to log in to our website');";
+			echo "</script>";
+				
+			}
+			else{	
 			echo '<script type="text/javascript">';
  echo "alert('Please enter corrcet information');";
    echo "</script>";
 			//echo "<h1>Invalid</h1> ";
 		}
-	
+	}
 	
 	}//if(count)
 		else
 		{
-			
+		//	$obj2=new database();
+		//$res1=$obj2->login($name,$passs);
+        $con=mysql_connect('localhost','root','');
+       mysql_select_db('medicine',$con);
+       $res=mysql_query("select status from user_tbl where email_id='$name' and password='$passs'",$con);
+		while($row=mysql_fetch_assoc($res))
+		{
+	//   $ty=$row["type"];
+			$active=$row["status"];
+		}
+			if($active=='false')
+			{
 			echo '<script type="text/javascript">';
- echo "alert('Please enter corrcet information');";
-   echo "</script>";
-	
+			echo "alert('First You should have to verify your email address than you can able to log in to our website');";
+			echo "</script>";
+				
+			}
+			else
+			{
+			echo '<script type="text/javascript">';
+			echo "alert('Please  corrcet information');";
+			echo "</script>";
+			}
 		//	echo "<h1>Invalid</h1> ";
 		}
 }

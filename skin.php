@@ -25,7 +25,7 @@ License URL: http://creativecommons.org/licenses/by/3.0/
 <body> 
 
 <?php
-
+include 'database.php';
 include 'header.php';
 
 ?>
@@ -43,22 +43,23 @@ include 'alphaser.php';
 </div>
 </div>
 <!---->
+
 	<div class="container">
 			<div class="shoes-grid">
-			<a href="single.html">
+			<a href="register.php">
 			<div class="wrap-in">
 				<div class="wmuSlider example1 slide-grid">		 
 				   <div class="wmuSliderWrapper">		  
 					   <article style="position: absolute; width: 100%; opacity: 0;">					
 						<div class="banner-matter">
 						<div class="col-md-5 banner-bag">
-							<img class="img-responsive " src="images/bag.jpg" alt=" " />
+							<img class="img-responsive " style="height:272px;" src="images/med.jpg" alt=" " />
 							</div>
 							<div class="col-md-7 banner-off">							
-								<h2>FLAT 50% 0FF</h2>
-								<label>FOR ALL PURCHASE <b>VALUE</b></label>
-								<p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et </p>					
-								<span class="on-get">GET NOW</span>
+								<h2>Get register with us</h2>
+								<label>FOR ALL PURCHASE <b>MEDICINES</b></label>
+								<p></p>					
+								<span class="on-get">Get Register</span>
 							</div>
 							
 							<div class="clearfix"> </div>
@@ -68,13 +69,12 @@ include 'alphaser.php';
 					 	<article style="position: absolute; width: 100%; opacity: 0;">					
 						<div class="banner-matter">
 						<div class="col-md-5 banner-bag">
-							<img class="img-responsive " src="images/bag1.jpg" alt=" " />
+							<img class="img-responsive " style="height:272px;" src="images/med.jpg" alt=" " />
 							</div>
 							<div class="col-md-7 banner-off">							
-								<h2>FLAT 50% 0FF</h2>
-								<label>FOR ALL PURCHASE <b>VALUE</b></label>
-								<p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et </p>					
-								<span class="on-get">GET NOW</span>
+								<h2>Get register with us</h2>
+								<label>FOR ALL PURCHASE <b>MEDICINES</b></label>
+								<span class="on-get">Get Register</span>
 							</div>
 							
 							<div class="clearfix"> </div>
@@ -84,13 +84,12 @@ include 'alphaser.php';
 					 	<article style="position: absolute; width: 100%; opacity: 0;">					
 						<div class="banner-matter">
 						<div class="col-md-5 banner-bag">
-							<img class="img-responsive " src="images/bag.jpg" alt=" " />
+							<img class="img-responsive " style="height:272px;" src="images/med.jpg" alt=" " />
 							</div>
 							<div class="col-md-7 banner-off">							
-								<h2>FLAT 50% 0FF</h2>
-								<label>FOR ALL PURCHASE <b>VALUE</b></label>
-								<p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et </p>					
-								<span class="on-get">GET NOW</span>
+								<h2>Get register with us</h2>
+								<label>FOR ALL PURCHASE <b>MEDICINES</b></label>
+								<span class="on-get">Get Register</span>
 							</div>
 							
 							<div class="clearfix"> </div>
@@ -112,7 +111,7 @@ include 'alphaser.php';
 	            </div>
 	          </div>
 	           	</a>
-				
+	   						
 				<?php
 				
 				
