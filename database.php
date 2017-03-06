@@ -2,6 +2,26 @@
 class database
 {
 
+    public function get_selected_address_of_user($eid)
+    {
+    $con=mysql_connect('localhost','root','');
+    mysql_select_db('medicine',$con);
+    $res=mysql_query("select ship_address from user_tbl where email_id='$eid'",$con);
+    return $res;
+    }
+    public function update_cart_address($newadd,$eid)
+    {
+    $con=mysql_connect('localhost','root','');
+    mysql_select_db('medicine',$con);
+    $res=mysql_query("update user_tbl set ship_address='$newadd' where email_id='$eid'",$con);
+    }
+    public function add_prescription($target_file,$eid)
+    {
+    $con=mysql_connect('localhost','root','');
+    mysql_select_db('medicine',$con);
+    $res=mysql_query("insert into prescription_tbl values('NULL','$target_file','$eid')",$con); 
+   
+    }
     public function sidebar_product_count()
     {
         
@@ -56,6 +76,14 @@ class database
    return $count;  
    
    } 
+
+   public function put_question($que,$eid)
+   {
+       $con=mysql_connect('localhost','root','');
+       mysql_select_db('medicine',$con);
+       $res=mysql_query("insert into question_tbl values(NULL,'$que','pending','not answer','$eid')",$con);
+       return $res;
+   }
    
    public function check_type($name,$passs)
    {
@@ -89,12 +117,13 @@ public function connection()
         $cnt=mysql_num_rows($res1);
         return $cnt;
    }
-   public function question_display()
+   public function question_display($eid)
    {
 
        $con=mysql_connect('localhost','root','');
        mysql_select_db('medicine',$con);
-      $res=mysql_query("select q.*,u.* from question_tbl as q,user_tbl as u  where q.email_id=u.email_id and question_status='accept' order by question_id desc ",$con);
+      //$res=mysql_query("select q.*,u.* from question_tbl as q,user_tbl as u  where q.email_id='u.email_id' and question_status='accept' order by question_id desc ",$con);
+      $res=mysql_query("select q.* from question_tbl as q where q.email_id='$eid' and question_status='accept' order by question_id desc ",$con);
       return $res;
    }
    public function insert_user($id,$uname,$pass,$add,$city,$zip,$gen,$mob,$temp)
