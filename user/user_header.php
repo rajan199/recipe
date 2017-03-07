@@ -71,7 +71,7 @@
 								<li><a href="login.php"><span> </span>LOGIN</a></li> |
 								<li ><a href="register.php">SIGNUP</a></li>
 							</ul>-->
-						<div class="cart"><a href="#"><span> </span>CART</a></div>
+						<div class="cart"><a href="cart_display.php"><span> </span>CART</a></div>
 					 				
 <?php
 $id= $_SESSION["uname"];

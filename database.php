@@ -1,6 +1,27 @@
 <?php
 class database
 {
+	public function final_amount_cart_page($eid)
+	{
+		$con=mysql_connect('localhost','root','');
+		mysql_select_db('medicine',$con);
+		$res=mysql_query("select sum(total_price) as 'total_amount' from order_tbl where email_id='$eid' and status='cart'",$con);
+		return $res;
+	}
+	public function product_join_cart($eid)
+	{
+		$con=mysql_connect('localhost','root','');
+		mysql_select_db('medicine',$con);
+		$res=mysql_query("select p.*,o.* from product_tbl as p,order_tbl as o where p.product_id=o.product_id and o.email_id='$eid' and o.status='cart'",$con);
+		return $res;
+	}
+	public function count_display($eid)
+	{
+		$con=mysql_connect('localhost','root','');
+		mysql_select_db('medicine',$con);
+		$res=mysql_query("select * from order_tbl where email_id='$eid' and status='cart'");
+		return $res;
+	}
 	public function wishlist_add($date,$qty,$pid,$email,$amt,$flag,$productprice)
 	{
 		$id="Null";
