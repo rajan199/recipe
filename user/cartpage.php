@@ -1,7 +1,8 @@
-<?php
+<?php 
 session_start();
+$eid=$_SESSION["uname"];
+
 ?>
-<!DOCTYPE html>
 <html>
 <head>
 <title>Big shope A Ecommerce Category Flat Bootstarp Resposive Website Template | Home :: w3layouts</title>
@@ -9,11 +10,6 @@ session_start();
 <!--theme-style-->
 <link href="../css/style.css" rel="stylesheet" type="text/css" media="all" />	
 <!--//theme-style-->
-
-<link href="../Content/bootstrap.css" rel="stylesheet"/>
-<script src="../Scripts/jquery-1.9.1.js"></script>
-<script src="../Scripts/bootstrap.js"></script>
-
 <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
 <script type="application/x-javascript"> addEventListener("load", function() { setTimeout(hideURLbar, 0); }, false); function hideURLbar(){ window.scrollTo(0,1); } </script>
 <!--fonts-->
@@ -25,232 +21,117 @@ session_start();
 <body> 
 
 <?php
-include '../database.php';
-include 'user_header.php';
+include 'database.php';
+include 'header.php';
 
 ?>
 
-
+</br>
+</br>
 <div class="container">
-
 <div class="row">
 <div class="col-md-12">
+<?php 
+$obj2=new database();
+$get_result=$obj2->get_selected_address_of_user($eid);
+while($row=mysql_fetch_array($get_result,MYSQL_ASSOC))
+{
+    $newadd=$row["ship_address"];
+}
 
-</div>
-</div>
-</div>
-<!---->
-
-	<div class="container">
-			<div class="shoes-grid">
-			<a href="register.php">
-			<div class="wrap-in">
-				<div class="wmuSlider example1 slide-grid">		 
-				   <div class="wmuSliderWrapper">		  
-					   <article style="position: absolute; width: 100%; opacity: 0;">					
-						<div class="banner-matter">
-						<div class="col-md-5 banner-bag">
-							<img class="img-responsive " style="height:272px;" src="images/med.jpg" alt=" " />
-							</div>
-							<div class="col-md-7 banner-off">							
-								<h2>Get register with us</h2>
-								<label>FOR ALL PURCHASE <b>MEDICINES</b></label>
-								<p></p>					
-								<span class="on-get">Get Register</span>
-							</div>
-							
-							<div class="clearfix"> </div>
-						</div>
-						
-					 	</article>
-					 	<article style="position: absolute; width: 100%; opacity: 0;">					
-						<div class="banner-matter">
-						<div class="col-md-5 banner-bag">
-							<img class="img-responsive " style="height:272px;" src="images/med.jpg" alt=" " />
-							</div>
-							<div class="col-md-7 banner-off">							
-								<h2>Get register with us</h2>
-								<label>FOR ALL PURCHASE <b>MEDICINES</b></label>
-								<span class="on-get">Get Register</span>
-							</div>
-							
-							<div class="clearfix"> </div>
-						</div>
-						
-					 	</article>
-					 	<article style="position: absolute; width: 100%; opacity: 0;">					
-						<div class="banner-matter">
-						<div class="col-md-5 banner-bag">
-							<img class="img-responsive " style="height:272px;" src="images/med.jpg" alt=" " />
-							</div>
-							<div class="col-md-7 banner-off">							
-								<h2>Get register with us</h2>
-								<label>FOR ALL PURCHASE <b>MEDICINES</b></label>
-								<span class="on-get">Get Register</span>
-							</div>
-							
-							<div class="clearfix"> </div>
-						</div>
-						
-					 	</article>
-						
-					 </div>
-					 </a>
-	                <ul class="wmuSliderPagination">
-	                	<li><a href="#" class="">0</a></li>
-	                	<li><a href="#" class="">1</a></li>
-	                	<li><a href="#" class="">2</a></li>
-	                </ul>
-					 <script src="js/jquery.wmuSlider.js"></script> 
-				  <script>
-	       			$('.example1').wmuSlider();         
-	   		     </script> 
-	            </div>
-	          </div>
-	           	</a>
-	   						
-				<?php
-				
-				$obj=new database();
-				$cnt=$obj->product_display();
-				
-	//$con=mysql_connect('localhost','root','');
-   // mysql_select_db('medicine',$con);
-     
- //$res1=mysql_query("select * from product_tbl",$con);
-//$cnt=mysql_num_rows($res1);
-
-
-				
-				?>
-				<div class=" w_content">
-			<div class="women">
-				<a href="#"><h4>Total Products <span><?php echo $cnt; ?></span> </h4></a>
-				<ul class="w_nav">
-					<li>Other Products: </li>
-			     	<li><a class="active" href="#">Injections</a></li> |
-			     	<li><a href="skin.php">Skin care </a></li> |
-			     	<li><a href="baby.php">Baby care</a></li> |
-			     	<li><a href="hair.php">Hair care </a></li> 
-			     <div class="clearfix"> </div>	
-			     </ul>
-			     <div class="clearfix"> </div>	
-			</div>
-		</div>
-				
-	   		      <!----
-	   		     <div class="shoes-grid-left">
-			<a href="single.html">				 
-	   		     	<div class="col-md-6 con-sed-grid">
-					
-	   		     		<div class=" elit-grid"> 
-						
-		   		     		<h4>consectetur  elit</h4>
-		   		     		<label>FOR ALL PURCHASE VALUE</label>
-							<p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, </p>
-							<span class="on-get">GET NOW</span>						
-						</div>						
-						<img class="img-responsive shoe-left" src="images/sh.jpg" alt=" " />
-							
-						<div class="clearfix"> </div>
-						
-	   		     	</div>
-					</a>
-					<a href="single.html">	
-	   		     	<div class="col-md-6 con-sed-grid sed-left-top">
-	   		     		<div class=" elit-grid"> 
-		   		     		<h4>consectetur  elit</h4>
-		   		     		<label>FOR ALL PURCHASE VALUE</label>
-							<p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, </p>
-							<span class="on-get">GET NOW</span>
-						</div>		
-						<img class="img-responsive shoe-left" src="images/wa.jpg" alt=" " />
-						
-						<div class="clearfix"> </div>
-	   		     	</div>
-					</a>
-	   		     </div>-->
-	   		    
-<div class="panel panel-default">
-  <div class="panel-body">
-    <div class="row">
-	
-
-				 <?php
-			//	 $con=mysql_connect('localhost','root','');
-    //mysql_select_db('medicine',$con);
-     
-//$cnt1=mysql_query("select p.*,c.company_name from product_tbl as p,company_tbl as c where p.company_id=c.company_id",$con);
-	$obj=new database();
-				$cnt1=$obj->view_products();
-
-while($row=mysql_fetch_assoc($cnt1))
-  {
-
-
-
- echo' <div class="col-sm-6 col-md-4">';
-   echo  '<div class="thumbnail">';
-     echo ' <img src="http://localhost:3000'.$row["product_img"].'"  style="height: 145px;"></img>';
- echo    '<div class="caption">
-        <h3>'.$row["product_name"].'</h3>
-  <h3>'.$row["product_price"].'</h3>
-               
-        <p><a href="single.php?id='.$row["product_id"].'"><button type="button" style="width: 200px;" name="btnbuy" class="btn btn-default btn-lg">
-  <span class="glyphicon glyphicon-buy" aria-hidden="true"></span> Preview
-</button>
-<a href="#"><button type="button" style="width: 200px; background:#323A45; color:white; " name="btncar" class="btn btn-default btn-lg">
-  <span class="glyphicon glyphicon-shopping-cart" aria-hidden="true"></span> Add to cart
-</button></a>
-</p>
-
-	<div class="star-price">
-	   		     				<div class="dolor-grid"> 
-		   		     				  <span class="rating">
-									        <input type="radio" class="rating-input" id="rating-input-1-5" name="rating-input-1">
-									        <label for="rating-input-1-5" class="rating-star1"> </label>
-									        <input type="radio" class="rating-input" id="rating-input-1-4" name="rating-input-1">
-									        <label for="rating-input-1-4" class="rating-star1"> </label>
-									        <input type="radio" class="rating-input" id="rating-input-1-3" name="rating-input-1">
-									        <label for="rating-input-1-3" class="rating-star"> </label>
-									        <input type="radio" class="rating-input" id="rating-input-1-2" name="rating-input-1">
-									        <label for="rating-input-1-2" class="rating-star"> </label>
-									        <input type="radio" class="rating-input" id="rating-input-1-1" name="rating-input-1">
-									        <label for="rating-input-1-1" class="rating-star"> </label>
-							    	   </span>
-	   		     				</div>
-	   		     		</div>
-      </div>
+?>
+<!--<form action="" method="post" class="form-horizontal">-->
+<form method="post" class="form-horizontal" enctype="multipart/form-data">
+  <div class="form-group">
+    <label for="inputEmail3" class="col-sm-2 control-label">Update Address</label>
+    <div class="col-sm-10">
+      <textarea class="form-control" name="update_add" cols="5" rows="5" required><?php echo $newadd;?></textarea>
     </div>
   </div>
-  ';
-  }
+<!--</form>-->
+</br>
+</br>
 
-   		     	
-?>		
+
+  <div class="form-group">
+    <label for="inputEmail3" class="col-sm-2 control-label">Add Prescription</label>
+    <div class="col-sm-10">
+      <input type="file" class="form-control" name="add_presc" required>
+      </br>
+</br>
+      <button type="submit" class="btn btn-success" name="btnins" value="insert">Place Order</button>
+    </div>
+  </div>
+
+<?php 
+if(isset($_POST["btnins"]))
+{
+   
+    $add=$_POST["update_add"];
+
+    $obj1=new database();
+    $result=$obj1->update_cart_address($add,$eid);
+    /*
+    $target_dir="images/";
+	$target_file = $target_dir . basename($_FILES["add_presc"]["name"]);
+	move_uploaded_file($_FILES["add_presc"]["tmp_name"], $target_file);*/
+
+    $target_dir = "images/";
+$target_file = $target_dir . basename($_FILES["add_presc"]["name"]);
+$uploadOk = 1;
+$imageFileType = pathinfo($target_file,PATHINFO_EXTENSION);
+// Check if image file is a actual image or fake image
+
+    $check = getimagesize($_FILES["add_presc"]["tmp_name"]);
+    if($check !== false) {
+        echo "File is an image - " . $check["mime"] . ".";
+        $uploadOk = 1;
+    } else {
+        echo "File is not an image.";
+        $uploadOk = 0;
+    }
+
+// Check if file already exists
+//if (file_exists($target_file)) {
+  //  echo "Sorry, file already exists.";
+    //$uploadOk = 0;
+//}
+// Check file size
+/*if ($_FILES["txtphoto"]["size"] > 500000) {
+    echo "Sorry, your file is too large.";
+    $uploadOk = 0;
+}*/
+// Allow certain file formats
+/*if($imageFileType != "jpg" && $imageFileType != "png" && $imageFileType != "jpeg"
+&& $imageFileType != "gif" ) {
+   echo "Sorry, only JPG, JPEG, PNG & GIF files are allowed.";
+    $uploadOk = 0;
+}*/
+// Check if $uploadOk is set to 0 by an error
+if ($uploadOk == 0) {
+    echo "Sorry, your file was not uploaded.";
+// if everything is ok, try to upload file
+} else {
+    if (move_uploaded_file($_FILES["add_presc"]["tmp_name"], $target_file)) {
+        echo "The file ". basename( $_FILES["add_presc"]["name"]). " has been uploaded.";
+   
+$obj=new database();
+
+	$res=$obj->add_prescription($target_file,$eid);
+  
+	header('location:main.php');
+	
+	} else {
+        echo "Sorry, there was an error uploading your file.";
+    }
+}
+
+}
+?>
+</form>
 </div>
 </div>
 </div>
-			<!--   	
-			  
-			  
-			  
-			  
-			  
-			  
-	   		     </div>-->
-<?php
 
-include 'sidebar.php';
-
-?>	   		    
-<!--
-				
-	
-<?php
-	
-	include '../footer.php';
-	
-	?>
 </body>
 </html>

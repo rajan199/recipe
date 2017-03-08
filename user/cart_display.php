@@ -22,9 +22,22 @@ session_start();
 <!--//fonts-->
 <script src="../js/jquery.min.js"></script>
 <!--script-->
+<script type="text/javascript">
+$(document).ready(function(){
+//alert("hii");
+$("#test").keyup(function() {
+    var val = $("#test").val();
+    if (parseInt(val) < 0 || isNaN(val)) {
+        alert("please enter valid values");
+        $("#test").val("");
+        $("#test").focus();
+    }
+});
+});
+
+</script>
 </head>
 <body> 
-
 <?php
 include '../database.php';
 include 'user_header.php';
@@ -37,26 +50,24 @@ include 'user_header.php';
 <div class="row">
 <div class="col-md-12">
 
-
 <?php
+
 $eid=$_SESSION["uname"];
 
 $cnt=new database();
 $res=$cnt->count_display($eid);
+
 $cntt=mysql_num_rows($res);
 
 
-?>
-<div class="container">
-	<div class="row">
-		<div class="col-md-12">
+?>		
 <h1 align="center">Your Cart Item (<?php echo $cntt; ?>)</h1>
 <table class="table table-striped">
-		<th>Product Image</th>
-		<th>Product Name</th>
+		<th>Product_pic</th>
+		<th>Product_name</th>
 		
-		<th>Product Price</th>
-		<th>Order Date</th>
+		<th>Product_price</th>
+		<th>Order_Date</th>
 		<th>Quantity</th>
 		<th>Total</th>
 <th>Action</th>
@@ -66,7 +77,8 @@ $cntt=mysql_num_rows($res);
 $cnt1=new database();	
 $res1=$cnt1->product_join_cart($eid);
 
-$price=0;
+
+
 while($row=mysql_fetch_array($res1,MYSQL_ASSOC))
 {
 	echo "<tr><td>";
@@ -74,26 +86,56 @@ while($row=mysql_fetch_array($res1,MYSQL_ASSOC))
     echo "<td>". $row["product_name"]."</td>";
     echo "<td>". $row["product_price"]."</td>";
     echo "<td>". $row["order_date"]."</td>";
+//	echo "<td>". $row["qty"]."</td>";
+echo '<form method="post" action="">
+';
+echo '<td><input type="number"  name="quty" value="'.$row["quantity"].'" id="test" size="3" min="1" maxlength="3" />
+<input name="upbtn" value="update" class="acount-btn" type="submit"></button></td>';  
+   // echo "<td>".$t=($row["amount"]*$row["qty"])."</td>";
 
-	echo "<td>"?><select name="txtprice" class="form-control"onChange="window.location='quantity_update.php?id='+this.value">
-<?php 
+	
+	$id=$row["order_id"];
+   echo "id is ".$id; 
+ 
+   $p=$row["product_price"];
+   echo "price is ".$p; 
+ 
+		
+//echo "qty is ".$q; 
+  
+	//echo "ans is ".$t; 
+ 
 
-	echo '<option value="1">1</option>';
-echo '<option value="2">2</option>';
-echo '<option value="3">3</option>';
-echo '<option value="4">4</option>';
-echo '<option value="5">5</option>';
-echo '</select>'."</td>";
-echo "<td>".$price*$row["product_price"]."</td>";
+if(isset($_POST["upbtn"]))	
+	{
+		$q=$_POST["quty"];
+
+		$t=$p*$q;	
+		$con=mysql_connect("localhost","root","");
+		mysql_select_db("medicine",$con);
+		$res=mysql_query("update order_tbl set quantity='$q',total_price='$t' where order_id=$id");
+		if($res==1)
+		{
+			header('location:cart_display.php');
+		}
+	}
+	
+	echo "<td>". $row["total_price"]."</td>";
+	
+  echo '<td><a href="del_cart.php?id='.$row["order_id"].'"><button type="button" class="btn btn-default btn-lg">
+  <span class="glyphicon glyphicon-trash" aria-hidden="true"></span> 
+</button>
+</a></td>';
+    echo "</tr>";
+	echo "</form>";
 
 }
-
-
 
 ?>
 		
 
 <?php
+
 
 
 $cnt=new database();
@@ -121,7 +163,7 @@ while($row=mysql_fetch_assoc($res))
 <td colspan="4"></td>
 <td></td>
 <td>
-<a href="pay.php"  class="btn btn-primary" role="button" style="background-color: orangered;
+<a href="cartpage.php"  class="btn btn-primary" role="button" style="background-color: orangered;
 width: 105px;
 height: 42px;
 font-size: larger;">Check_Out</a>
@@ -137,10 +179,6 @@ font-size: larger;">Check_Out</a>
 </div>
 </div>
 		</table>
-
-</div>
-</div>
-</div>
 <?php
 	
 	include '../footer.php';

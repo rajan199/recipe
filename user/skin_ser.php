@@ -141,12 +141,10 @@ $cnt=mysql_num_rows($res1);
 			     <div class="clearfix"> </div>	
 			</div>
 			<br>
-			<?php
-			
-			include 'btnser.php';
-			
-			?>
-						<br>
+		<?php
+		include 'btnser.php';
+		?>
+				<br>
 				<br>
 		</div>
 				
@@ -189,10 +187,11 @@ $cnt=mysql_num_rows($res1);
 	
 
 				 <?php
+				  $x1=$_SESSION["ser"];
 				 $con=mysql_connect('localhost','root','');
     mysql_select_db('medicine',$con);
      
-$cnt1=mysql_query("select * from product_tbl where category_id='7'",$con);
+$cnt1=mysql_query("select p.*,c.* from product_tbl as p,category_tbl as c where p.category_id=c.category_id  and product_name like '$x1%' ",$con);
 
 while($row=mysql_fetch_assoc($cnt1))
   {
@@ -262,7 +261,6 @@ include 'sidebar.php';
 	include '../footer.php';
 	
 	?>
-	
 	</form>
 </body>
 </html>
