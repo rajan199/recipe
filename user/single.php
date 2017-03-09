@@ -1,4 +1,6 @@
-
+<?php
+session_start();
+?>
 <!DOCTYPE html>
 <html>
 <head>
@@ -161,7 +163,7 @@ $cnt1=$obj->product_by_id($id);
 					<h4>'.$row["product_name"].'</h4>
 				<div class="cart-b">
 					<div class="left-n ">Rs '.$row["product_price"].'</div>
-				    <a class="now-get get-cart-in" href="#">ADD TO CART</a> 
+				    <a class="now-get get-cart-in" href="wishlist1.php?pid='.$row["product_id"].'">ADD TO CART</a> 
 				    <div class="clearfix"></div>
 				 </div>
 				 <h6>100 items in stock</h6>

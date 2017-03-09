@@ -160,7 +160,7 @@ if(isset($_GET['letter']))
         <p><a href="single.php?id='.$row["product_id"].'"><button type="button" style="width: 200px;" name="btnbuy" class="btn btn-default btn-lg">
   <span class="glyphicon glyphicon-buy" aria-hidden="true"></span> Preview
 </button></a>
-<a href="#"><button type="button" style="width: 200px; background:#323A45; color:white; " name="btncar" class="btn btn-default btn-lg">
+<a href="wishlist1.php?pid='.$row["product_id"].'"><button type="button" style="width: 200px; background:#323A45; color:white; " name="btncar" class="btn btn-default btn-lg">
   <span class="glyphicon glyphicon-shopping-cart" aria-hidden="true"></span> Add to cart
 </button></a>
 </p>

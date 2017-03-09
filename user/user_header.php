@@ -70,11 +70,16 @@
 							<ul class="login">
 								<li><a href="login.php"><span> </span>LOGIN</a></li> |
 								<li ><a href="register.php">SIGNUP</a></li>
-							</ul>-->
-						<div class="cart"><a href="cart_display.php"><span> </span>CART</a></div>
+							</ul>--><?php 	
+							
+$id= $_SESSION["uname"];
+$obj=new database();
+$res=$obj->cart_cnt($id);
+
+ ?>
+						<div class="cart"><a href="cart_display.php"><span> </span>CART(<?php echo $res; ?>)</a></div>
 					 				
 <?php
-$id= $_SESSION["uname"];
 //	$con=mysql_connect("localhost","root","");
 //	mysql_select_db("medicine",$con);
 //	$res=mysql_query("select * from user_tbl where email_id='$id'",$con);
@@ -108,15 +113,15 @@ $res=$obj->getUserName($id);
 
   <li role="presentation"><a href="question.php" style="color:black; margin-right: 20;">Question</a></li>
   
-  <li class="dropdown" style="margin-left:580px">
+  <li class="dropdown" style="margin-left:460px">
           <a href="#" style="color:black;" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Profile <span class="caret"></span></a>
           <ul class="dropdown-menu">
             <li><a href="view_profile.php">Manage Profile</a></li>
             <li><a href="update_password.php">Change password</a></li>
             </ul>
         </li>
-  <li role="presentation"><a href="question.php" style="color:black; margin-right: 20;"><span class="glyphicon glyphicon-time" aria-hidden="true"></span> History</a></li>
+  <li role="presentation"><a href="history_display.php" style="color:black; margin-right: 20;"><span class="glyphicon glyphicon-time" aria-hidden="true"></span> History</a></li>
 
-		<li role="presentation"><a href="question.php" style="color:black; margin-right: 20;"><span class="glyphicon glyphicon-off" aria-hidden="true"></span> Logout</a></li>
+		<li role="presentation"><a href="../login.php" style="color:black; margin-right: 20;"><span class="glyphicon glyphicon-off" aria-hidden="true"></span> Logout</a></li>
   
   </ul>

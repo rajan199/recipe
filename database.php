@@ -1,6 +1,55 @@
 <?php
 class database
 {
+	
+public function connection()
+{
+    
+	$con=mysql_connect('localhost','root','');
+    mysql_select_db('medicine',$con);
+    return $con;
+}
+
+
+	public function final_amount_history_page($eid)
+	{
+	//	$con=mysql_connect('localhost','root','');
+	//	mysql_select_db('medicine',$con);
+		$res=mysql_query("select sum(total_price) as 'total_amount' from order_tbl where email_id='$eid' and status='buy'",$this->connection());
+		return $res;
+	}
+
+	public function product_join_history($eid)
+	{
+		$con=mysql_connect('localhost','root','');
+		mysql_select_db('medicine',$con);
+		$res=mysql_query("select p.*,o.* from product_tbl as p,order_tbl as o where p.product_id=o.product_id and o.email_id='$eid' and o.status='buy' order by o.order_id desc ",$con);
+		return $res;
+	}
+
+	public function history_count($eid)
+	{
+	//	$con=mysql_connect('localhost','root','');
+//		mysql_select_db('medicine',$con);
+		$res=mysql_query("select * from order_tbl where email_id='$eid' and status='buy'",$this->connection());
+		return $res;
+	}
+
+		public function delete_cart($id)
+		{
+		$res=mysql_query("delete from order_tbl where order_id='$id'",$this->connection());
+		return $res;
+		}
+
+	public function cart_cnt($id)
+	{
+	//	$con=mysql_connect('localhost','root','');
+	//	mysql_select_db('medicine',$con);
+		$res=mysql_query("select * from order_tbl where email_id='$id' and status='cart'",$this->connection());
+		$cnt=mysql_num_rows($res);
+        return $cnt;
+    
+	}
 	public function final_amount_cart_page($eid)
 	{
 		$con=mysql_connect('localhost','root','');
@@ -163,7 +212,7 @@ public function view_product($proid)
        $con=mysql_connect('localhost','root','');
        mysql_select_db('medicine',$con);
       //$res=mysql_query("select q.*,u.* from question_tbl as q,user_tbl as u  where q.email_id='u.email_id' and question_status='accept' order by question_id desc ",$con);
-      $res=mysql_query("select q.* from question_tbl as q where q.email_id='$eid' and question_status='accept' order by question_id desc ",$con);
+      $res=mysql_query("select q.* from question_tbl as q where  q.question_status='accept' order by question_id desc ",$con);
       return $res;
    }
    public function insert_user($id,$uname,$pass,$add,$city,$zip,$gen,$mob,$temp,$active,$code)

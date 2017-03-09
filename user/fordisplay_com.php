@@ -118,9 +118,24 @@ include 'alphaser.php';
 	   		
 
 <div class="products">
-	   		     	<h5 class="latest-product">LATEST PRODUCTS</h5>	
-	   		     	  <a class="view-all" href="product.html">VIEW ALL<span> </span></a> 		     
-	   		     </div>
+<?php 
+$id=$_REQUEST["id"];
+
+	$con=mysql_connect('localhost','root','');
+    mysql_select_db('medicine',$con);
+    
+	$res=mysql_query("select * from company_tbl where company_id='$id'",$con);
+	
+  while($row=mysql_fetch_assoc($res))
+  {
+		$nm=$row["company_name"];
+  }
+	
+
+	
+	?>
+	   		     	<h5 class="latest-product" align="center">Products of Company <?php echo $nm; ?> .</h5>	
+	   		     	  </div>
 <div class="panel panel-default">
   <div class="panel-body">
     <div class="row">
@@ -133,7 +148,6 @@ include 'alphaser.php';
 
 
 //$cnt=$res->companybyid($_REQUEST["id"],$con);
-$id=$_REQUEST["id"];
 
 $obj=new database();
 $res=$obj->companybyid($id);
@@ -159,7 +173,7 @@ $res=$obj->companybyid($id);
         <p><a href="single.php?id='.$row["product_id"].'"><button type="button" style="width: 200px;" name="btnbuy" class="btn btn-default btn-lg">
   <span class="glyphicon glyphicon-buy" aria-hidden="true"></span> Preview
 </button></a>
-<a href="#"><button type="button" style="width: 200px; background:#323A45; color:white; " name="btncar" class="btn btn-default btn-lg">
+<a href="wishlist1.php?pid='.$row["product_id"].'"><button type="button" style="width: 200px; background:#323A45; color:white; " name="btncar" class="btn btn-default btn-lg">
   <span class="glyphicon glyphicon-shopping-cart" aria-hidden="true"></span> Add to cart
 </button></a>
 </p>

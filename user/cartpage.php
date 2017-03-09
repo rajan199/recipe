@@ -21,8 +21,8 @@ $eid=$_SESSION["uname"];
 <body> 
 
 <?php
-include 'database.php';
-include 'header.php';
+include '../database.php';
+include 'user_header.php';
 
 ?>
 
@@ -76,7 +76,7 @@ if(isset($_POST["btnins"]))
 	$target_file = $target_dir . basename($_FILES["add_presc"]["name"]);
 	move_uploaded_file($_FILES["add_presc"]["tmp_name"], $target_file);*/
 
-    $target_dir = "images/";
+    $target_dir = "../images/";
 $target_file = $target_dir . basename($_FILES["add_presc"]["name"]);
 $uploadOk = 1;
 $imageFileType = pathinfo($target_file,PATHINFO_EXTENSION);
@@ -87,8 +87,12 @@ $imageFileType = pathinfo($target_file,PATHINFO_EXTENSION);
         echo "File is an image - " . $check["mime"] . ".";
         $uploadOk = 1;
     } else {
-        echo "File is not an image.";
-        $uploadOk = 0;
+       // echo "File is not an image.";
+echo '<script type="text/javascript">';
+ echo "alert('File is not an image');";
+   echo "</script>";
+	       
+	   $uploadOk = 0;
     }
 
 // Check if file already exists
@@ -109,8 +113,11 @@ $imageFileType = pathinfo($target_file,PATHINFO_EXTENSION);
 }*/
 // Check if $uploadOk is set to 0 by an error
 if ($uploadOk == 0) {
-    echo "Sorry, your file was not uploaded.";
-// if everything is ok, try to upload file
+    //echo "Sorry, your file was not uploaded.";
+echo "<Script>";
+echo "alert('Sorry, your file was not uploaded')";
+echo "</scipt>";
+	// if everything is ok, try to upload file
 } else {
     if (move_uploaded_file($_FILES["add_presc"]["tmp_name"], $target_file)) {
         echo "The file ". basename( $_FILES["add_presc"]["name"]). " has been uploaded.";
@@ -119,12 +126,24 @@ $obj=new database();
 
 	$res=$obj->add_prescription($target_file,$eid);
   
-	header('location:main.php');
+$con=mysql_connect("localhost","root","");
+mysql_select_db("medicine",$con);
+$res=mysql_query("update order_tbl set status='buy' where email_id='$eid'",$con);
+
+  header('location:plac_ord.php');
 	
 	} else {
-        echo "Sorry, there was an error uploading your file.";
-    }
+//        echo "Sorry, there was an error uploading your file.";
+
+echo '<script type="text/javascript">';
+ echo "alert('Sorry, there was an error uploading your file');";
+   echo "</script>";
+
+		}
 }
+
+
+
 
 }
 ?>

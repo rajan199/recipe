@@ -40,7 +40,7 @@ echo  '<ul class="menu">
 				
 				<ul class="kid-menu">
 		
-				<li><a href="fordisplay_com.php?id='.$row["company_id"].'">'.$row["company_name"].'<span class="badge">'.$row["cnt"].'</span></a></li>
+				<li><a href="fordisplay_com.php?id='.$row["company_id"].'" style="font-size:13px;">'.$row["company_name"].'<span class="badge">'.$row["cnt"].'</span></a></li>
 			</ul>
 	</ul>';
 	   		
