@@ -98,7 +98,7 @@ echo "</h3>";
 			error_reporting(E_ALL & ~E_DEPRECATED & ~E_NOTICE);
 			require_once "phpmailer/class.phpmailer.php";
 
-				$captcha_code="http://localhost/medical2/x.php?id=".$code;
+				$captcha_code="http://localhost/phpmedicine/phpmedicine/x.php?id=".$code;
 
 				$message = $captcha_code;
 
