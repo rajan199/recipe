@@ -1,9 +1,4 @@
-<!--A Design by W3layouts 
-Author: W3layout
-Author URL: http://w3layouts.com
-License: Creative Commons Attribution 3.0 Unported
-License URL: http://creativecommons.org/licenses/by/3.0/
--->
+
 <?php
 session_start();
 ?>
@@ -16,6 +11,11 @@ session_start();
 <!--theme-style-->
 <link href="../css/style.css" rel="stylesheet" type="text/css" media="all" />	
 <!--//theme-style-->
+
+<link href="../Content/bootstrap.css" rel="stylesheet"/>
+<script src="../Scripts/jquery-1.9.1.js"></script>
+<script src="../Scripts/bootstrap.js"></script>
+
 <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
 <script type="application/x-javascript"> addEventListener("load", function() { setTimeout(hideURLbar, 0); }, false); function hideURLbar(){ window.scrollTo(0,1); } </script>
 <!--fonts-->
@@ -25,9 +25,7 @@ session_start();
 <!--script-->
 </head>
 <body> 
-
 <form method="post">
-
 <?php
 include '../database.php';
 include 'user_header.php';
@@ -47,6 +45,7 @@ include 'alphaser.php';
 </div>
 </div>
 <!---->
+
 	<div class="container">
 			<div class="shoes-grid">
 			<a href="register.php">
@@ -114,14 +113,14 @@ include 'alphaser.php';
 	            </div>
 	          </div>
 	           	</a>
-	   		
+	   						
 				<?php
 				
 				
 	$con=mysql_connect('localhost','root','');
     mysql_select_db('medicine',$con);
      
- $res1=mysql_query("select * from product_tbl where category_id='10'",$con);
+ $res1=mysql_query("select * from product_tbl where category_id='12'",$con);
 $cnt=mysql_num_rows($res1);
 
 
@@ -129,63 +128,30 @@ $cnt=mysql_num_rows($res1);
 				?>
 				<div class=" w_content">
 			<div class="women">
-				<a href="#"><h4>Total Products of Hair care <span><?php echo $cnt; ?></span> </h4></a>
+				<a href="#"><h4>Total Injection <span><?php echo $cnt; ?></span> </h4></a>
 				<ul class="w_nav">
 					<li>Other Products: </li>
 			     	<li><a class="active" href="injection.php">Injections</a></li> |
 			     	<li><a href="skin.php">Skin care </a></li> |
 			     	<li><a href="baby.php">Baby care</a></li> |
 			     	<li><a href="hair.php">Hair care </a></li> 
-			     <div class="clearfix"> </div>	
+			    
+				<div class="clearfix"> </div>	
 			     </ul>
 			     <div class="clearfix"> </div>	
 			</div>
-			
 			<br>
 			<?php
 			
-			include 'btnser1.php';
+			include 'btnser3.php';
 			
 			?>
 			
 			</form>
 						<br>
 				<br>
-			
 		</div>
 				
-	   		      <!----
-	   		     <div class="shoes-grid-left">
-			<a href="single.html">				 
-	   		     	<div class="col-md-6 con-sed-grid">
-					
-	   		     		<div class=" elit-grid"> 
-						
-		   		     		<h4>consectetur  elit</h4>
-		   		     		<label>FOR ALL PURCHASE VALUE</label>
-							<p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, </p>
-							<span class="on-get">GET NOW</span>						
-						</div>						
-						<img class="img-responsive shoe-left" src="images/sh.jpg" alt=" " />
-							
-						<div class="clearfix"> </div>
-						
-	   		     	</div>
-					</a>
-					<a href="single.html">	
-	   		     	<div class="col-md-6 con-sed-grid sed-left-top">
-	   		     		<div class=" elit-grid"> 
-		   		     		<h4>consectetur  elit</h4>
-		   		     		<label>FOR ALL PURCHASE VALUE</label>
-							<p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, </p>
-							<span class="on-get">GET NOW</span>
-						</div>		
-						<img class="img-responsive shoe-left" src="images/wa.jpg" alt=" " />
-						
-						<div class="clearfix"> </div>
-	   		     	</div>
-					</a>
-	   		     </div>-->
 	   		    
 <div class="panel panel-default">
   <div class="panel-body">
@@ -196,7 +162,7 @@ $cnt=mysql_num_rows($res1);
 				 $con=mysql_connect('localhost','root','');
     mysql_select_db('medicine',$con);
      
-$cnt1=mysql_query("select * from product_tbl where category_id='10'",$con);
+$cnt1=mysql_query("select * from product_tbl where category_id='12'",$con);
 
 while($row=mysql_fetch_assoc($cnt1))
   {
@@ -266,5 +232,7 @@ include 'sidebar.php';
 	include '../footer.php';
 	
 	?>
+	
+	</form>
 </body>
 </html>

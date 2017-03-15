@@ -131,7 +131,7 @@
 <a href="alphasearch.php?letter=Q"><button type="button" class="btn btn-default">
   <span class="" aria-hidden="true"></span>Q
 </button></a>
-<a href="alphasearch.php?letter=r"><button type="button" class="btn btn-default">
+<a href="alphasearch.php?letter=R"><button type="button" class="btn btn-default">
   <span class="" aria-hidden="true"></span>R
 </button></a>
 <a href="alphasearch.php?letter=S"><button type="button" class="btn btn-default">

@@ -96,8 +96,8 @@ include 'header.php';
 		
       	   <div class="account_grid">
 			   <div class=" login-right">
-			  	<h3>REGISTERED CUSTOMERS</h3>
-				<p>If you have an account with us, please log in.</p>
+			  	<h1>Forget Password ?</h3>
+				<p>Please Enter the email  address , we will send you the password to your email address.</p>
 				<form>
 				  <div>
 					<b><span style="color: black;font-size:15px;">Email Address<label>*</label></span></b>
@@ -106,20 +106,10 @@ include 'header.php';
 				  
 				  <br/>
 				  
-				  <div>
-					<b><span style="color: black;font-size:15px;">Password<label>*</label></span></b>
-					<input type="password" style="width: 550px; height: 40px;" name="txtpass" placeholder="Enter password" required> 
-				  </div>
-				  <a class="forgot" href="forgetPass.php">Forgot Your Password?</a>
-				  <input type="submit" value="Login" style="margin-top: 18px;" name="btnlogin">
+				  <input type="submit" value="Send Password" style="margin-top: 18px;" name="btnpass">
 			    </form>
 			   </div>	
-			    <div class=" login-left">
-			  	 <h3>NEW CUSTOMERS</h3>
-				 <p>By creating an account with our store, you will be able to move through the checkout process faster, view and track your orders in your account and more.</p>
-				 <a class="acount-btn" href="register.php">Create an Account</a>
-			   </div>
-			   
+			    
 			   
 			   
 			   
@@ -127,83 +117,97 @@ include 'header.php';
 			   
 			   		<?php
 		
-if(isset($_POST["btnlogin"]))
+if(isset($_POST["btnpass"]))
 {
 	 $name=$_POST["txtid"];
-	  $passs=$_POST["txtpass"];
+	 
+	 $con=mysql_connect("localhost","root","");
+	 mysql_select_db("medicine",$con);
+	 $res=mysql_query("select * from user_tbl where email_id='$name'",$con);
+	 while($row=mysql_fetch_assoc($res))
+	 {
+		 $pass=$row["password"];
+	 }
+	 
+	 
+	 			error_reporting(E_ALL & ~E_DEPRECATED & ~E_NOTICE);
+			require_once "phpmailer/class.phpmailer.php";
 
-$obj=new database();
-$count=$obj->login($name,$passs);
-//$con=mysql_connect('localhost','root','');
-  // mysql_select_db('medicine',$con);
-   //$res=mysql_query("select * from user_tbl where email_id='$name' and  password='$passs' ",$con);
-   //$count=mysql_num_rows($res); 
+				
+				//$message = $captcha_code;
 
-	  if ($count==1) 
-	{
-		$obj1=new database();
-		$res=$obj1->check_type($name,$passs);
-        //$con=mysql_connect('localhost','root','');
-       //mysql_select_db('medicine',$con);
-       //$res=mysql_query("select type from user_tbl where email_id='$name' and password='$passs'",$con);
-   while($row=mysql_fetch_assoc($res))
-   {
-	   $ty=$row["type"];
-	   $active=$row["status"];
-   }
-   if($ty=='user')
-   {
-       $_SESSION["uname"]=$_POST["txtid"];
-		  //header('location:user/pro.php');
-		  header('location:user/user_profile.php');
-	}	
-	else
-		{
-			
-			if($active=='false')
-			{
-			echo '<script type="text/javascript">';
-			echo "alert('First You should have to verify your email address than you can able to log in to our website');";
-			echo "</script>";
+
+			// creating the phpmailer object
+			$mail = new PHPMailer(true);
+
+			// telling the class to use SMTP
+			$mail->IsSMTP();
+
+			// enables SMTP debug information (for testing) set 0 turn off debugging mode, 1 to show debug result
+			$mail->SMTPDebug = 0;
+
+			// enable SMTP authentication
+			$mail->SMTPAuth = true;
+
+			// sets the prefix to the server
+			$mail->SMTPSecure = 'ssl';
+
+			// sets GMAIL as the SMTP server
+			$mail->Host = 'smtp.gmail.com';
+
+			// set the SMTP port for the GMAIL server
+			$mail->Port = 465;
+
+			// your gmail address
+			$mail->Username = 'maildemo254@gmail.com';
+
+			// your password must be enclosed in single quotes
+			$mail->Password = 'maildemo1234';
+
+			// add a subject line
+			$mail->Subject = ' Password for the User ';
+
+			// Sender email address and name
+			$mail->SetFrom('shoppingcart606@gmail.com', 'Jay Jalaram Medicines');
+
+			$email1=$_POST["txtid"];
+			// reciever address, person you want to send
+			$mail->AddAddress($email1);
+
+			// if your send to multiple person add this line again
+			//$mail->AddAddress('tosend@domain.com');
+
+			// if you want to send a carbon copy
+			//$mail->AddCC('tosend@domain.com');
+
+
+			// if you want to send a blind carbon copy
+			//$mail->AddBCC('tosend@domain.com');
+
+			// add message body
+			$mail->MsgHTML("Your Password is ".$pass);
+
+
+			// add attachment if any
+			//$mail->AddAttachment('time.png');
+
+			try {
+			    // send mail
 				
-			}
-			else{	
-			echo '<script type="text/javascript">';
- echo "alert('Please enter corrcet information');";
-   echo "</script>";
-			//echo "<h1>Invalid</h1> ";
-		}
-	}
-	
-	}//if(count)
-		else
-		{
-		//	$obj2=new database();
-		//$res1=$obj2->login($name,$passs);
-        $con=mysql_connect('localhost','root','');
-       mysql_select_db('medicine',$con);
-       $res=mysql_query("select status from user_tbl where email_id='$name' and password='$passs'",$con);
-		while($row=mysql_fetch_assoc($res))
-		{
-	//   $ty=$row["type"];
-			$active=$row["status"];
-		}
-			if($active=='false')
-			{
-			echo '<script type="text/javascript">';
-			echo "alert('First You should have to verify your email address than you can able to log in to our website');";
-			echo "</script>";
 				
+			    $mail->Send();
+			    $msg = "Mail send successfully";
+			} catch (phpmailerException $e) {
+			    $msg = $e->getMessage();
+			} catch (Exception $e) {
+			    $msg = $e->getMessage();
 			}
-			else
-			{
-			echo '<script type="text/javascript">';
-			echo "alert('Please  corrcet information');";
-			echo "</script>";
-			}
-		//	echo "<h1>Invalid</h1> ";
-		}
-}
+
+		echo '<script>';
+		echo "alert('Password send Succesfully');";
+		echo "</script>";
+	}	 
+
 ?>
 
 			   

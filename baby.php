@@ -1,9 +1,3 @@
-<!--A Design by W3layouts 
-Author: W3layout
-Author URL: http://w3layouts.com
-License: Creative Commons Attribution 3.0 Unported
-License URL: http://creativecommons.org/licenses/by/3.0/
--->
 
 
 <!DOCTYPE html>
@@ -23,7 +17,7 @@ License URL: http://creativecommons.org/licenses/by/3.0/
 <!--script-->
 </head>
 <body> 
-
+<form method="post">
 <?php
 include 'database.php';
 include 'header.php';
@@ -136,6 +130,18 @@ $cnt=mysql_num_rows($res1);
 			     </ul>
 			     <div class="clearfix"> </div>	
 			</div>
+			<br>
+			<?php
+			
+			include 'btnser2.php';
+			
+			?>
+			
+			</form>
+						<br>
+				<br>
+		
+			
 		</div>
 				
 	   		      <!----
@@ -189,7 +195,7 @@ while($row=mysql_fetch_assoc($cnt1))
 
  echo' <div class="col-sm-6 col-md-4">';
    echo  '<div class="thumbnail">';
-     echo ' <img src="http://localhost:3000'.$row["product_img"].'"  style="height: 145px;"></img>';
+     echo ' <img src="images/'.$row["product_img"].'"  style="height: 145px;"></img>';
  echo    '<div class="caption">
         <h3>'.$row["product_name"].'</h3>
   <h3>'.$row["product_price"].'</h3>

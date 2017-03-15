@@ -1,9 +1,3 @@
-<!--A Design by W3layouts 
-Author: W3layout
-Author URL: http://w3layouts.com
-License: Creative Commons Attribution 3.0 Unported
-License URL: http://creativecommons.org/licenses/by/3.0/
--->
 
 
 <!DOCTYPE html>
@@ -178,7 +172,6 @@ include 'alphaser.php';
   <div class="panel-body">
     <div class="row">
 	
-
 				 <?php
 			//	 $con=mysql_connect('localhost','root','');
     //mysql_select_db('medicine',$con);
@@ -230,7 +223,7 @@ while($row=mysql_fetch_assoc($cnt1))
   }
 
    		     	
-?>		
+?>	
 </div>
 </div>
 </div>

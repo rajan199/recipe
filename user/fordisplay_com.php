@@ -165,7 +165,7 @@ $res=$obj->companybyid($id);
 	
  echo' <div class="col-sm-6 col-md-4">';
    echo  '<div class="thumbnail">';
-     echo ' <img src="http://localhost:3000'.$row["product_img"].'"  style="height: 145px;"></img>';
+     echo ' <img src="../images/'.$row["product_img"].'"  style="height: 145px;"></img>';
  echo    '<div class="caption">
         <h3>'.$row["product_name"].'</h3>
   <h3>'.$row["product_price"].'</h3>

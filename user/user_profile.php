@@ -135,7 +135,7 @@ $cnt=mysql_query("select p.*,c.company_name from product_tbl as p,company_tbl as
 //include 'database.php';
 
 $obj=new database();
-$cnt=$obj->view_products();
+$cnt=$obj->view_some_product();
 
 //include 'C:\wamp\www\phpmedicine\database.php';
 //echo '<h1>'.meet.'</h1>';
@@ -146,9 +146,9 @@ while($row=mysql_fetch_array($cnt))
 
  echo' <div class="col-sm-6 col-md-4">';
    echo  '<div class="thumbnail">';
-     echo ' <img src="http://localhost:3000'.$row["product_img"].'"  style="height: 145px;"></img>';
+     echo ' <img src="../images/'.$row["product_img"].'"  style="height: 145px;"></img>';
  echo    '<div class="caption">
-        <h3>'.$row["product_name"].'</h3>
+        <h4>'.$row["product_name"].'</h4>
   <h3>'.$row["product_price"].'</h3>
                
         <p><a href="single.php?id='.$row["product_id"].'"><button type="button" style="width: 200px;" name="btnbuy" class="btn btn-default btn-lg">

@@ -59,11 +59,13 @@ while($row=mysql_fetch_array($get_result,MYSQL_ASSOC))
       <input type="file" class="form-control" name="add_presc" required>
       </br>
 </br>
-      <button type="submit" class="btn btn-success" name="btnins" value="insert">Place Order</button>
+      <button type="submit" class="btn btn-success"  name="btnins" value="insert">Place Order</button>
     </div>
   </div>
+</form>
 
 <?php 
+
 if(isset($_POST["btnins"]))
 {
    
@@ -123,6 +125,7 @@ echo "</scipt>";
         echo "The file ". basename( $_FILES["add_presc"]["name"]). " has been uploaded.";
    
 $obj=new database();
+
 
 	$res=$obj->add_prescription($target_file,$eid);
   

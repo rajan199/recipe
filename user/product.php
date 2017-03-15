@@ -195,7 +195,7 @@ while($row=mysql_fetch_assoc($cnt1))
 
  echo' <div class="col-sm-6 col-md-4">';
    echo  '<div class="thumbnail">';
-     echo ' <img src="http://localhost:3000'.$row["product_img"].'"  style="height: 145px;"></img>';
+     echo ' <img src="../images/'.$row["product_img"].'"  style="height: 145px;"></img>';
  echo    '<div class="caption">
         <h3>'.$row["product_name"].'</h3>
   <h3>'.$row["product_price"].'</h3>
@@ -203,7 +203,7 @@ while($row=mysql_fetch_assoc($cnt1))
         <p><a href="single.php?id='.$row["product_id"].'"><button type="button" style="width: 200px;" name="btnbuy" class="btn btn-default btn-lg">
   <span class="glyphicon glyphicon-buy" aria-hidden="true"></span> Preview
 </button>
-<a href="#"><button type="button" style="width: 200px; background:#323A45; color:white; " name="btncar" class="btn btn-default btn-lg">
+<a href="wishlist1.php?pid='.$row["product_id"].'"><button type="button" style="width: 200px; background:#323A45; color:white; " name="btncar" class="btn btn-default btn-lg">
   <span class="glyphicon glyphicon-shopping-cart" aria-hidden="true"></span> Add to cart
 </button></a>
 </p>

@@ -116,11 +116,11 @@ include 'alphaser.php';
 	   						
 				<?php
 				
-				
+				 $x1=$_SESSION["ser"];
 	$con=mysql_connect('localhost','root','');
     mysql_select_db('medicine',$con);
      
- $res1=mysql_query("select * from product_tbl where category_id='7'",$con);
+ $res1=mysql_query("select * from product_tbl where category_id='7' and product_name like '$x1%'",$con);
 $cnt=mysql_num_rows($res1);
 
 
@@ -128,10 +128,10 @@ $cnt=mysql_num_rows($res1);
 				?>
 				<div class=" w_content">
 			<div class="women">
-				<a href="#"><h4>Total Products of Skin care <span><?php echo $cnt; ?></span> </h4></a>
+				<a href="#"><h4>Total Search related Products of Skin Care <span><?php echo $cnt; ?></span> </h4></a>
 				<ul class="w_nav">
 					<li>Other Products: </li>
-			     	<li><a class="active" href="#">Injections</a></li> |
+			     	<li><a class="active" href="injection.php">Injections</a></li> |
 			     	<li><a href="skin.php">Skin care </a></li> |
 			     	<li><a href="baby.php">Baby care</a></li> |
 			     	<li><a href="hair.php">Hair care </a></li> 
@@ -187,12 +187,15 @@ $cnt=mysql_num_rows($res1);
 	
 
 				 <?php
-				  $x1=$_SESSION["ser"];
+				//  $x1=$_SESSION["ser"];
 				 $con=mysql_connect('localhost','root','');
     mysql_select_db('medicine',$con);
      
-$cnt1=mysql_query("select p.*,c.* from product_tbl as p,category_tbl as c where p.category_id=c.category_id  and product_name like '$x1%' ",$con);
+$cnt1=mysql_query("select * from product_tbl where category_id='7' and product_name like '$x1%' ",$con);
 
+$res=mysql_num_rows($cnt1);
+if($res>0)
+{
 while($row=mysql_fetch_assoc($cnt1))
   {
 
@@ -200,7 +203,7 @@ while($row=mysql_fetch_assoc($cnt1))
 
  echo' <div class="col-sm-6 col-md-4">';
    echo  '<div class="thumbnail">';
-     echo ' <img src="http://localhost:3000'.$row["product_img"].'"  style="height: 145px;"></img>';
+     echo ' <img src="../images/'.$row["product_img"].'"  style="height: 145px;"></img>';
  echo    '<div class="caption">
         <h3>'.$row["product_name"].'</h3>
   <h3>'.$row["product_price"].'</h3>
@@ -234,7 +237,15 @@ while($row=mysql_fetch_assoc($cnt1))
   </div>
   ';
   }
-
+}
+else
+{
+	echo '<script>';
+	echo "alert('Not Found');";
+	echo '</script>';
+	
+	
+}
    		     	
 ?>		
 </div>

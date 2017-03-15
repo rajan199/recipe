@@ -35,6 +35,8 @@ $("#test").keyup(function() {
 });
 });
 
+
+
 </script>
 </head>
 <body> 
@@ -89,7 +91,7 @@ while($row=mysql_fetch_array($res1,MYSQL_ASSOC))
 //	echo "<td>". $row["qty"]."</td>";
 echo '<form method="post" action="">
 ';
-echo '<td><input type="number"  name="quty" value="'.$row["quantity"].'" id="test" size="3" min="1" maxlength="3" />
+echo '<td><input type="text"  name="quty" value="'.$row["quantity"].'" id="test" size="3" min="1" maxlength="3" />
 <input name="upbtn" value="update" class="acount-btn" type="submit"></button></td>';  
    // echo "<td>".$t=($row["amount"]*$row["qty"])."</td>";
 
@@ -159,19 +161,39 @@ while($row=mysql_fetch_assoc($res))
 		
 <tr>
 <td colspan="4"></td>
-<td></td>
 <td>
-<a href="cartpage.php"  class="btn btn-primary" role="button" style="background-color: orangered;
+<a href="user_profile.php" name="con" class="btn btn-primary" role="button" style="background-color: orangered;
+width: 205px;
+height: 42px;
+font-size: larger;" >Continue Shopping</a>
+
+</td>
+<td>
+<?php
+
+if($cntt==0)
+{
+echo '<a href="cartpage.php" name="chek" class="btn btn-primary" role="button" style="background-color: orangered;
 width: 105px;
 height: 42px;
-font-size: larger;">Check_Out</a>
+font-size: larger;" disabled >Check_Out</a>';
+}
+else
+{
+echo '<a href="cartpage.php" name="chek" class="btn btn-primary" role="button" style="background-color: orangered;
+width: 105px;
+height: 42px;
+font-size: larger;" enabled >Check_Out</a>';
+
+}
+?>
 <!--<input  type="submit" name="btnchk" value="checkout" style="background-color: orangered;">
   <span class="glyphicon glyphicon-ok"     aria-hidden="true"></span> Check out
 </button>
 -->
 </td>
 
-		
+<td></td>		
 		</tr>
 <div>
 </div>

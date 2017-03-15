@@ -146,12 +146,21 @@ public function view_product($proid)
     return $res;
 
     }
+    public function view_some_product()
+    { 
+         
+    $con=mysql_connect('localhost','root','');
+    mysql_select_db('medicine',$con); 
+    $res=mysql_query("select p.*,c.company_name from product_tbl as p,company_tbl as c where p.company_id=c.company_id ORDER BY p.product_id desc LIMIT 0, 12",$con);
+    return $res;
+    }
+	
     public function view_products()
     { 
          
     $con=mysql_connect('localhost','root','');
     mysql_select_db('medicine',$con); 
-    $res=mysql_query("select p.*,c.company_name from product_tbl as p,company_tbl as c where p.company_id=c.company_id",$con);
+    $res=mysql_query("select p.*,c.company_name from product_tbl as p,company_tbl as c where p.company_id=c.company_id ORDER BY p.product_id desc ",$con);
     return $res;
     }
    public function signup($id,$uname,$pass,$add,$city,$zip,$gen,$mob,$temp)

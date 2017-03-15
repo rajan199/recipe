@@ -1,3 +1,4 @@
+
 <form method="post">
 <!--		<input type="text" value="" name="sercha" placeholder="Search for skin care products"  >
 						<input type="submit" name="btnsera" value="SEARCH">
@@ -13,7 +14,7 @@
 	<?php
 				if(isset($_POST["btnsera"]))
 				{
-					$_SESSION["ser"]=$_POST["sercha"];
+					$_SESSION["sermain"]=$_POST["sercha"];
 					header('location:skin_ser.php');
 				}
 			

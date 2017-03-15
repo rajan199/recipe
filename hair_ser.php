@@ -1,9 +1,4 @@
-<!--A Design by W3layouts 
-Author: W3layout
-Author URL: http://w3layouts.com
-License: Creative Commons Attribution 3.0 Unported
-License URL: http://creativecommons.org/licenses/by/3.0/
--->
+
 <?php
 session_start();
 ?>
@@ -12,25 +7,28 @@ session_start();
 <html>
 <head>
 <title>Big shope A Ecommerce Category Flat Bootstarp Resposive Website Template | Home :: w3layouts</title>
-<link href="../css/bootstrap.css" rel="stylesheet" type="text/css" media="all" />
+<link href="css/bootstrap.css" rel="stylesheet" type="text/css" media="all" />
 <!--theme-style-->
-<link href="../css/style.css" rel="stylesheet" type="text/css" media="all" />	
+<link href="css/style.css" rel="stylesheet" type="text/css" media="all" />	
 <!--//theme-style-->
+
+<link href="Content/bootstrap.css" rel="stylesheet"/>
+<script src="Scripts/jquery-1.9.1.js"></script>
+<script src="Scripts/bootstrap.js"></script>
+
 <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
 <script type="application/x-javascript"> addEventListener("load", function() { setTimeout(hideURLbar, 0); }, false); function hideURLbar(){ window.scrollTo(0,1); } </script>
 <!--fonts-->
 <link href='http://fonts.googleapis.com/css?family=Open+Sans:400,300,600,700,800' rel='stylesheet' type='text/css'>
 <!--//fonts-->
-<script src="../js/jquery.min.js"></script>
+<script src="js/jquery.min.js"></script>
 <!--script-->
 </head>
 <body> 
-
 <form method="post">
-
 <?php
-include '../database.php';
-include 'user_header.php';
+include 'database.php';
+include 'header.php';
 
 ?>
 
@@ -47,6 +45,7 @@ include 'alphaser.php';
 </div>
 </div>
 <!---->
+
 	<div class="container">
 			<div class="shoes-grid">
 			<a href="register.php">
@@ -114,14 +113,14 @@ include 'alphaser.php';
 	            </div>
 	          </div>
 	           	</a>
-	   		
+	   						
 				<?php
 				
-				
+				 $x1=@$_SESSION["sermain1"];
 	$con=mysql_connect('localhost','root','');
     mysql_select_db('medicine',$con);
      
- $res1=mysql_query("select * from product_tbl where category_id='10'",$con);
+ $res1=mysql_query("select * from product_tbl where category_id='10' and product_name like '$x1%'",$con);
 $cnt=mysql_num_rows($res1);
 
 
@@ -129,29 +128,24 @@ $cnt=mysql_num_rows($res1);
 				?>
 				<div class=" w_content">
 			<div class="women">
-				<a href="#"><h4>Total Products of Hair care <span><?php echo $cnt; ?></span> </h4></a>
+				<a href="#"><h4>Total Search related Products of Hair Care <span><?php echo $cnt; ?></span> </h4></a>
 				<ul class="w_nav">
 					<li>Other Products: </li>
 			     	<li><a class="active" href="injection.php">Injections</a></li> |
 			     	<li><a href="skin.php">Skin care </a></li> |
 			     	<li><a href="baby.php">Baby care</a></li> |
 			     	<li><a href="hair.php">Hair care </a></li> 
-			     <div class="clearfix"> </div>	
+			    
+				<div class="clearfix"> </div>	
 			     </ul>
 			     <div class="clearfix"> </div>	
 			</div>
-			
 			<br>
-			<?php
-			
-			include 'btnser1.php';
-			
-			?>
-			
-			</form>
-						<br>
+		<?php
+		include 'btnser1.php';
+		?>
 				<br>
-			
+				<br>
 		</div>
 				
 	   		      <!----
@@ -193,11 +187,15 @@ $cnt=mysql_num_rows($res1);
 	
 
 				 <?php
+				//  $x1=$_SESSION["ser1"];
 				 $con=mysql_connect('localhost','root','');
     mysql_select_db('medicine',$con);
      
-$cnt1=mysql_query("select * from product_tbl where category_id='10'",$con);
+$cnt1=mysql_query("select * from product_tbl where category_id='10' and product_name like '$x1%' ",$con);
 
+$res=mysql_num_rows($cnt1);
+if($res>0)
+{
 while($row=mysql_fetch_assoc($cnt1))
   {
 
@@ -205,7 +203,7 @@ while($row=mysql_fetch_assoc($cnt1))
 
  echo' <div class="col-sm-6 col-md-4">';
    echo  '<div class="thumbnail">';
-     echo ' <img src="../images/'.$row["product_img"].'"  style="height: 145px;"></img>';
+     echo ' <img src="images/'.$row["product_img"].'"  style="height: 145px;"></img>';
  echo    '<div class="caption">
         <h3>'.$row["product_name"].'</h3>
   <h3>'.$row["product_price"].'</h3>
@@ -239,7 +237,15 @@ while($row=mysql_fetch_assoc($cnt1))
   </div>
   ';
   }
-
+}
+else
+{
+	echo '<script>';
+	echo "alert('Not Found');";
+	echo '</script>';
+	
+	
+}
    		     	
 ?>		
 </div>
@@ -263,8 +269,9 @@ include 'sidebar.php';
 	
 	<!----><?php
 	
-	include '../footer.php';
+	include 'footer.php';
 	
 	?>
+	</form>
 </body>
 </html>
