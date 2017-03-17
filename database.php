@@ -11,6 +11,59 @@ public function connection()
 }
 
 
+   public function question_my($eid)
+   {
+      $res=mysql_query("select q.* from question_tbl as q where  q.question_status='accept' and email_id='$eid' order by question_id desc ",$this->connection());
+      return $res;
+   }
+
+
+		public function delete_fav($id)
+		{
+		$res=mysql_query("delete from favourite_tbl where favourite_id='$id'",$this->connection());
+		return $res;
+		}
+
+
+
+	public function Favourite_join($eid)
+	{
+		$res=mysql_query("select p.*,f.* from product_tbl as p,favourite_tbl as f where p.product_id=f.product_id and f.email_id='$eid'",$this->connection());
+		return $res;
+	}
+
+
+    public function display_product($fid)
+    {
+    $res=mysql_query("select * from product_tbl where product_id='$fid'",$this->connection()); 
+	return $res;
+    }
+
+    public function fav_add($fid,$name,$amt)
+    {
+    $res=mysql_query("insert into favourite_tbl values('NULL','$fid','$name','$amt')",$this->connection()); 
+	return $res;
+    }
+ public function check_fav($eid,$pid)
+    {
+        
+        $res=mysql_query("SELECT * FROM favourite_tbl WHERE email_id='$eid' and product_id='$pid'",$this->connection());
+		$cnt=mysql_num_rows($res);
+        return $cnt;
+    }
+	
+
+
+
+	public function count_Fav($eid)
+	{
+	//	$con=mysql_connect('localhost','root','');
+	//	mysql_select_db('medicine',$con);
+		$res=mysql_query("select *  from favourite_tbl where email_id='$eid'",$this->connection());
+		return $res;
+	}
+
+
 	public function final_amount_history_page($eid)
 	{
 	//	$con=mysql_connect('localhost','root','');

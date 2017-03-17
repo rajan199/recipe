@@ -4,8 +4,7 @@ $eid=$_SESSION["uname"];
 
 ?>
 <html>
-<head>
-<title>Big shope A Ecommerce Category Flat Bootstarp Resposive Website Template | Home :: w3layouts</title>
+<head>Jay Jalaram Medicine</title>
 <link href="../css/bootstrap.css" rel="stylesheet" type="text/css" media="all" />
 <!--theme-style-->
 <link href="../css/style.css" rel="stylesheet" type="text/css" media="all" />	

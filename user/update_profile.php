@@ -12,7 +12,7 @@ session_start();
 	$add=$_POST["txtadd"];
 	$zip=$_POST["txtzip"];
 	$mob=$_POST["txtno"];
-	$area=$_POST["txtarea"];
+	$area=$_POST["txtcity"];
 	$ship=$_POST["txtship"];
 	
 	$con=mysql_connect('localhost','root','');

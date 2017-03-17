@@ -1,9 +1,4 @@
-<!--A Design by W3layouts 
-Author: W3layout
-Author URL: http://w3layouts.com
-License: Creative Commons Attribution 3.0 Unported
-License URL: http://creativecommons.org/licenses/by/3.0/
--->
+
 <?php
 session_start();
 ?>
@@ -11,12 +6,19 @@ session_start();
 <!DOCTYPE html>
 <html>
 <head>
-<title>Big shope A Ecommerce Category Flat Bootstarp Resposive Website Template | Home :: w3layouts</title>
+<title>Jay Jalaram Medicine</title>
 <link href="../css/bootstrap.css" rel="stylesheet" type="text/css" media="all" />
 <!--theme-style-->
 <link href="../css/style.css" rel="stylesheet" type="text/css" media="all" />	
 <!--//theme-style-->
 <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+
+<link href="../Content/bootstrap.css" rel="stylesheet"/>
+<script src="../Scripts/jquery-1.9.1.js"></script>
+<script src="../Scripts/bootstrap.js"></script>
+
+
+
 <script type="application/x-javascript"> addEventListener("load", function() { setTimeout(hideURLbar, 0); }, false); function hideURLbar(){ window.scrollTo(0,1); } </script>
 <!--fonts-->
 <link href='http://fonts.googleapis.com/css?family=Open+Sans:400,300,600,700,800' rel='stylesheet' type='text/css'>
@@ -210,9 +212,16 @@ while($row=mysql_fetch_assoc($cnt1))
         <h3>'.$row["product_name"].'</h3>
   <h3>'.$row["product_price"].'</h3>
                
-        <p><a href="single.php?id='.$row["product_id"].'"><button type="button" style="width: 200px;" name="btnbuy" class="btn btn-default btn-lg">
+        <p><a href="single.php?id='.$row["product_id"].'"><button type="button" style="width: 117px;" name="btnbuy" class="btn btn-default btn-lg">
   <span class="glyphicon glyphicon-buy" aria-hidden="true"></span> Preview
-</button>
+</button></a>
+
+
+<a href="favourite.php?fid='.$row["product_id"].'"><button type="button" style="margin-left: 119px; margin-top: -71px;" class="btn btn-default btn-lg">
+  <span class="glyphicon glyphicon-heart" style="color: red;" aria-hidden="true"></span>
+</button></a>
+
+
 <a href="wishlist1.php?pid='.$row["product_id"].'"><button type="button" style="width: 200px; background:#323A45; color:white; " name="btncar" class="btn btn-default btn-lg">
   <span class="glyphicon glyphicon-shopping-cart" aria-hidden="true"></span> Add to cart
 </button></a>

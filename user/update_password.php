@@ -7,7 +7,7 @@ session_start();
 <!DOCTYPE html>
 <html>
 <head>
-<title>Big shope A Ecommerce Category Flat Bootstarp Resposive Website Template | Register :: w3layouts</title>
+<title>Jay Jalaram Medicine</title>
 <link href="../css/bootstrap.css" rel="stylesheet" type="text/css" media="all" />
 <!--theme-style-->
 <link href="../css/style.css" rel="stylesheet" type="text/css" media="all" />	
@@ -125,7 +125,7 @@ $id=$_SESSION["uname"];
 		<div class="register">
 		  	  <form enctype="multipart/form-data" action="changpass.php" method="post"> 
 				 <div class="  register-top-grid">
-					<h1 style="color:#F97E76;">Edit Profile</h1>
+					<h1 style="color:#F97E76;">Change Password Form</h1>
 
 				  <div>
 					<b><span style="color: black;font-size:15px;">Email Id<label>*</label></span></b>

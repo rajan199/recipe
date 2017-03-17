@@ -19,7 +19,7 @@ $cnt=mysql_num_rows($res1);
 			   
 			   <div class="sub-cate">
 				<div class=" top-nav rsidebar span_1_of_left">
-					<h3 class="cate">All Company<span class="badge"><?php echo $cnt;?></span></h3>
+					<h3 class="cate" style="background:lightseagreen;">All Company<span class="badge"><?php echo $cnt;?></span></h3>
 		 
 		 <?php
 

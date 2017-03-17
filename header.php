@@ -41,12 +41,13 @@
 			<div class="container">
 				<div class="header-bottom-left">
 					<div class="logo">
-						<a href="main.php"><img src="images/jay_Jalaram.jpg" style="width:250px;" alt=" " /></a>
+					<a href="main.php"><img src="images/company.jpg" style="width:57px;margin-left: -64px;margin-bottom: -70px;" alt=" ">
+						<img src="images/jay_Jalaram.jpg" style="width:250px;" alt=" " /></a>
 					</div>
 <form action="" method="post">				
 				<div class="search">
 						<input type="text" value="" name="serch" id="search-box"  >
-						<input type="submit" name="btnser" value="SEARCH" style="font-size: 15px;color: black;">
+						<input type="submit" name="btnser"  value="SEARCH" style="font-size: 15px;color: black;">
 		
 		
 		
@@ -80,7 +81,7 @@
 			</div>
 		</div>
 	</div>
-	<ul class="nav nav-tabs" style="background-color:white;">
+	<ul class="nav nav-tabs" style="background-color:lightseagreen;">
   <li role="presentation"><a href="main.php" style="color:black;font-size:18px; margin-right: 20;">Home</a></li>
   
   <li role="presentation"><a href="skin.php" style="color:black;font-size:18px; margin-right: 20;">Skin Care</a></li>

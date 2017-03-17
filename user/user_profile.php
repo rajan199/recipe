@@ -5,7 +5,7 @@ session_start();
 <!DOCTYPE html>
 <html>
 <head>
-<title>Big shope A Ecommerce Category Flat Bootstarp Resposive Website Template | Home :: w3layouts</title>
+<title>Jay Jalaram Medicine</title>
 <link href="../css/bootstrap.css" rel="stylesheet" type="text/css" media="all" />
 <!--theme-style-->
 <link href="../css/style.css" rel="stylesheet" type="text/css" media="all" />	
@@ -151,9 +151,13 @@ while($row=mysql_fetch_array($cnt))
         <h4>'.$row["product_name"].'</h4>
   <h3>'.$row["product_price"].'</h3>
                
-        <p><a href="single.php?id='.$row["product_id"].'"><button type="button" style="width: 200px;" name="btnbuy" class="btn btn-default btn-lg">
+        <p><a href="single.php?id='.$row["product_id"].'"><button type="button" style="width: 117px;" name="btnbuy" class="btn btn-default btn-lg">
   <span class="glyphicon glyphicon-buy" aria-hidden="true"></span> Preview
 </button></a>
+<a href="favourite.php?fid='.$row["product_id"].'"><button type="button" style="margin-left: 119px; margin-top: -71px;" class="btn btn-default btn-lg">
+  <span class="glyphicon glyphicon-heart" style="color: red;" aria-hidden="true"></span>
+</button></a>
+
 <a href="wishlist1.php?pid='.$row["product_id"].'"><button type="button" style="width: 200px; background:#323A45; color:white; " name="btncar" class="btn btn-default btn-lg">
   <span class="glyphicon glyphicon-shopping-cart" aria-hidden="true"></span> Add to cart
 </button></a>
@@ -192,12 +196,17 @@ include 'sidebar.php';
 
 ?>	   		    
 <!--
-				
+			
 	
-	<!----><?php
+	<!---->
+	<div class="row">
+	<div class="col-md-12">
+	<?php
 	
 	include '../footer.php';
 	
 	?>
+	</div>
+	</div>
 </body>
 </html>

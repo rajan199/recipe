@@ -35,71 +35,24 @@ include 'user_header.php';
 ?>
 </br>
 </br>
-<div class="container">
-<div class="row">
-<div class="col-md-12">
-
-	<form action="" method="post" class="form-horizontal">
-  <div class="form-group">
-    <label for="inputEmail3" class="col-sm-2 control-label">Enter Your Question</label>
-    <div class="col-sm-10">
-      <textarea class="form-control" name="addquestion" cols="5" rows="5" placeholder="Enter Your Question"></textarea>
-    </div>
-  </div>
-  <!--
-  <div class="form-group">
-    <label for="inputPassword3" class="col-sm-2 control-label">Password</label>
-    <div class="col-sm-10">
-      <input type="password" class="form-control" id="inputPassword3" placeholder="Password">
-    </div>
-  </div>
-  <div class="form-group">
-    <div class="col-sm-offset-2 col-sm-10">
-      <div class="checkbox">
-        <label>
-          <input type="checkbox"> Remember me
-        </label>
-      </div>
-    </div>
-  </div>-->
-  <div class="form-group">
-    <div class="col-sm-offset-2 col-sm-10">
-      <button type="submit" name="btnsub" class="btn btn-success">Put Question</button>
-    </div>
-  </div>
-  <?php 
-if(isset($_POST["btnsub"]))
-{
-$que=$_POST["addquestion"];
-$eid=$_SESSION["uname"];
-$obj1=new database();
-$res=$obj1->put_question($que,$eid);
-if($res==1)
-{
-	header('location:user_profile.php');
-}
-else{
-	//echo '<script type="text/javascript">alert("meet");</script>';
-}
-}
-?>
-</form>
-
-</div>
-</div>
-</div>
-
 
 <div class="container">
 <div class="row">
 <div class="col-md-12">
-
-<h1 align="center">---------FAQ---------</h1>
 <?php
 $eid=$_SESSION["uname"];
 
 $obj1=new database();
-$res1=$obj1->question_display($eid);
+$res1=$obj1->question_my($eid);
+$cnt=mysql_num_rows($res1);
+
+?>
+<h1 align="center">Your Questions <?php echo $cnt; ?></h1>
+<?php
+$eid=$_SESSION["uname"];
+
+$obj1=new database();
+$res1=$obj1->question_my($eid);
 //$con=mysql_connect('localhost','root','');
   //     mysql_select_db('medicine',$con);
     //  $res=mysql_query("select q.*,u.* from question_tbl as q,user_tbl as u  where q.email_id=u.email_id and question_status='accept' order by question_id desc ",$con);

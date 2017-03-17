@@ -4,7 +4,7 @@ session_start();
 <!DOCTYPE html>
 <html>
 <head>
-<title>Big shope A Ecommerce Category Flat Bootstarp Resposive Website Template | Single :: w3layouts</title>
+<title>Jay Jalaram Medicine</title>
 <link href="../css/bootstrap.css" rel="stylesheet" type="text/css" media="all" />
 <!--theme-style-->
 <link href="../css/style.css" rel="stylesheet" type="text/css" media="all" />	
@@ -151,7 +151,7 @@ $cnt1=$obj->product_by_id($id);
 						<ul id="etalage">
 							<li>
 								<a href="optionallink.html">
-									<img class="etalage_source_image" src="http://localhost:3000'.$row["product_img"].'" class="img-responsive" title="" />
+									<img class="etalage_source_image" src="'.$row["product_img"].'" class="img-responsive" title="" />
 								</a>
 							</li>
 						</ul>
@@ -160,13 +160,13 @@ $cnt1=$obj->product_by_id($id);
 				  <div class="desc1 span_3_of_2">
 				  
 					
-					<h4>'.$row["product_name"].'</h4>
+					<h4>Name :'.$row["product_name"].'</h4>
 				<div class="cart-b">
-					<div class="left-n ">Rs '.$row["product_price"].'</div>
+					<div class="left-n ">Rs :'.$row["product_price"].'</div>
 				    <a class="now-get get-cart-in" href="wishlist1.php?pid='.$row["product_id"].'">ADD TO CART</a> 
 				    <div class="clearfix"></div>
 				 </div>
-				 <h6>100 items in stock</h6>
+				 <h6>Status :'.$row["status"].'</h6>
 			   	
 				
 				</div>

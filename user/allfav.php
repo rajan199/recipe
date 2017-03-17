@@ -35,6 +35,8 @@ $("#test").keyup(function() {
 });
 });
 
+
+
 </script>
 </head>
 <body> 
@@ -55,72 +57,55 @@ include 'user_header.php';
 $eid=$_SESSION["uname"];
 
 $cnt=new database();
-$res=$cnt->history_count($eid);
+$res=$cnt->count_Fav($eid);
 
 $cntt=mysql_num_rows($res);
 
 
 ?>		
-<h1 align="center">Your Purchased Items (<?php echo $cntt; ?>)</h1>
+<h1 align="center">Your Favourite Products (<?php echo $cntt; ?>)</h1>
 <table class="table table-striped">
-		<th>Product_pic</th>
-		<th>Product_name</th>
+		<th>Product Image</th>
+		<th>Product Name</th>
 		
-		<th>Product_price</th>
-		<th>Order_Date</th>
-		<th>Quantity</th>
-		<th>Total</th>
+		<th>Product Price</th>
+		
+<th>Add to cart</th>
+<th>Action</th>
+
+
 <?php
 
 
 $cnt1=new database();	
-$res1=$cnt1->product_join_history($eid);
+$res1=$cnt1->Favourite_join($eid);
 
 
 
 while($row=mysql_fetch_array($res1,MYSQL_ASSOC))
 {
 	echo "<tr><td>";
-	echo     '<img src="../images/'.$row["product_img"].'" alt="..." style="height: 145px;"></td>';
+	echo     '<img src="../images/'.$row["product_img"].'" alt="..." style="height: 145px; width:200px;"></td>';
     echo "<td>". $row["product_name"]."</td>";
     echo "<td>". $row["product_price"]."</td>";
-    echo "<td>". $row["order_date"]."</td>";
-//	echo "<td>". $row["qty"]."</td>";
-    echo "<td>". $row["quantity"]."</td>";
-    echo "<td>". $row["total_price"]."</td>";
-
-	
+ echo '<td>
+<a href="wishlist1.php?pid='.$row["product_id"].'"><button type="button" style="width: 200px; background:#323A45; color:white; " name="btncar" class="btn btn-default btn-lg">
+  <span class="glyphicon glyphicon-shopping-cart" aria-hidden="true"></span> Add to cart
+</button></a></td>';
+ 
+  echo '<td><a href="delet_fav.php?fid='.$row["favourite_id"].'"><button  type="button" class="btn btn-default btn-lg">
+  <span class="glyphicon glyphicon-trash" style="color: red;"  aria-hidden="true"></span> Remove 
+</button>
+</a></td>';
+    echo "</tr>";
+	echo "</form>";
 
 }
 
 ?>
 		
 
-<?php
 
-
-
-$cnt=new database();
-$res=$cnt->final_amount_history_page($eid);
-
-while($row=mysql_fetch_assoc($res))
-{
-	$amt=$row["total_amount"];
-}
-
-
-
-?>
-
-
-<tr>
-<td colspan="3"></td>
-<td></td>
-<td><h3>Total</h3></td>
-<td><h3><?php echo $amt; ?></h3></td>
-</tr>
-
-		
 <div>
 </div>
 </div>
