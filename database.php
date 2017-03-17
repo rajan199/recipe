@@ -277,11 +277,11 @@ public function view_product($proid)
       $res=mysql_query("select q.* from question_tbl as q where  q.question_status='accept' order by question_id desc ",$con);
       return $res;
    }
-   public function insert_user($id,$uname,$pass,$add,$city,$zip,$gen,$mob,$temp,$active,$code)
+   public function insert_user($id,$uname,$pass,$add,$city,$zip,$gen,$mob,$temp,$active,$code,$date)
    {
     $con=mysql_connect('localhost','root','');
    mysql_select_db('medicine',$con);
-   $res=mysql_query("insert into user_tbl values('$id','$uname','$pass','$add','$city','$zip','$gen','$mob','$temp','user','$active','$code')");
+   $res=mysql_query("insert into user_tbl values('$id','$uname','$pass','$add','$city','$zip','$mob','$gen','$temp','user','$active','$code','$date')");
    
    }
    public function product_by_id($id)

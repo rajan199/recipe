@@ -19,6 +19,7 @@ if(isset($_POST["txtsign"]))
    $mob=$_POST["txtno"];
    
    
+   
    $random_alpha = md5(rand());
    $captcha = substr($random_alpha, 0, 10);
    $code=$_POST["txtid"].$captcha;
@@ -41,8 +42,10 @@ if($_POST["captcha_code"]==$_SESSION["captcha_code"]){
    mysql_select_db('medicine',$con);
    $res=mysql_query("insert into user_tbl values('$id','$uname','$pass','$add','$city','$zip','$gen','$mob','$temp','user')");
   */
+  $date=date("d/m/y");
+
   $obj=new database();
-  $res=$obj->insert_user($id,$uname,$pass,$add,$city,$zip,$gen,$mob,$temp,$active,$code); 
+  $res=$obj->insert_user($id,$uname,$pass,$add,$city,$zip,$gen,$mob,$temp,$active,$code,$date); 
 
 
 header('location:login.php');
