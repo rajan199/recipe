@@ -28,8 +28,8 @@ include 'user_header.php';
 
 <div class="row">
 <div class="col-md-12">
-<h3 align="center"><b><i>Thank you from buying from our website.</b></i></h3>
-<h3 align="center"><b>Your order placed Succesfully to our website and we will deliver you your products within one day.</h3> 
+<h3 align="center"><b><i>Thank you for buying from our website.</b></i></h3>
+<h3 align="center"><b>Your order placed Succesfully to our website and we will deliver your products within one day.</h3> 
 
 </div>
 </div>

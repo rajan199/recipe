@@ -4,8 +4,9 @@ $eid=$_SESSION["uname"];
 
 ?>
 <html>
-<head>Jay Jalaram Medicine</title>
-<link href="../css/bootstrap.css" rel="stylesheet" type="text/css" media="all" />
+<title>Jay Jalaram Medicine</title>
+
+<head><link href="../css/bootstrap.css" rel="stylesheet" type="text/css" media="all" />
 <!--theme-style-->
 <link href="../css/style.css" rel="stylesheet" type="text/css" media="all" />	
 <!--//theme-style-->
@@ -35,14 +36,14 @@ $obj2=new database();
 $get_result=$obj2->get_selected_address_of_user($eid);
 while($row=mysql_fetch_array($get_result,MYSQL_ASSOC))
 {
-    $newadd=$row["ship_address"];
+    $newadd=$row["address"];
 }
 
 ?>
 <!--<form action="" method="post" class="form-horizontal">-->
 <form method="post" class="form-horizontal" enctype="multipart/form-data">
   <div class="form-group">
-    <label for="inputEmail3" class="col-sm-2 control-label">Update Address</label>
+    <label for="inputEmail3" class="col-sm-2 control-label">Shipping Address</label>
     <div class="col-sm-10">
       <textarea class="form-control" name="update_add" cols="5" rows="5" required><?php echo $newadd;?></textarea>
     </div>
@@ -53,12 +54,13 @@ while($row=mysql_fetch_array($get_result,MYSQL_ASSOC))
 
 
   <div class="form-group">
-    <label for="inputEmail3" class="col-sm-2 control-label">Add Prescription</label>
+    <label for="inputEmail3" class="col-sm-2 control-label">Upload Prescription*</label>
     <div class="col-sm-10">
       <input type="file" class="form-control" name="add_presc" required>
       </br>
+	  <h3>You should have to upload the prescription Photo compulsory. </h3>
 </br>
-      <button type="submit" class="btn btn-success"  name="btnins" value="insert">Place Order</button>
+      <button type="submit" class="btn btn-success"  name="btnins" value="insert">Cash on Delivery</button>
     </div>
   </div>
 </form>
@@ -68,6 +70,12 @@ while($row=mysql_fetch_array($get_result,MYSQL_ASSOC))
 if(isset($_POST["btnins"]))
 {
    
+   $con=mysql_connect("localhost","root","");
+   mysql_select_db("medicine",$con);
+   $res=mysql_query("select * from order_tbl where email_id='$eid' and status='cart'",$con);
+   $nt=mysql_num_rows($res);
+   if($nt>0)
+   {
     $add=$_POST["update_add"];
 
     $obj1=new database();
@@ -146,6 +154,15 @@ echo '<script type="text/javascript">';
 
 
 
+
+}
+else
+{
+	echo "<script>";
+	echo "alert('Your cart is empty so you cant place the order' );";
+	echo "</script>";
+	
+}
 
 }
 ?>

@@ -138,20 +138,24 @@ include 'header.php';
 		
 if(isset($_POST["btnlogin"]))
 {
-	 $name=$_POST["txtid"];
-	  $passs=$_POST["txtpass"];
+	 $name=mysql_real_escape_string($_POST["txtid"]);
+	  $passs=mysql_real_escape_string($_POST["txtpass"]);
 
-$obj=new database();
-$count=$obj->login($name,$passs);
-//$con=mysql_connect('localhost','root','');
-  // mysql_select_db('medicine',$con);
-   //$res=mysql_query("select * from user_tbl where email_id='$name' and  password='$passs' ",$con);
-   //$count=mysql_num_rows($res); 
+	  $enc_pass=md5($passs);
+  
+	 
+	  
+//$obj=new database();
+//$count=$obj->login($name,$enc_pass);
+$con=mysql_connect('localhost','root','');
+   mysql_select_db('medicine',$con);
+   $res=mysql_query("select * from user_tbl where email_id='$name' and  password='$enc_pass'",$con);
+   $count=mysql_num_rows($res); 
 
 	  if ($count==1) 
 	{
 		$obj1=new database();
-		$res=$obj1->check_type($name,$passs);
+		$res=$obj1->check_type($name,$enc_pass);
         //$con=mysql_connect('localhost','root','');
        //mysql_select_db('medicine',$con);
        //$res=mysql_query("select type from user_tbl where email_id='$name' and password='$passs'",$con);
@@ -178,7 +182,7 @@ $count=$obj->login($name,$passs);
 			}
 			else{	
 			echo '<script type="text/javascript">';
- echo "alert('Please enter corrcet information');";
+ echo "alert(' enter corrcet information');";
    echo "</script>";
 			//echo "<h1>Invalid</h1> ";
 		}
@@ -191,13 +195,13 @@ $count=$obj->login($name,$passs);
 		//$res1=$obj2->login($name,$passs);
         $con=mysql_connect('localhost','root','');
        mysql_select_db('medicine',$con);
-       $res=mysql_query("select status from user_tbl where email_id='$name' and password='$passs'",$con);
+       $res=mysql_query("select status from user_tbl where email_id='$name' and password='$enc_pass'",$con);
 		while($row=mysql_fetch_assoc($res))
 		{
 	//   $ty=$row["type"];
 			$active=$row["status"];
 		}
-			if($active=='false')
+			if(@$active=='false')
 			{
 			echo '<script type="text/javascript">';
 			echo "alert('First You should have to verify your email address than you can able to log in to our website');";
@@ -207,7 +211,7 @@ $count=$obj->login($name,$passs);
 			else
 			{
 			echo '<script type="text/javascript">';
-			echo "alert('Please  corrcet information');";
+			echo "alert('Plese enter corrcet information');";
 			echo "</script>";
 			}
 		//	echo "<h1>Invalid</h1> ";

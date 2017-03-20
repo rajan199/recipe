@@ -79,36 +79,48 @@ $cntt=mysql_num_rows($res);
 $cnt1=new database();	
 $res1=$cnt1->product_join_cart($eid);
 
-
-
+$cntt=mysql_num_rows($res1);
+$i=0;
 while($row=mysql_fetch_array($res1,MYSQL_ASSOC))
 {
+	
+	$id=$row["order_id"];
+   
 	echo "<tr><td>";
-	echo     '<img src="../images/'.$row["product_img"].'" alt="..." style="height: 145px;"></td>';
+	echo     '<img src="../images/'.$row["product_img"].'" alt="..." style="height: 145px;width: 194px;"></td>';
     echo "<td>". $row["product_name"]."</td>";
     echo "<td>". $row["product_price"]."</td>";
     echo "<td>". $row["order_date"]."</td>";
 //	echo "<td>". $row["qty"]."</td>";
-echo '<form method="post" action="">
+echo '<form method="post" id="'.$i.'" name="'.$i.'" action="">
 ';
-echo '<td><input type="text"  name="quty" value="'.$row["quantity"].'" id="test" size="3" min="1" maxlength="3" />
-<input name="upbtn" value="update" class="acount-btn" type="submit"></button></td>';  
+
+//<input type="text"  name="quty" value="'.$row["quantity"].'" id="test" size="3" min="1" maxlength="3" />
+//echo '<td><label>'.$row["quantity"].'</label>
+//<a href="up_quantity.php?uid='.$row["order_id"].'"><input name="upbtn" value="Update Quantity" class="acount-btn" type="button"></button></td></a>';  
+   // echo "<td>".$t=($row["amount"]*$row["qty"])</a>."</td>";o
+
+   
+echo '<td><input type="text"  name="quty'.$i.'" value="'.$row["quantity"].'" id="test" size="3" min="1" maxlength="3" />
+<input name="upbtn'.$i.'" value="update quantity" class="acount-btn" type="submit"></button></td>';  
    // echo "<td>".$t=($row["amount"]*$row["qty"])."</td>";
 
 	
-	$id=$row["order_id"];
-   
    $p=$row["product_price"];
    
+   $pid=$row["product_id"];
 		
+		$id=$row["order_id"];
+   
 //echo "qty is ".$q; 
   
 	//echo "ans is ".$t; 
  
 
-if(isset($_POST["upbtn"]))	
+ 
+if(isset($_POST["upbtn".$i]))	
 	{
-		$q=$_POST["quty"];
+		$q=$_POST["quty".$i];
 
 		$t=$p*$q;	
 		$con=mysql_connect("localhost","root","");
@@ -119,6 +131,10 @@ if(isset($_POST["upbtn"]))
 			header('location:cart_display.php');
 		}
 	}
+
+ 
+
+ 
 	
 	echo "<td>". $row["total_price"]."</td>";
 	
@@ -129,7 +145,29 @@ if(isset($_POST["upbtn"]))
     echo "</tr>";
 	echo "</form>";
 
+	$i=$i+1;
+	
 }
+
+
+/*
+ if(isset($_POST["upbtn0"]))	
+	{
+		$q=$_POST["quty"];
+
+		$t=$p*$q;	
+		echo "total".$t;
+		$con=mysql_connect("localhost","root","");
+		mysql_select_db("medicine",$con);
+		$res=mysql_query("update order_tbl set quantity='$q',total_price='$t' where order_id='$id and product_id='$pid'");
+		if($res==1)
+		{
+			header('location:cart_display.php');
+		}
+		
+	}
+
+*/
 
 ?>
 		

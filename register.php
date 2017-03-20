@@ -13,6 +13,15 @@ session_start();
 <link href="css/style.css" rel="stylesheet" type="text/css" media="all" />	
 <!--//theme-style-->
 <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+
+
+
+<link href="Content/bootstrap.css" rel="stylesheet"/>
+<script src="Scripts/jquery-1.9.1.js"></script>
+<script src="Scripts/bootstrap.js"></script>
+
+
+
 <script type="application/x-javascript"> addEventListener("load", function() { setTimeout(hideURLbar, 0); }, false); function hideURLbar(){ window.scrollTo(0,1); } </script>
 <!--fonts-->
 <link href='http://fonts.googleapis.com/css?family=Open+Sans:400,300,600,700,800' rel='stylesheet' type='text/css'>
@@ -21,6 +30,52 @@ session_start();
 
 
 	<script type="text/javascript">
+
+
+	$(document).ready(function(){
+//alert("hii");
+$("#test").keyup(function() {
+    var val = $("#test").val();
+	var len= $("#test").val().length;
+    if (parseInt(val) < 0 || isNaN(val)) {
+        alert("Only positive numbers are allowed");
+        $("#test").val("");
+        $("#test").focus();
+    }
+});
+
+
+
+$("#zip1").keyup(function() {
+    var val = $("#zip1").val();
+	var len= $("#zip1").val().length;
+    if (parseInt(val) < 0 || isNaN(val)) {
+        alert("Only positive numbers are allowed");
+        $("#zip1").val("");
+        $("#zip1").focus();
+    }
+});
+
+
+
+$('#pass1').on('blur', function(){
+    if(this.value.length < 8){ // checks the password value length
+       alert('password should not be empty/length must be between 5 to 12');
+       $('#pass1').val(""); // focuses the current field.
+       
+	   $('#pass1').focus(); // focuses the current field.
+      // return false; // stops the execution.
+    }
+});
+
+
+
+});
+
+
+
+
+
 	
 	function allLetter(uname)
 {
@@ -45,7 +100,7 @@ session_start();
 function passid_validation(passid,mx,my)
 {
 	var pl=passid.value.length;
-	if(pl==0 || pl>=my || pl<mx)
+	if(pl==0 ||pl>=my || pl<mx)
 	{
 		alert("password should not be empty/length must be between "+5+" to "+12);
 		passid.focus();
@@ -128,7 +183,7 @@ function allzip(uzip)
 				    
 				  <div>
 					<b><span style="color: black;font-size:15px;">Password<label>*</label></span></b>
-					<input type="password" class="form-control" style="width: 550px; height: 40px;" name="txtpaswd" onblur="return passid_validation(txtpaswd);"placeholder="Enter password" required> 
+					<input type="password" class="form-control" style="width: 550px; height: 40px;" name="txtpaswd" id="pass1" placeholder="Enter password" required> 
 				  </div>
 				  
 				  <hr/>
@@ -177,7 +232,7 @@ function allzip(uzip)
 					
 				  <div>
 					<b><span style="color: black;font-size:15px;">Zipcode<label>*</label></span></b>
-					 <input type="text" class="form-control" maxlength='6' style="width: 550px; height: 40px;" onblur="return allzip(txtzip);"  name="txtzip"  placeholder="Enter zipcode number" required>
+					 <input type="text" class="form-control" maxlength='6' style="width: 550px; height: 40px;" id="zip1"  name="txtzip"  placeholder="Enter zipcode number" required>
                        
 					</div>
 				  <hr/>
@@ -197,7 +252,7 @@ function allzip(uzip)
 					
 				  <div>
 				  <b><span style="color: black;font-size:15px;">Mobile Number<label>*</label></span></b>
-					<input  type="text" class="form-control" name="txtno" maxlength="10" style="width: 550px; height: 40px;" onblur="return allnumeric(txtno);" placeholder="Enter mobile number" required>
+					<input  type="text" id="test" class="form-control" name="txtno" maxlength="10" style="width: 550px; height: 40px;"  placeholder="Enter mobile number" required>
                    
 					</div>
 					

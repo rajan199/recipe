@@ -124,7 +124,7 @@ include 'alphaser.php';
 			
 			?>
 				<div class="products">
-	   		     	<h5 class="latest-product"><?php echo "Total products from ".$x." is ".$cnt; ?> </h5>	
+	   		     	<h5 class="latest-product"><?php echo "Total products are ".$cnt; ?> </h5>	
 	   		     	  <a class="" href=""><span> </span></a> 		     
 	   		     </div>
 <div class="panel panel-default">

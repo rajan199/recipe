@@ -61,7 +61,8 @@ $cntt=mysql_num_rows($res);
 
 
 ?>		
-<h1 align="center">Your Purchased Items (<?php echo $cntt; ?>)</h1>
+<h1 align="center">Your Purchased Items (<?php  if($cntt==0){ echo "Empty"; }
+else{ echo $cntt; } ?>)</h1>
 <table class="table table-striped">
 		<th>Product_pic</th>
 		<th>Product_name</th>

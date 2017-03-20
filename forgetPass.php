@@ -123,12 +123,15 @@ if(isset($_POST["btnpass"]))
 	 
 	 $con=mysql_connect("localhost","root","");
 	 mysql_select_db("medicine",$con);
-	 $res=mysql_query("select * from user_tbl where email_id='$name'",$con);
-	 while($row=mysql_fetch_assoc($res))
-	 {
-		 $pass=$row["password"];
-	 }
+
 	 
+	 
+		$password = substr(md5(uniqid(rand(),1)),3,10);
+		$pass = md5($password); //encrypted version for database entry
+
+$sql = mysql_query("UPDATE user_tbl SET password='$pass' WHERE email_id = '$name'")or die (mysql_error());
+
+
 	 
 	 			error_reporting(E_ALL & ~E_DEPRECATED & ~E_NOTICE);
 			require_once "phpmailer/class.phpmailer.php";
@@ -165,7 +168,7 @@ if(isset($_POST["btnpass"]))
 			$mail->Password = 'maildemo1234';
 
 			// add a subject line
-			$mail->Subject = ' Password for the User ';
+			$mail->Subject = 'New Password for the User ';
 
 			// Sender email address and name
 			$mail->SetFrom('shoppingcart606@gmail.com', 'Jay Jalaram Medicines');
@@ -185,7 +188,7 @@ if(isset($_POST["btnpass"]))
 			//$mail->AddBCC('tosend@domain.com');
 
 			// add message body
-			$mail->MsgHTML("Your Password is ".$pass);
+			$mail->MsgHTML("Your New Password is ".$password);
 
 
 			// add attachment if any

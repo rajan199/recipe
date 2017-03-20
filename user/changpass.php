@@ -4,10 +4,11 @@ session_start();
 
 <?php
 $email=$_SESSION["uname"];
-$pass1=$_POST["txtold"];
-$pass2=$_POST["txtnew"];
+$pass1=mysql_real_escape_string($_POST["txtold"]);
+$pass2=mysql_real_escape_string($_POST["txtnew"]);
 $pass3=$_POST["txtnewre"];
 
+$enc_pass=md5($pass1);
 $con=mysql_connect('localhost','root','');
 mysql_select_db('medicine',$con);
 $res=mysql_query("select * from user_tbl where email_id='$email'",$con);
@@ -15,14 +16,15 @@ while($row=mysql_fetch_array($res,MYSQL_ASSOC))
 {
   $pass=$row["password"];
 }
-
-if($pass==$pass1)
+if($pass==$enc_pass)
 {
 	if($pass2==$pass3)
 	{
+		
+		$enc_new_pass=md5($pass2);
 		$con=mysql_connect('localhost','root',''); 
         mysql_select_db('medicine',$con);
-		$res=mysql_query("update user_tbl set password='$pass2' where email_id='$email'",$con);
+		$res=mysql_query("update user_tbl set password='$enc_new_pass' where email_id='$email'",$con);
 		
 		if($res==1)
 		{

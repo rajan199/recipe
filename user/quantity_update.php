@@ -75,7 +75,7 @@ while($row=mysql_fetch_array($res1,MYSQL_ASSOC))
     echo "<td>". $row["product_name"]."</td>";
     echo "<td>". $row["product_price"]."</td>";
     echo "<td>". $row["order_date"]."</td>";
-	echo "<td>"?><select name="txtprice" class="form-control" onChange="window.location="quantity_update1.php?id="+this.value">
+	echo "<td>"?><select name="txtprice" class="form-control" onChange="window.location=quantity_update1.php?id="+this.value">
 <?php 
 	echo '<option value="$cid" >';?><?php echo $cid;?><?php '</option>';
 

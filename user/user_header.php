@@ -118,7 +118,7 @@ $res=$obj->getUserName($id);
   <li class="dropdown" >
           <a href="question.php" style="color:black;" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Questions <span class="caret"></span></a>
           <ul class="dropdown-menu">
-            <li><a href="question.php">Put Questions</a></li>
+            <li><a href="question.php">Ask Questions</a></li>
             <li><a href="my_que.php">My Questions</a></li>
             </ul>
         </li>
@@ -126,7 +126,7 @@ $res=$obj->getUserName($id);
 
   <li role="presentation"><a href="allfav.php" style="color:black; margin-right: 20;">Your Favourites</a></li>
   
-  <li class="dropdown" style="margin-left:420px">
+  <li class="dropdown" style="margin-left:300px">
           <a href="#" style="color:black;" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Profile <span class="caret"></span></a>
           <ul class="dropdown-menu">
             <li><a href="view_profile.php">Manage Profile</a></li>
@@ -135,6 +135,6 @@ $res=$obj->getUserName($id);
         </li>
   <li role="presentation"><a href="history_display.php" style="color:black; margin-right: 20;"><span class="glyphicon glyphicon-time" aria-hidden="true"></span> History</a></li>
 
-		<li role="presentation"><a href="../login.php" style="color:black; margin-right: 20;"><span class="glyphicon glyphicon-off" aria-hidden="true"></span> Logout</a></li>
+		<li role="presentation"><a href="logout.php" style="color:black; margin-right: 20;"><span class="glyphicon glyphicon-off" aria-hidden="true"></span> Logout</a></li>
   
   </ul>

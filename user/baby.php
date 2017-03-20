@@ -130,12 +130,13 @@ $cnt=mysql_num_rows($res1);
 			<div class="women">
 				<a href="#"><h4>Total Products of Baby care <span><?php echo $cnt; ?></span> </h4></a>
 				<ul class="w_nav">
-					<li>Other Products: </li>
-			     	<li><a class="active" href="injection.php">Injections</a></li> |
-			     	<li><a href="skin.php">Skin care </a></li> |
-			     	<li><a href="baby.php">Baby care</a></li> |
-			     	<li><a href="hair.php">Hair care </a></li> 
-			     <div class="clearfix"> </div>	
+					
+					<li style="font-size: 15px;">Other Products: </li>
+			     	<li><a style="font-size: 15px;" class="active" href="injection.php">Injections</a></li> |
+			     	<li><a style="font-size: 15px;" href="skin.php">Skin care </a></li> |
+			     	<li><a style="font-size: 15px;" href="baby.php">Baby care</a></li> |
+			     	<li><a style="font-size: 15px;" href="hair.php">Hair care </a></li> 
+			    <div class="clearfix"> </div>	
 			     </ul>
 			     <div class="clearfix"> </div>	
 			</div>

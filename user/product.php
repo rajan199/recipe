@@ -131,11 +131,11 @@ include 'alphaser.php';
 			<div class="women">
 				<a href="#"><h4>Total Products <span><?php echo $cnt; ?></span> </h4></a>
 				<ul class="w_nav">
-					<li>Other Products: </li>
-			     	<li><a class="active" href="#">Injections</a></li> |
-			     	<li><a href="skin.php">Skin care </a></li> |
-			     	<li><a href="baby.php">Baby care</a></li> |
-			     	<li><a href="hair.php">Hair care </a></li> 
+					<li style="font-size: 15px;">Other Products: </li>
+			     	<li><a style="font-size: 15px;" class="active" href="#">Injections</a></li> |
+			     	<li><a style="font-size: 15px;" href="skin.php">Skin care </a></li> |
+			     	<li><a style="font-size: 15px;" href="baby.php">Baby care</a></li> |
+			     	<li><a style="font-size: 15px;" href="hair.php">Hair care </a></li> 
 			     <div class="clearfix"> </div>	
 			     </ul>
 			     <div class="clearfix"> </div>	
@@ -197,12 +197,18 @@ while($row=mysql_fetch_assoc($cnt1))
    echo  '<div class="thumbnail">';
      echo ' <img src="../images/'.$row["product_img"].'"  style="height: 145px;"></img>';
  echo    '<div class="caption">
-        <h3>'.$row["product_name"].'</h3>
-  <h3>'.$row["product_price"].'</h3>
+        <h4>'.$row["product_name"].'</h3>
+  <h3>'.$row["product_price"].'</h4>
                
-        <p><a href="single.php?id='.$row["product_id"].'"><button type="button" style="width: 200px;" name="btnbuy" class="btn btn-default btn-lg">
+        <p><a href="single.php?id='.$row["product_id"].'"><button type="button" style="width: 117px;" name="btnbuy" class="btn btn-default btn-lg">
   <span class="glyphicon glyphicon-buy" aria-hidden="true"></span> Preview
-</button>
+</button></a>
+
+<a href="favourite.php?fid='.$row["product_id"].'"><button type="button" style="margin-left: 119px; margin-top: -71px;" class="btn btn-default btn-lg">
+  <span class="glyphicon glyphicon-heart" style="color: red;" aria-hidden="true"></span>
+</button></a>
+
+
 <a href="wishlist1.php?pid='.$row["product_id"].'"><button type="button" style="width: 200px; background:#323A45; color:white; " name="btncar" class="btn btn-default btn-lg">
   <span class="glyphicon glyphicon-shopping-cart" aria-hidden="true"></span> Add to cart
 </button></a>

@@ -154,7 +154,7 @@ public function view_product($proid)
     {
     $con=mysql_connect('localhost','root','');
     mysql_select_db('medicine',$con);
-    $res=mysql_query("select ship_address from user_tbl where email_id='$eid'",$con);
+    $res=mysql_query("select * from user_tbl where email_id='$eid'",$con);
     return $res;
     }
     public function update_cart_address($newadd,$eid)
