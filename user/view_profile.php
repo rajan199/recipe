@@ -1,6 +1,12 @@
 <?php
 
 session_start();
+
+if($_SESSION["uname"]=="")
+{
+	header('location:../login.php');
+}
+
 ?>
 <!DOCTYPE html>
 <html>
@@ -173,7 +179,7 @@ while($row=mysql_fetch_array($res,MYSQL_ASSOC))
 
 <td><?php echo $ship;  ?></td>
 
-<td><a href="edit_profile.php"> <button  style="background-color: blue;color: white "  type="button" class="btn btn-default">
+<td><a href="edit_profile.php"> <button  style="background: #323A45;color: white; "  type="button" class="btn btn-default">
             <span class="glyphicon glyphicon-pencil" aria-hidden="true"></span>
             </button></a>
            </td>
@@ -198,7 +204,7 @@ include 'sidebar.php';
 	
 	<!----><?php
 	
-	include '../footer.php';
+	include 'footer.php';
 	
 	?>
 </body>

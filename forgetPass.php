@@ -12,6 +12,12 @@ session_start();
 <!--theme-style-->
 <link href="css/style.css" rel="stylesheet" type="text/css" media="all" />	
 <!--//theme-style-->
+
+
+<link href="Content/bootstrap.css" rel="stylesheet"/>
+<script src="Scripts/jquery-1.9.1.js"></script>
+<script src="Scripts/bootstrap.js"></script>
+
 <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
 <script type="application/x-javascript"> addEventListener("load", function() { setTimeout(hideURLbar, 0); }, false); function hideURLbar(){ window.scrollTo(0,1); } </script>
 <!--fonts-->
@@ -123,9 +129,11 @@ if(isset($_POST["btnpass"]))
 	 
 	 $con=mysql_connect("localhost","root","");
 	 mysql_select_db("medicine",$con);
-
+		$res=mysql_query("select * from user_tbl where email_id='$name' and status='true'",$con);
+		
 	 
-	 
+	 if($res==1)
+	 {
 		$password = substr(md5(uniqid(rand(),1)),3,10);
 		$pass = md5($password); //encrypted version for database entry
 
@@ -162,10 +170,10 @@ $sql = mysql_query("UPDATE user_tbl SET password='$pass' WHERE email_id = '$name
 			$mail->Port = 465;
 
 			// your gmail address
-			$mail->Username = 'maildemo254@gmail.com';
+			$mail->Username = 'jayjalarammedicine@gmail.com';
 
 			// your password must be enclosed in single quotes
-			$mail->Password = 'maildemo1234';
+			$mail->Password = 'jjm@1234';
 
 			// add a subject line
 			$mail->Subject = 'New Password for the User ';
@@ -207,10 +215,18 @@ $sql = mysql_query("UPDATE user_tbl SET password='$pass' WHERE email_id = '$name
 			}
 
 		echo '<script>';
-		echo "alert('Password send Succesfully');";
+		echo "alert('Password sent Succesfully');";
 		echo "</script>";
-	}	 
+	}
+	 else
+   {
+	   echo '<script>';
+		echo "alert('No Email Id Exists ');";
+		echo "</script>";
+   }
 
+   }	
+  
 ?>
 
 			   

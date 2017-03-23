@@ -7,6 +7,11 @@
 <!--theme-style-->
 <link href="css/style.css" rel="stylesheet" type="text/css" media="all" />	
 <!--//theme-style-->
+
+<link href="Content/bootstrap.css" rel="stylesheet"/>
+<script src="Scripts/jquery-1.9.1.js"></script>
+<script src="Scripts/bootstrap.js"></script>
+
 <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
 <script type="application/x-javascript"> addEventListener("load", function() { setTimeout(hideURLbar, 0); }, false); function hideURLbar(){ window.scrollTo(0,1); } </script>
 <!--fonts-->
@@ -116,7 +121,7 @@ include 'alphaser.php';
 			?>
 		
 				<div class="products">
-	   		     	<h5 class="latest-product"><?php echo "Total products from ".$x." is ".$cnt; ?></h5>	
+	   		     	<h5 class="latest-product"><?php echo "Total products are ".$cnt; ?></h5>	
 	   		     	  <a class="" href=""><span> </span></a> 		     
 	   		     </div>
 <div class="panel panel-default">
@@ -143,11 +148,11 @@ if(isset($_GET['letter']))
   {
 	
  echo' <div class="col-sm-6 col-md-4">';
-   echo  '<div class="thumbnail">';
+   echo  '<div class="thumbnail" style="height: 450px;">';
      echo ' <img src="images/'.$row["product_img"].'"  style="height: 145px;"></img>';
  echo    '<div class="caption">
-        <h3 style="font-size: 20px;">'.$row["product_name"].'</h3>
-  <h3 style="font-size: 20px;">'.$row["product_price"].'</h3>
+        <h3 style="font-size:16px">'.$row["product_name"].'</h3>
+  <h3 >'.$row["product_price"].'</h3>
                
         <p><a href="single.php?id='.$row["product_id"].'"><button type="button" style="width: 200px;" name="btnbuy" class="btn btn-default btn-lg">
   <span class="glyphicon glyphicon-buy" aria-hidden="true"></span> Preview
@@ -157,23 +162,7 @@ if(isset($_GET['letter']))
 </button></a>
 </p>
 
-	<div class="star-price">
-	   		     				<div class="dolor-grid"> 
-		   		     				  <span class="rating">
-									        <input type="radio" class="rating-input" id="rating-input-1-5" name="rating-input-1">
-									        <label for="rating-input-1-5" class="rating-star1"> </label>
-									        <input type="radio" class="rating-input" id="rating-input-1-4" name="rating-input-1">
-									        <label for="rating-input-1-4" class="rating-star1"> </label>
-									        <input type="radio" class="rating-input" id="rating-input-1-3" name="rating-input-1">
-									        <label for="rating-input-1-3" class="rating-star"> </label>
-									        <input type="radio" class="rating-input" id="rating-input-1-2" name="rating-input-1">
-									        <label for="rating-input-1-2" class="rating-star"> </label>
-									        <input type="radio" class="rating-input" id="rating-input-1-1" name="rating-input-1">
-									        <label for="rating-input-1-1" class="rating-star"> </label>
-							    	   </span>
-	   		     				</div>
-	   		     		</div>
-      </div>
+	  </div>
     </div>
   </div>
   ';  

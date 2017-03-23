@@ -1,6 +1,12 @@
 <?php
 
 session_start();
+
+if($_SESSION["uname"]=="")
+{
+	header('location:../login.php');
+}
+
 ?>
 
 <!DOCTYPE html>
@@ -47,7 +53,7 @@ $res1=$obj1->question_my($eid);
 $cnt=mysql_num_rows($res1);
 
 ?>
-<h1 align="center">Your Questions <?php echo $cnt; ?></h1>
+<h1 align="center">Your Questions (<?php echo $cnt; ?>)</h1>
 <?php
 $eid=$_SESSION["uname"];
 
@@ -70,7 +76,7 @@ while($row=mysql_fetch_assoc($res1))
 	<br>
 	<div class="panel-body" style="margin-left:700px;margin-top:-50px;">
 	
-Email id='.$row["email_id"].'
+User name='.$row["user_name"].'
 <br>
 
 	</div>

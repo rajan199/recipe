@@ -49,7 +49,7 @@ include 'header.php';
 <center>
 <table width="100%" >
 <tr>
- <img src="images/jay_Jalaram.jpg" style="width:250px;" alt=" " /></a>
+ <img src="images/shop.png" style="width:250px;" alt=" " /></a>
           
            	  <h2>Name: JAY JALARAM MEDICINES </h2><br>
 			  <h3>Address :-  11-A, JalaramPlaza, JawaharChowk, Maninagar, Ahmedabad-380 008
@@ -59,7 +59,7 @@ include 'header.php';
       
 
 <ul type="square">
-<li class="r">PACKAGE HERE</li>
+<li class="r">About Organization</li>
  <ol  type="i" class="g">
 <h4> <li>This medical store has been providing the medicines and various other related products to the customer since last 15 years, which is located at the maninagar area.</li>
  <li>The owner of the storeMr. Pravinbhai is self manages the medical records in the file.</li>
@@ -76,7 +76,16 @@ include 'header.php';
        </table>     
 <hr>
 
+<div class="row">
+<div class="col-md-12">
 
+<?php
+
+include 'footer.php';
+
+?>
+</div>
+</div>
 
 
 </center>

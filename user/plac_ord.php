@@ -1,5 +1,11 @@
 <?php 
 session_start();
+
+if($_SESSION["uname"]=="")
+{
+	header('location:../login.php');
+}
+
 $eid=$_SESSION["uname"];
 
 ?>
@@ -37,7 +43,7 @@ include 'user_header.php';
 
 <?php
 
-include '../footer.php';
+include 'footer.php';
 ?>
 </body>
 </html>

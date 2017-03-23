@@ -13,8 +13,8 @@ public function connection()
 
    public function question_my($eid)
    {
-      $res=mysql_query("select q.* from question_tbl as q where  q.question_status='accept' and email_id='$eid' order by question_id desc ",$this->connection());
-      return $res;
+    $res=mysql_query("select q.*,u.* from question_tbl as q,user_tbl as u  where q.email_id=u.email_id and question_status='accept' order by q.question_id desc ",$this->connection());
+	return $res;
    }
 
 
@@ -204,7 +204,7 @@ public function view_product($proid)
          
     $con=mysql_connect('localhost','root','');
     mysql_select_db('medicine',$con); 
-    $res=mysql_query("select p.*,c.company_name from product_tbl as p,company_tbl as c where p.company_id=c.company_id ORDER BY p.product_id desc LIMIT 0, 12",$con);
+    $res=mysql_query("select p.*,c.company_name from product_tbl as p,company_tbl as c where p.company_id=c.company_id and p.status='available' ORDER BY p.product_id desc LIMIT 0, 12",$con);
     return $res;
     }
 	
@@ -239,7 +239,7 @@ public function view_product($proid)
    {
        $con=mysql_connect('localhost','root','');
        mysql_select_db('medicine',$con);
-       $res=mysql_query("insert into question_tbl values(NULL,'$que','pending','not answer','$eid')",$con);
+       $res=mysql_query("insert into question_tbl values(NULL,'$que','reject','not answer','$eid')",$con);
        return $res;
    }
    
@@ -273,8 +273,8 @@ public function view_product($proid)
 
        $con=mysql_connect('localhost','root','');
        mysql_select_db('medicine',$con);
-      //$res=mysql_query("select q.*,u.* from question_tbl as q,user_tbl as u  where q.email_id='u.email_id' and question_status='accept' order by question_id desc ",$con);
-      $res=mysql_query("select q.* from question_tbl as q where  q.question_status='accept' order by question_id desc ",$con);
+      $res=mysql_query("select q.*,u.* from question_tbl as q,user_tbl as u  where q.email_id=u.email_id and question_status='accept' order by question_id desc ",$con);
+    //  $res=mysql_query("select q.* from question_tbl as q where  q.question_status='accept' order by question_id desc ",$con);
       return $res;
    }
    public function insert_user($id,$uname,$pass,$add,$city,$zip,$gen,$mob,$temp,$active,$code,$date)

@@ -35,8 +35,10 @@ if(isset($_POST["txtsign"]))
   $cntt=@mysql_num_rows($res11);
 if($cntt==0)
 {
-if(count($_POST)>0) {
-if($_POST["captcha_code"]==$_SESSION["captcha_code"]){	
+if(count($_POST)>0) 
+{
+if($_POST["captcha_code"]==$_SESSION["captcha_code"])
+{	
   $pass2=mysql_real_escape_string($_POST["txtpaswd"]);
   $pass1=$_POST["txtpass"];
   
@@ -59,62 +61,6 @@ if($_POST["captcha_code"]==$_SESSION["captcha_code"]){
   $res=$obj->insert_user($id,$uname,$enc_pass,$add,$city,$zip,$gen,$mob,$temp,$active,$code,$date); 
 	
 header('location:login.php');
-
-  }	  
-  
-
-else
-{
-	/*
-	echo "<h3>";
-	echo "Please confirm correct password";
-	echo "</h3>";
-	*/
-	echo '<script type="text/javascript">';
- echo "alert('Please Confirm the correct password');";
-   echo "</script>";
-	
-}
-}
-
-else{
-//echo "<h3>";
-//echo "Enter Correct Captcha Code";
-//echo "</h3>";
-
-
-	echo '<script type="text/javascript">';
- echo "alert('Please enter the correct Capthcha code');";
-   echo "</script>";
-	
-
-
-
-
-}
-}
-else if(isset($_POST["txtcancle"]))
-{
-	header('location:main.php');
-}
-/*
-else{
-echo "<h3>";
-echo "Enter Correct Captcha Code";
-echo "</h3>";
-
-}*/
-}
-else
-{
-	
-	echo '<script type="text/javascript">';
-	echo "alert('User Id is already exists');";
-   echo "</script>";
-	
-}
-}
-
 
 
 			error_reporting(E_ALL & ~E_DEPRECATED & ~E_NOTICE);
@@ -147,10 +93,10 @@ else
 			$mail->Port = 465;
 
 			// your gmail address
-			$mail->Username = 'maildemo254@gmail.com';
+			$mail->Username = 'jayjalarammedicine@gmail.com';
 
 			// your password must be enclosed in single quotes
-			$mail->Password = 'maildemo1234';
+			$mail->Password = 'jjm@1234';
 
 			// add a subject line
 			$mail->Subject = ' Verification for Website ';
@@ -190,6 +136,67 @@ else
 			} catch (Exception $e) {
 			    $msg = $e->getMessage();
 			}
+
+
+
+
+
+  }	  
+  
+
+else
+{
+	/*
+	echo "<h3>";
+	echo "Please confirm correct password";
+	echo "</h3>";
+	*/
+	echo '<script type="text/javascript">';
+ echo "alert('Please Confirm the correct password');";
+   echo "</script>"; 
+}
+}
+
+else{
+//echo "<h3>";
+//echo "Enter Correct Captcha Code";
+//echo "</h3>";
+
+
+	echo '<script type="text/javascript">';
+ echo "alert('Please enter the correct Capthcha code');";
+ echo "window.location = 'register.php';";
+   echo "</script>";
+	
+
+
+
+}
+}
+/*
+else{
+echo "<h3>";
+echo "Enter Correct Captcha Code";
+echo "</h3>";
+
+}*/
+}
+else
+{
+	
+	echo '<script type="text/javascript">';
+	echo "alert('User Id is already exists');";
+   echo "</script>";
+	
+}
+}
+else if(isset($_POST["txtcancle"]))
+{
+	header('location:main.php');
+}
+
+
+
 
 
 

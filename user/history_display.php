@@ -1,6 +1,12 @@
 
 <?php
 session_start();
+
+if($_SESSION["uname"]=="")
+{
+	header('location:../login.php');
+}
+
 ?>
 <!DOCTYPE html>
 <html>
@@ -64,11 +70,11 @@ $cntt=mysql_num_rows($res);
 <h1 align="center">Your Purchased Items (<?php  if($cntt==0){ echo "Empty"; }
 else{ echo $cntt; } ?>)</h1>
 <table class="table table-striped">
-		<th>Product_pic</th>
-		<th>Product_name</th>
+		<th>Product Photo</th>
+		<th>Product Name</th>
 		
-		<th>Product_price</th>
-		<th>Order_Date</th>
+		<th>Product Price</th>
+		<th>Order Date</th>
 		<th>Quantity</th>
 		<th>Total</th>
 <?php
@@ -128,7 +134,7 @@ while($row=mysql_fetch_assoc($res))
 		</table>
 <?php
 	
-	include '../footer.php';
+	include 'footer.php';
 	
 	?>
 </body>

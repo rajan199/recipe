@@ -1,6 +1,12 @@
 
 <?php
 session_start();
+
+if($_SESSION["uname"]=="")
+{
+	header('location:../login.php');
+}
+
 ?>
 <!DOCTYPE html>
 <html>
@@ -63,13 +69,14 @@ $cntt=mysql_num_rows($res);
 
 
 ?>		
-<h1 align="center">Your Cart Item (<?php echo $cntt; ?>)</h1>
+<h1 align="center">Your Cart Item (<?php  if($cntt==0){ echo "Empty"; }
+else{ echo $cntt; } ?>)</h1>
 <table class="table table-striped">
-		<th>Product_pic</th>
-		<th>Product_name</th>
+		<th>Product Photo</th>
+		<th>Product Name</th>
 		
-		<th>Product_price</th>
-		<th>Order_Date</th>
+		<th>Product Price</th>
+		<th>Order Date</th>
 		<th>Quantity</th>
 		<th>Total</th>
 <th>Action</th>
@@ -233,14 +240,20 @@ font-size: larger;" enabled >Check_Out</a>';
 
 <td></td>		
 		</tr>
-<div>
+
 </div>
 </div>
+</div>
+
 		</table>
-<?php
+		<div class="row">
+<div class="col-md-12">
+		<?php
 	
-	include '../footer.php';
+	include 'footer.php';
 	
 	?>
+	</div>
+	</div>
 </body>
 </html>

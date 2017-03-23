@@ -34,11 +34,17 @@ session_start();
 
 	$(document).ready(function(){
 //alert("hii");
-$("#test").keyup(function() {
+$("#test").on('blur',function() {
     var val = $("#test").val();
 	var len= $("#test").val().length;
-    if (parseInt(val) < 0 || isNaN(val)) {
-        alert("Only positive numbers are allowed");
+		if(len < 10){
+	    alert("Mobile number length should be 10");
+    	$("#test").val("");
+        $("#test").focus();
+	}
+
+   else if (parseInt(val) < 0 || isNaN(val)) {
+        alert("Only numbers are allowed");
         $("#test").val("");
         $("#test").focus();
     }
@@ -46,20 +52,27 @@ $("#test").keyup(function() {
 
 
 
-$("#zip1").keyup(function() {
+$("#zip1").on('blur',function() {
     var val = $("#zip1").val();
 	var len= $("#zip1").val().length;
-    if (parseInt(val) < 0 || isNaN(val)) {
-        alert("Only positive numbers are allowed");
+	if(len < 6){
+	    alert("Zipcode length should be 6");
+    	 $("#zip1").val("");
+        $("#zip1").focus();
+    
+	}
+    else if (parseInt(val) < 0 || isNaN(val)) {
+        alert("Only  numbers are allowed");
         $("#zip1").val("");
         $("#zip1").focus();
-    }
+    
+	}
 });
 
 
 
 $('#pass1').on('blur', function(){
-    if(this.value.length < 8){ // checks the password value length
+    if(this.value.length < 4){ // checks the password value length
        alert('password should not be empty/length must be between 5 to 12');
        $('#pass1').val(""); // focuses the current field.
        
@@ -191,7 +204,7 @@ function allzip(uzip)
 				   
 				  <div>
 					<b><span style="color: black;font-size:15px;">Confirm Password<label>*</label></span></b>
-					<input type="password" class="form-control" style="width: 550px; height: 40px;" name="txtpass" onblur="return passid_validation(txtpass);"placeholder="Enter password" required>
+					<input type="password" class="form-control" style="width: 550px; height: 40px;" name="txtpass" placeholder="Enter password" required>
                 
 					</div>
 				  <hr/>
@@ -271,7 +284,9 @@ function allzip(uzip)
 				<div class="clearfix"> </div>
 				<div class="register-but">
 					   <input class="acount-btn" type="submit" name="txtsign" value="Sign up">
-					   <input type="submit" class="acount-btn" name="txtcancle" value="Cancle">
+					   <h3><b>By clicking on sign up ,you should have to verify your email address ,than you can able to log in to our website.</b></h3>
+					   
+					   
 					   
 					   
 					   

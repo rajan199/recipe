@@ -3,6 +3,11 @@
 
 session_start();
 
+if($_SESSION["uname"]=="")
+{
+	header('location:../login.php');
+}
+
 ?>
 <!DOCTYPE html>
 <html>
@@ -254,7 +259,7 @@ if(isset($_POST["btncan"]))
 	<?php
 
 
-include '../footer.php';
+include 'footer.php';
 
 
 ?>

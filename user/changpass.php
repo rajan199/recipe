@@ -36,7 +36,9 @@ if($pass==$enc_pass)
 	{
 	//	echo "retype new password";
 		echo '<script type="text/javascript">';
- echo "alert('please Re type new password');";
+ echo "alert('Please Re-type new password');";
+echo "window.location = 'update_password.php';";
+ 
    echo "</script>";
 
 	
@@ -48,7 +50,10 @@ else
 //	echo "old password is wrong";
 	echo '<script type="text/javascript">';
  echo "alert('Old password is wrong');";
-   echo "</script>";
+echo "window.location = 'update_password.php';";
+  
+
+ echo "</script>";
 
 
 }

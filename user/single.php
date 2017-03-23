@@ -1,5 +1,11 @@
 <?php
 session_start();
+
+if($_SESSION["uname"]=="")
+{
+	header('location:../login.php');
+}
+
 ?>
 <!DOCTYPE html>
 <html>
@@ -162,8 +168,8 @@ $cnt1=$obj->product_by_id($id);
 					
 					<h4>Name :'.$row["product_name"].'</h4>
 				<div class="cart-b">
-					<div class="left-n ">Rs :'.$row["product_price"].'</div>
-				    <a class="now-get get-cart-in" href="wishlist1.php?pid='.$row["product_id"].'">ADD TO CART</a> 
+					<div class="left-n ">Price :'.$row["product_price"].'</div>
+				    <a style="color: aquamarine;" class="now-get get-cart-in" href="wishlist1.php?pid='.$row["product_id"].'">ADD TO CART</a> 
 				    <div class="clearfix"></div>
 				 </div>
 				 <h6>Status :'.$row["status"].'</h6>
@@ -217,7 +223,7 @@ $cnt1=$obj->product_by_id($id);
 	
 	<?php
 	
-	include '../footer.php';
+	include 'footer.php';
 	
 	?>
 </body>

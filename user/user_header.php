@@ -96,7 +96,7 @@ $res=$obj->getUserName($id);
 		$uname=$row["user_name"];
 	}
 ?>
-					<h3><?php echo "Welcome ".$uname; ?></h3>
+					<h3 style="color:blue;"><?php echo "Welcome ".$uname; ?></h3>
 					<div class="clearfix"> </div>
 				</div>
 				<div class="clearfix"> </div>	

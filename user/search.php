@@ -3,6 +3,11 @@
 
 session_start();
 
+if($_SESSION["uname"]=="")
+{
+	header('location:../login.php');
+}
+
 ?>
 
 <!DOCTYPE html>
@@ -141,11 +146,11 @@ $cnt=mysql_num_rows($cnt1);
 			<div class="women">
 				<a href="#"><h4>Total Search related Products <span><?php echo $cnt; ?></span> </h4></a>
 				<ul class="w_nav">
-					<li>Other Products: </li>
-			     	<li><a class="active" href="#">Injections</a></li> |
-			     	<li><a href="skin.php">Skin care </a></li> |
-			     	<li><a href="baby.php">Baby care</a></li> |
-			     	<li><a href="hair.php">Hair care </a></li> 
+					<li style="font-size: 15px;">Other Products: </li>
+			     	<li><a style="font-size: 15px;" class="active" href="#">Injections</a></li> |
+			     	<li><a style="font-size: 15px;" href="skin.php">Skin care </a></li> |
+			     	<li><a style="font-size: 15px;" href="baby.php">Baby care</a></li> |
+			     	<li><a style="font-size: 15px;" href="hair.php">Hair care </a></li> 
 			     <div class="clearfix"> </div>	
 			     </ul>
 			     <div class="clearfix"> </div>	
@@ -172,10 +177,10 @@ while($row=mysql_fetch_assoc($cnt1))
 
 
  echo' <div class="col-sm-6 col-md-4">';
-   echo  '<div class="thumbnail">';
+   echo  '<div class="thumbnail" style="height: 450px;">';
      echo ' <img src="../images/'.$row["product_img"].'"  style="height: 145px;"></img>';
  echo    '<div class="caption">
-        <h3>'.$row["product_name"].'</h3>
+        <h3 style="font-size:16px">'.$row["product_name"].'</h3>
   <h3>'.$row["product_price"].'</h3>
                
         <p><a href="single.php?id='.$row["product_id"].'"><button type="button" style="width: 117px;" style="width: 200px;" name="btnbuy" class="btn btn-default btn-lg">
@@ -235,7 +240,7 @@ include 'sidebar.php';
 	
 	<!----><?php
 	
-	include '../footer.php';
+	include 'footer.php';
 	
 	?>
 </body>

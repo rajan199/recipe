@@ -149,7 +149,7 @@ if(isset($_POST["btnlogin"]))
 //$count=$obj->login($name,$enc_pass);
 $con=mysql_connect('localhost','root','');
    mysql_select_db('medicine',$con);
-   $res=mysql_query("select * from user_tbl where email_id='$name' and  password='$enc_pass'",$con);
+   $res=mysql_query("select * from user_tbl where email_id='$name' and  password='$enc_pass' and status='true'",$con);
    $count=mysql_num_rows($res); 
 
 	  if ($count==1) 

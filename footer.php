@@ -1,6 +1,6 @@
 
 	<div class="footer-fixed" >
-		<div class="footer-top">
+		<div class="footer-top" style="background: lightseagreen;">
 			<div class="container">
 				<div class="latter">
 					<div class="clearfix"> </div>
@@ -20,16 +20,22 @@
 		<div class="footer-bottom">
 			<div class="container">
 				<div class="footer-bottom-cate">
-				<h1> About Us</h1>
+			<a href="about.php">	<h3> About Us</h3></a>
 				</div>
 				<div class="footer-bottom-cate bottom-grid-cat">
-	<h1> Contact Us</h1>
+	<a href="contactus.php"><h3> Contact Us</h3></a>
 						
 			</div>
 				<div class="footer-bottom-cate">
-					<h1> Terms and condition</h1>
+				<a href="terms_and_condition.php">	<h3> Terms and condition</h3></a>
 			
 				</div>
+				
+				<div class="footer-bottom-cate">
+				<h3> @copyright. All right Reserved</h3></a>
+			
+				</div>
+				
 				<div class="footer-bottom-cate cate-bottom">
 				</div>
 				<div class="clearfix"> </div>

@@ -1,6 +1,13 @@
 <?php
 
 session_start();
+
+
+if($_SESSION["uname"]=="")
+{
+	header('location:../login.php');
+}
+
 ?>
 
 <!DOCTYPE html>
@@ -43,7 +50,7 @@ include 'user_header.php';
   <div class="form-group">
     <label for="inputEmail3" class="col-sm-2 control-label">Enter Your Question</label>
     <div class="col-sm-10">
-      <textarea class="form-control" name="addquestion" cols="5" rows="5" placeholder="Enter Your Question"></textarea>
+      <textarea class="form-control" name="addquestion" cols="5" rows="5" placeholder="Enter Your Question" required></textarea>
     </div>
   </div>
   <!--
@@ -117,7 +124,7 @@ while($row=mysql_fetch_assoc($res1))
 	<br>
 	<div class="panel-body" style="margin-left:700px;margin-top:-50px;">
 	
-Email id='.$row["email_id"].'
+User name='.$row["user_name"].'
 <br>
 
 	</div>
@@ -133,7 +140,7 @@ Email id='.$row["email_id"].'
 <?php
 
 
-include '../footer.php';
+include 'footer.php';
 
 
 ?>

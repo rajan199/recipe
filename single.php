@@ -8,6 +8,12 @@
 <link href="css/style.css" rel="stylesheet" type="text/css" media="all" />	
 <link rel="stylesheet" href="css/etalage.css" type="text/css" media="all" />
 <!--//theme-style-->
+
+<link href="Content/bootstrap.css" rel="stylesheet"/>
+<script src="Scripts/jquery-1.9.1.js"></script>
+<script src="Scripts/bootstrap.js"></script>
+
+
 <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
 <script type="application/x-javascript"> addEventListener("load", function() { setTimeout(hideURLbar, 0); }, false); function hideURLbar(){ window.scrollTo(0,1); } </script>
 <!--fonts-->
@@ -154,8 +160,8 @@ $cnt1=$obj->product_by_id($id);
 					
 					<h4>Name :'.$row["product_name"].'</h4>
 				<div class="cart-b">
-					<div class="left-n ">Rs :'.$row["product_price"].'</div>
-				    <a class="now-get get-cart-in" href="login.php">ADD TO CART</a> 
+					<div class="left-n ">Price :'.$row["product_price"].'</div>
+				    <a style="color: aquamarine;" class="now-get get-cart-in" href="login.php">ADD TO CART</a> 
 				    <div class="clearfix"></div>
 				 </div>
 				 <h6>Status :'.$row["status"].'</h6>

@@ -1,8 +1,14 @@
 
 <?php
 session_start();
+
+if($_SESSION["uname"]=="")
+{
+	header('location:../login.php');
+}
+
 $cid=$_REQUEST["id"];
-echo $cid;
+//echo $cid;
 ?>
 <!DOCTYPE html>
 <html>

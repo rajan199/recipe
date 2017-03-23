@@ -1,6 +1,12 @@
 <?php
 
 session_start();
+
+if($_SESSION["uname"]=="")
+{
+	header('location:../login.php');
+}
+
 ?>
 <!DOCTYPE html>
 <html>
@@ -203,7 +209,7 @@ include 'sidebar.php';
 	<div class="col-md-12">
 	<?php
 	
-	include '../footer.php';
+	include 'footer.php';
 	
 	?>
 	</div>
