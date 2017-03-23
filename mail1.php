@@ -60,7 +60,13 @@ if($_POST["captcha_code"]==$_SESSION["captcha_code"])
   $obj=new database();
   $res=$obj->insert_user($id,$uname,$enc_pass,$add,$city,$zip,$gen,$mob,$temp,$active,$code,$date); 
 	
-header('location:login.php');
+		echo '<script type="text/javascript">';
+ echo "alert('Registered Successfully but You should have to verify your email address ,than you can able to log in to our website.');";
+ echo "window.location = 'login.php';";
+
+ echo "</script>"; 
+
+//header('location:login.php');
 
 
 			error_reporting(E_ALL & ~E_DEPRECATED & ~E_NOTICE);
@@ -153,7 +159,9 @@ else
 	*/
 	echo '<script type="text/javascript">';
  echo "alert('Please Confirm the correct password');";
-   echo "</script>"; 
+ echo "window.location = 'register.php';";
+
+ echo "</script>"; 
 }
 }
 

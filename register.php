@@ -83,7 +83,41 @@ $('#pass1').on('blur', function(){
 
 
 
+
+
+
 });
+
+$(document).ready(function(e) {
+    $('#btn').click(function() {
+        var sEmail = $('#mail').val();
+        if ($.trim(sEmail).length == 0) {
+            alert('Please enter valid email address');
+            e.preventDefault();
+        }
+        if (validateEmail(sEmail)) {
+           // alert('Email is valid');
+        }
+        else {
+            alert('Invalid Email Address');
+            e.preventDefault();
+        }
+    });
+});
+
+function validateEmail(sEmail) {
+    var filter = /^([\w-\.]+)@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.)|(([\w-]+\.)+))([a-zA-Z]{2,4}|[0-9]{1,3})(\]?)$/;
+    if (filter.test(sEmail)) {
+        return true;
+    }
+    else {
+        return false;
+    }
+}
+
+
+
+
 
 
 
@@ -183,7 +217,7 @@ function allzip(uzip)
 
 					<div>
 					<b><span style="color: black;font-size:15px;">Email Address<label>*</label></span></b>
-					<input type="email" class="form-control" style="width: 550px; height: 40px;" name="txtid"  placeholder="Enter Email Id" required> 
+					<input type="email" id="mail" class="form-control" style="width: 550px; height: 40px;" name="txtid"  placeholder="Enter Email Id" required> 
 				  </div>
 				  <hr/>
 					
@@ -283,7 +317,7 @@ function allzip(uzip)
 					 </div>
 				<div class="clearfix"> </div>
 				<div class="register-but">
-					   <input class="acount-btn" type="submit" name="txtsign" value="Sign up">
+					   <input class="acount-btn" id="btn" type="submit" name="txtsign" value="Sign up">
 					   <h3><b>By clicking on sign up ,you should have to verify your email address ,than you can able to log in to our website.</b></h3>
 					   
 					   
