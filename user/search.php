@@ -171,6 +171,8 @@ $cnt=mysql_num_rows($cnt1);
      
 $cnt1=mysql_query("select * from product_tbl  where product_name LIKE '$x1%'",$con);
 
+if($cnt>=1)
+{
 while($row=mysql_fetch_assoc($cnt1))
   {
 
@@ -195,28 +197,20 @@ while($row=mysql_fetch_assoc($cnt1))
 </button></a>
 </p>
 
-	<div class="star-price">
-	   		     				<div class="dolor-grid"> 
-		   		     				  <span class="rating">
-									        <input type="radio" class="rating-input" id="rating-input-1-5" name="rating-input-1">
-									        <label for="rating-input-1-5" class="rating-star1"> </label>
-									        <input type="radio" class="rating-input" id="rating-input-1-4" name="rating-input-1">
-									        <label for="rating-input-1-4" class="rating-star1"> </label>
-									        <input type="radio" class="rating-input" id="rating-input-1-3" name="rating-input-1">
-									        <label for="rating-input-1-3" class="rating-star"> </label>
-									        <input type="radio" class="rating-input" id="rating-input-1-2" name="rating-input-1">
-									        <label for="rating-input-1-2" class="rating-star"> </label>
-									        <input type="radio" class="rating-input" id="rating-input-1-1" name="rating-input-1">
-									        <label for="rating-input-1-1" class="rating-star"> </label>
-							    	   </span>
-	   		     				</div>
-	   		     		</div>
+	
       </div>
     </div>
   </div>
   ';
   }
-
+}
+else
+{
+	echo "<script>";
+	echo "alert('Not found');";
+	echo "</script>";
+	
+}
    		     	
 ?>		
 </div>

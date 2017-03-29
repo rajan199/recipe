@@ -48,23 +48,32 @@ include 'user_header.php';
 <?php
 $eid=$_SESSION["uname"];
 
-$obj1=new database();
-$res1=$obj1->question_my($eid);
+//$obj1=new database();
+//$res1=$obj1->question_my($eid);
+	
+$con=mysql_connect('localhost','root','');
+    mysql_select_db('medicine',$con);
+    $res1=mysql_query("select q.*,u.* from question_tbl as q,user_tbl as u  where q.email_id=u.email_id and q.email_id='$eid' and question_status='accept' order by question_id desc ",$con);
+	
 $cnt=mysql_num_rows($res1);
 
 ?>
 <h1 align="center">Your Questions (<?php echo $cnt; ?>)</h1>
 <?php
-$eid=$_SESSION["uname"];
+//$eid=$_SESSION["uname"];
 
-$obj1=new database();
-$res1=$obj1->question_my($eid);
+//$obj1=new database();
+//$res1=$obj1->question_my($eid);
 //$con=mysql_connect('localhost','root','');
   //     mysql_select_db('medicine',$con);
     //  $res=mysql_query("select q.*,u.* from question_tbl as q,user_tbl as u  where q.email_id=u.email_id and question_status='accept' order by question_id desc ",$con);
 	
-
-while($row=mysql_fetch_assoc($res1))
+$con=mysql_connect('localhost','root','');
+    mysql_select_db('medicine',$con);
+    $res2=mysql_query("select q.*,u.* from question_tbl as q,user_tbl as u  where q.email_id=u.email_id and q.email_id='$eid' and question_status='accept' order by question_id desc ",$con);
+	
+	
+while($row=mysql_fetch_assoc($res2))
 {
 		echo "<hr>";
 		echo '<div class="panel panel-default">

@@ -40,7 +40,7 @@ else
 else{
 	
 	echo '<script language=javascript>
-	alert("already add");
+	alert("The product is already added");
 	window.location.href="user_profile.php"
 	</script>';
 }

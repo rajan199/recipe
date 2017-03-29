@@ -13,7 +13,7 @@ public function connection()
 
    public function question_my($eid)
    {
-    $res=mysql_query("select q.*,u.* from question_tbl as q,user_tbl as u  where q.email_id=u.email_id and question_status='accept' order by q.question_id desc ",$this->connection());
+    $res=mysql_query("select q.*,u.* from question_tbl as q,user_tbl as u  where q.email_id=$eid and question_status='accept' order by q.question_id desc ",$this->connection());
 	return $res;
    }
 

@@ -55,7 +55,7 @@ include 'user_header.php';
 <center>
 <table width="100%" >
 <tr>
- <img src="images/shop.png" style="width:250px;" alt=" " /></a>
+ <img src="../images/shop.png" style="width:250px;" alt=" " /></a>
           
            	  <h2>Name: JAY JALARAM MEDICINES </h2><br>
 			  <h3>Address :-  11-A, JalaramPlaza, JawaharChowk, Maninagar, Ahmedabad-380 008

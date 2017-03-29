@@ -33,8 +33,8 @@ $(document).ready(function(){
 //alert("hii");
 $("#test").keyup(function() {
     var val = $("#test").val();
-    if (parseInt(val) < 0 || isNaN(val)) {
-        alert("please enter valid values");
+    if (parseInt(val) <= 0 || isNaN(val) ) {
+        alert("Please enter numbers only");
         $("#test").val("");
         $("#test").focus();
     }
@@ -106,10 +106,9 @@ echo '<form method="post" id="'.$i.'" name="'.$i.'" action="">
 //echo '<td><label>'.$row["quantity"].'</label>
 //<a href="up_quantity.php?uid='.$row["order_id"].'"><input name="upbtn" value="Update Quantity" class="acount-btn" type="button"></button></td></a>';  
    // echo "<td>".$t=($row["amount"]*$row["qty"])</a>."</td>";o
-
    
-echo '<td><input type="text"  name="quty'.$i.'" value="'.$row["quantity"].'" id="test" size="3" min="1" maxlength="3" />
-<input name="upbtn'.$i.'" value="update quantity" class="acount-btn" type="submit"></button></td>';  
+echo '<td><input type="text"  name="quty'.$i.'" value="'.$row["quantity"].'" id="test" size="3" min="1" maxlength="3" />';
+echo '<input name="upbtn'.$i.'" value="update quantity" class="acount-btn" type="submit"></button></td>';  
    // echo "<td>".$t=($row["amount"]*$row["qty"])."</td>";
 
 	
@@ -129,13 +128,22 @@ if(isset($_POST["upbtn".$i]))
 	{
 		$q=$_POST["quty".$i];
 
-		$t=$p*$q;	
+		$t=$p*$q;
+		if($q==0 || $q==" ")
+		{
+			echo "<script>";
+			echo "alert('Quantity field can not be empty');";
+			echo "</script>";
+			
+		}
+		else{
 		$con=mysql_connect("localhost","root","");
 		mysql_select_db("medicine",$con);
 		$res=mysql_query("update order_tbl set quantity='$q',total_price='$t' where order_id=$id");
 		if($res==1)
 		{
 			header('location:cart_display.php');
+		}
 		}
 	}
 
@@ -225,11 +233,26 @@ font-size: larger;" disabled >Check_Out</a>';
 }
 else
 {
+	
+		$con=mysql_connect('localhost','root','');
+    mysql_select_db('medicine',$con);
+	$res4=mysql_query("select p.*,o.* from product_tbl as p,order_tbl as o where p.product_id=o.product_id and p.category_id in(11,12) and o.status='cart'",$con);
+	$count=mysql_num_rows($res4);
+	if($count>=1)
+	{
 echo '<a href="cartpage.php" name="chek" class="btn btn-primary" role="button" style="background-color: orangered;
 width: 105px;
 height: 42px;
 font-size: larger;" enabled >Check_Out</a>';
+	}
+	else
+	{
+				echo '<a href="general_pro.php" name="chek" class="btn btn-primary" role="button" style="background-color: orangered;
+			width: 105px;
+			height: 42px;
+			font-size: larger;" enabled >Check_Out</a>';
 
+	}
 }
 ?>
 <!--<input  type="submit" name="btnchk" value="checkout" style="background-color: orangered;">

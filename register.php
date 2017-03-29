@@ -22,6 +22,7 @@ session_start();
 
 
 
+
 <script type="application/x-javascript"> addEventListener("load", function() { setTimeout(hideURLbar, 0); }, false); function hideURLbar(){ window.scrollTo(0,1); } </script>
 <!--fonts-->
 <link href='http://fonts.googleapis.com/css?family=Open+Sans:400,300,600,700,800' rel='stylesheet' type='text/css'>
@@ -124,23 +125,6 @@ function validateEmail(sEmail) {
 
 
 	
-	function allLetter(uname)
-{
-	var letters=/^[A-Za-z]+$/;
-	if(uname.value.match(letters))
-	{
-			return true;
-	}
-	else
-	{
-			uname.focus();
-			
-			alert('username must have alphabetic charcters only');
-			return false;
-	}
-}
-
-
 
 
 
@@ -223,7 +207,7 @@ function allzip(uzip)
 					
 				  <div>
 					<b><span style="color: black;font-size:15px;">User Name<label>*</label></span></b>
-					<input type="text" class="form-control" style="width: 550px; height: 40px;" name="txtname" onblur="return allLetter(txtname);"  placeholder="Enter User name" required> 
+					<input type="text" class="form-control" style="width: 550px; height: 40px;" name="txtname"   placeholder="Enter User name" required> 
 				  </div>
 				  <hr/>
 					
