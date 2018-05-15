@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 # README #
 
 This README would normally document whatever steps are necessary to get your application up and running.
@@ -27,3 +28,7 @@ This README would normally document whatever steps are necessary to get your app
 
 * Repo owner or admin
 * Other community or team contact
+=======
+# recipe
+recipe project
+>>>>>>> 1addcc34d397eb3fdafd8f014d4b01d32dcce7d9
