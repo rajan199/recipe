@@ -124,39 +124,47 @@ function allzip(uzip)
 
 $id=$_SESSION["uname"];
 
+			
+
+
 ?>
 
 	<div class="container"> 
 			         
 		<div class="register">
-		  	  <form enctype="multipart/form-data" action="changpass.php" method="post"> 
+		  	  <form enctype="multipart/form-data" action="ins_racipe.php" method="post"> 
 				 <div class="  register-top-grid">
-					<h1 style="color:#F97E76;">Change Password Form</h1>
+					<h1 style="color:#F97E76;">Add Recipe Details</h1>
 
 				  <div>
-					<b><span style="color: black;font-size:15px;">Email Id<label>*</label></span></b>
-					<input type="text" class="form-control" style="width: 550px; height: 40px;" name="txtuname" value="<?php echo $id;?>" onblur="return allLetter(txtname);"  placeholder="Enter User name" readonly> 
+					<b><span style="color: black;font-size:15px;">Recipe Name<label>*</label></span></b>
+					<input type="text" class="form-control" style="width: 550px; height: 40px;" name="txtrecname" value=""  placeholder="Enter Recipe name" > 
 				  </div>
 				  <hr/>
 					
 				    
 				  <div>
-					<b><span style="color: black;font-size:15px;">Old Password<label>*</label></span></b>
-					<input type="password" class="form-control" style="width: 550px; height: 40px;" name="txtold" value=""   placeholder="Enter the old password" required> 
-				  </div>
+					<b><span style="color: black;font-size:15px;">Picture of Dish<label>*</label></span></b>
+				  <input type="file" class="form-control" name="txt_img"  style="width: 550px; height: 40px;" required>
+             	  </div>
 				  <hr/>
 					
 					
 				  <div>
-					<b><span style="color: black;font-size:15px;">New Password<label>*</label></span></b>
-					<input type="password" class="form-control" style="width: 550px; height: 40px;" name="txtnew" value=""   placeholder="Enter the New password" required> 
+					<b><span style="color: black;font-size:15px;">Ingredient of Dish<label>*</label></span></b>
+					<textarea name="txting" col="5" class="form-control" style="width: 550px;height: 60px;" placeholder="Enter Ingredient" required></textarea>
 				  </div>
 				  <hr/>
 					
-					
+					  <div>
+					<b><span style="color: black;font-size:15px;">Method of Making Dish<label>*</label></span></b>
+					<textarea name="txtmethod" col="5" class="form-control" style="width: 550px;height: 60px;" placeholder="Enter Method" required></textarea>
+				  </div>
+				  <hr/>
+				
 				  <div>
-					<b><span style="color: black;font-size:15px;">Re-type New Password<label>*</label></span></b>
-					<input type="password" class="form-control" style="width: 550px; height: 40px;" name="txtnewre" value=""   placeholder="Enter  New password again" required> 
+					<b><span style="color: black;font-size:15px;">Dish Price<label>*</label></span></b>
+					<input type="text" class="form-control" style="width: 550px; height: 40px;" name="txtpri" value=""   placeholder="Enter  price of dish" required> 
 				  </div>
 				  <hr/>
 					
@@ -175,7 +183,7 @@ $id=$_SESSION["uname"];
 					 </div>
 				<div class="clearfix"> </div>
 				<div class="register-but">
-					   <input class="acount-btn" type="submit" name="btnsub" value="Update">
+					   <input class="acount-btn" type="submit" name="btnsub" value="Add">
 					   <input type="submit" class="acount-btn" name="btncan" value="Cancel">
 					   
 				</div>

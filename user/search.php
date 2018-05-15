@@ -13,7 +13,7 @@ if($_SESSION["uname"]=="")
 <!DOCTYPE html>
 <html>
 <head>
-<title>Jay Jalaram Medicine</title>
+<title>Recipe Express</title>
 <link href="../css/bootstrap.css" rel="stylesheet" type="text/css" media="all" />
 <!--theme-style-->
 <link href="../css/style.css" rel="stylesheet" type="text/css" media="all" />	
@@ -68,7 +68,7 @@ include 'alphaser.php';
 							</div>
 							<div class="col-md-7 banner-off">							
 								<h2>Get register with us</h2>
-								<label>FOR ALL PURCHASE <b>MEDICINES</b></label>
+								<label>FOR ALL RECIPES <b></b></label>
 								<p></p>					
 								<span class="on-get">Get Register</span>
 							</div>
@@ -84,7 +84,8 @@ include 'alphaser.php';
 							</div>
 							<div class="col-md-7 banner-off">							
 								<h2>Get register with us</h2>
-								<label>FOR ALL PURCHASE <b>MEDICINES</b></label>
+								<label>FOR ALL RECIPES <b></b></label>
+									<p></p>			
 								<span class="on-get">Get Register</span>
 							</div>
 							
@@ -99,7 +100,8 @@ include 'alphaser.php';
 							</div>
 							<div class="col-md-7 banner-off">							
 								<h2>Get register with us</h2>
-								<label>FOR ALL PURCHASE <b>MEDICINES</b></label>
+								<label>FOR ALL RECIPES <b></b></label>
+									<p></p>			
 								<span class="on-get">Get Register</span>
 							</div>
 							
@@ -134,9 +136,9 @@ include 'alphaser.php';
 
  $x1=$_SESSION["search"];
 				 $con=mysql_connect('localhost','root','');
-				 mysql_select_db('medicine',$con);
+				 mysql_select_db('racipe_database',$con);
      
-$cnt1=mysql_query("select * from product_tbl  where product_name LIKE '$x1%'",$con);
+$cnt1=mysql_query("select * from racipe_tbl  where racipe_name LIKE '$x1%'",$con);
 
 $cnt=mysql_num_rows($cnt1);
 
@@ -144,16 +146,8 @@ $cnt=mysql_num_rows($cnt1);
 				?>
 				<div class=" w_content">
 			<div class="women">
-				<a href="#"><h4>Total Search related Products <span><?php echo $cnt; ?></span> </h4></a>
-				<ul class="w_nav">
-					<li style="font-size: 15px;">Other Products: </li>
-			     	<li><a style="font-size: 15px;" class="active" href="#">Injections</a></li> |
-			     	<li><a style="font-size: 15px;" href="skin.php">Skin care </a></li> |
-			     	<li><a style="font-size: 15px;" href="baby.php">Baby care</a></li> |
-			     	<li><a style="font-size: 15px;" href="hair.php">Hair care </a></li> 
-			     <div class="clearfix"> </div>	
-			     </ul>
-			     <div class="clearfix"> </div>	
+				<a href="#"><h4>Total Search related Recipes <span><?php echo $cnt; ?></span> </h4></a>
+			    <div class="clearfix"> </div>	
 			</div>
 		</div>
 				
@@ -167,9 +161,9 @@ $cnt=mysql_num_rows($cnt1);
 				 
 				 $x1=$_SESSION["search"];
 				 $con=mysql_connect('localhost','root','');
-				 mysql_select_db('medicine',$con);
+				 mysql_select_db('racipe_database',$con);
      
-$cnt1=mysql_query("select * from product_tbl  where product_name LIKE '$x1%'",$con);
+$cnt1=mysql_query("select * from racipe_tbl  where racipe_name LIKE '$x1%'",$con);
 
 if($cnt>=1)
 {
@@ -180,19 +174,19 @@ while($row=mysql_fetch_assoc($cnt1))
 
  echo' <div class="col-sm-6 col-md-4">';
    echo  '<div class="thumbnail" style="height: 450px;">';
-     echo ' <img src="../images/'.$row["product_img"].'"  style="height: 145px;"></img>';
+     echo ' <img src="../images/'.$row["racipe_img"].'"  style="height: 145px;"></img>';
  echo    '<div class="caption">
-        <h3 style="font-size:16px">'.$row["product_name"].'</h3>
-  <h3>'.$row["product_price"].'</h3>
+        <h3 style="font-size:16px">'.$row["racipe_name"].'</h3>
+  <h3>'.$row["racipe_price"].'</h3>
                
-        <p><a href="single.php?id='.$row["product_id"].'"><button type="button" style="width: 117px;" style="width: 200px;" name="btnbuy" class="btn btn-default btn-lg">
+        <p><a href="single.php?id='.$row["racipe_id"].'"><button type="button" style="width: 117px;" style="width: 200px;" name="btnbuy" class="btn btn-default btn-lg">
   <span class="glyphicon glyphicon-buy"  aria-hidden="true"></span> Preview
 </button></a>
 
-<a href="favourite.php?fid='.$row["product_id"].'"><button type="button" style="margin-left: 119px; margin-top: -71px;" class="btn btn-default btn-lg">
+<a href="favourite.php?fid='.$row["racipe_id"].'"><button type="button" style="margin-left: 119px; margin-top: -71px;" class="btn btn-default btn-lg">
   <span class="glyphicon glyphicon-heart" style="color: red;" aria-hidden="true"></span>
 </button></a>
-<a href="wishlist1.php?pid='.$row["product_id"].'"><button type="button" style="width: 200px; background:#323A45; color:white; " name="btncar" class="btn btn-default btn-lg">
+<a href="wishlist1.php?pid='.$row["racipe_id"].'"><button type="button" style="width: 200px; background:#323A45; color:white; " name="btncar" class="btn btn-default btn-lg">
   <span class="glyphicon glyphicon-shopping-cart" aria-hidden="true"></span> Add to cart
 </button></a>
 </p>

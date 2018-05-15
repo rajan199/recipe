@@ -3,7 +3,7 @@
 <!DOCTYPE html>
 <html>
 <head>
-<title>Jay Jalaram Medicine</title>
+<title>Recipe Express</title>
 <link href="css/bootstrap.css" rel="stylesheet" type="text/css" media="all" />
 <!--theme-style-->
 <link href="css/style.css" rel="stylesheet" type="text/css" media="all" />	
@@ -42,7 +42,7 @@ include 'header.php';
 <?php
 
 $con=mysql_connect('localhost','root','');
-       mysql_select_db('medicine',$con);
+       mysql_select_db('racipe_database',$con);
       $res=mysql_query("select q.*,u.* from question_tbl as q,user_tbl as u  where q.email_id=u.email_id and question_status='accept' order by q.question_id desc ",$con);
 	
 
@@ -71,5 +71,15 @@ User Name='.$row["user_name"].'
 </div>	
 </div>
 </div>
+<div class="row">
+
+<?php
+
+
+include 'footer.php';
+
+?>
+</div>
+
 </body>
 </html>

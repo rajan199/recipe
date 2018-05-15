@@ -10,7 +10,7 @@ if($_SESSION["uname"]=="")
 <!DOCTYPE html>
 <html>
 <head>
-<title>Jay Jalaram Medicine</title>
+<title>Recipe Express</title>
 <link href="../css/bootstrap.css" rel="stylesheet" type="text/css" media="all" />
 <!--theme-style-->
 <link href="../css/style.css" rel="stylesheet" type="text/css" media="all" />	
@@ -141,6 +141,7 @@ include '../alphaser.php';
 		$id=$_REQUEST["id"];
 		
 		
+		
 /*
 	$con=mysql_connect('localhost','root','');
     mysql_select_db('medicine',$con);
@@ -148,7 +149,11 @@ include '../alphaser.php';
 */	
 
 $obj=new database();
-$cnt1=$obj->product_by_id($id);
+//$cnt1=$obj->racipe_by_id($id);
+$con=mysql_connect('localhost','root','');
+    mysql_select_db('racipe_database',$con);
+	$cnt1=mysql_query("select * from racipe_tbl where racipe_id=$id",$con);
+
 	while($row=mysql_fetch_assoc($cnt1))	
 	{
 	 echo '	<div class=" single_top">
@@ -157,7 +162,7 @@ $cnt1=$obj->product_by_id($id);
 						<ul id="etalage">
 							<li>
 								<a href="optionallink.html">
-									<img class="etalage_source_image" src="'.$row["product_img"].'" class="img-responsive" title="" />
+									<img class="etalage_source_image" src="../images/'.$row["racipe_img"].'" class="img-responsive" title="" />
 								</a>
 							</li>
 						</ul>
@@ -166,22 +171,83 @@ $cnt1=$obj->product_by_id($id);
 				  <div class="desc1 span_3_of_2">
 				  
 					
-					<h4>Name :'.$row["product_name"].'</h4>
+					<h4>Name :'.$row["racipe_name"].'</h4>
 				<div class="cart-b">
-					<div class="left-n ">Price :'.$row["product_price"].'</div>
-				    <a style="color: aquamarine;" class="now-get get-cart-in" href="wishlist1.php?pid='.$row["product_id"].'">ADD TO CART</a> 
+					<div class="left-n ">Price :Rs'.$row["racipe_price"].'</div>
+				    <a style="color: aquamarine;" class="now-get get-cart-in" href="wishlist1.php?pid='.$row["racipe_id"].'">ADD TO CART</a> 
 				    <div class="clearfix"></div>
 				 </div>
-				 <h6>Status :'.$row["status"].'</h6>
-			   	
+				 <br/>
+				<h3>Ingredients: '.$row["racipe_ingredient"].'</h3>
+				
+				<hr/>
+				<h3>Method :'.$row["method"].'</h3>
+				<hr/>
+				
 				
 				</div>
           	    <div class="clearfix"> </div>
           	   </div>';
 			   
+			   $rname=$row["racipe_name"];
+			   
 	}			
 			?>
-          	   
+			<form method="post" action="">
+			<h3>Comments</h3>
+			<input type="text" name="comment" placeholder="Enter Comment" style="width:500px;height:70px;">
+			<input type="submit" name="btn" class="acount-btn"  value="Add">
+
+			<?php
+			
+			if(isset($_POST["btn"]))
+			{
+				
+				$com=$_POST["comment"];
+				$eid=$_SESSION["uname"];
+					$con=mysql_connect('localhost','root','');
+					mysql_select_db('racipe_database',$con);
+					$res=mysql_query("insert into comment_tbl values('null','$com','$id','$eid')",$con);
+					
+				if($res>0)
+				{
+					header("location:single.php?id=$id");
+				}
+   
+   
+			}
+
+
+			
+			?>	
+			<h3>All comments for <?php echo $rname; ?> </h3>
+			<?php
+					$con=mysql_connect('localhost','root','');
+					mysql_select_db('racipe_database',$con);
+					$res=mysql_query("select c.*,u.* from comment_tbl as c,user_tbl as u where c.email_id=u.email_id and c.racipe_id='$id' order by c.comment_id desc",$con);
+	
+					while($row=mysql_fetch_assoc($res))
+		{
+		echo "<hr>";
+		echo '<div class="panel panel-default">
+		
+  <div class="panel-heading"><h3>User name : '.$row["user_name"].'</h3></div>
+  <div class="panel-body">
+    Comment : '.$row["comment"].'
+	</div>
+	<br>
+	
+  
+</div> </hr>';
+}
+			
+			?>
+				</form>
+
+
+
+			   
+			  
 	    <script type="text/javascript">
 		 $(window).load(function() {
 			$("#flexiselDemo1").flexisel({

@@ -2,7 +2,7 @@
 <?php 
 //include 'database.php';
 $res=new database();
-$cnt=$res->sidebar_product_count();  
+$cnt=$res->sidebar_recipes_count();  
 	
 	/*
 	$con=mysql_connect('localhost','root','');
@@ -19,7 +19,7 @@ $cnt=mysql_num_rows($res1);
 			   
 			   <div class="sub-cate">
 				<div class=" top-nav rsidebar span_1_of_left">
-					<h3 class="cate" style="background:lightseagreen;">All Company<span class="badge"><?php echo $cnt;?></span></h3>
+					<h3 class="cate" style="background:lightseagreen;">All Recipes<span class="badge"><?php echo $cnt;?></span></h3>
 		 
 		 <?php
 
@@ -31,16 +31,21 @@ $cnt=mysql_num_rows($res1);
 	*/
 
 	$res1=new database();
-$cnt1=$res->sidebar_product_display();  
 	
- while($row=mysql_fetch_array($cnt1))
+	$con=mysql_connect('localhost','root','');
+    mysql_select_db('racipe_database',$con);
+	$cnt1=mysql_query('select * from racipe_tbl group by racipe_name',$con);
+	
+//$cnt1=$res->sidebar_recipes_display();  
+	
+ while($row=mysql_fetch_assoc($cnt1))
   {
 
 echo  '<ul class="menu">
 				
 				<ul class="kid-menu">
 		
-				<li><a href="fordisplay_com.php?id='.$row["company_id"].'" style="font-size:13px;">'.$row["company_name"].'<span class="badge">'.$row["cnt"].'</span></a></li>
+				<li><a href="fordisplay_rec.php?id='.$row["racipe_id"].'" style="font-size:13px;">'.$row["racipe_name"].'</a></li>
 			</ul>
 	</ul>';
 	   		

@@ -42,8 +42,7 @@
 				<div class="header-bottom-left">
 					<div class="logo">
 						<a href="user_profile.php">
-						<img src="../images/company.jpg" style="width:57px;margin-left: -64px;margin-bottom: -70px;" alt=" ">
-						<img src="../images/jay_Jalaram.jpg" style="width:250px;" alt=" " /></a>
+							<img src="../images/rec_logo1.jpg" style="width:250px;" alt=" " /></a>
 					</div>
 <form action="" method="post">				
 				<div class="search">
@@ -108,11 +107,15 @@ $res=$obj->getUserName($id);
 <ul class="nav nav-tabs" style="background-color:lightseagreen;">
   <li role="presentation"><a href="user_profile.php" style="color:black; margin-right: 20;">Home</a></li>
   
-  <li role="presentation"><a href="skin.php" style="color:black; margin-right: 20;">Skin Care</a></li>
-  <li role="presentation"><a href="baby.php" style="color:black; margin-right: 20;">Baby Care</a></li>
-  
-  <li role="presentation"><a href="hair.php" style="color:black; margin-right: 20;">Hair Care</a></li>
+  <li class="dropdown" >
+          <a href="add_rec.php" style="color:black;" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Add Your Recipes <span class="caret"></span></a>
+          <ul class="dropdown-menu">
+            <li><a href="add_rec.php">Add Recipe</a></li>
+            <li><a href="dis_recipe.php">My Recipe</a></li>
+            </ul>
+        </li>
 
+  
 <!--  <li role="presentation"><a href="question.php" style="color:black; margin-right: 20;">Question</a></li>
 -->
   <li class="dropdown" >

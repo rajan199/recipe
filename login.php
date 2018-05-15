@@ -7,7 +7,7 @@ session_start();
 <!DOCTYPE html>
 <html>
 <head>
-<title>Jay Jalaram Medicine</title>
+<title>Recipe Express</title>
 <link href="css/bootstrap.css" rel="stylesheet" type="text/css" media="all" />
 <!--theme-style-->
 <link href="css/style.css" rel="stylesheet" type="text/css" media="all" />	
@@ -119,7 +119,6 @@ include 'header.php';
 					<b><span style="color: black;font-size:15px;">Password<label>*</label></span></b>
 					<input type="password" style="width: 550px; height: 40px;" name="txtpass" placeholder="Enter password" required> 
 				  </div>
-				  <a class="forgot" href="forgetPass.php">Forgot Your Password?</a>
 				  <input type="submit" value="Login" style="margin-top: 18px;" name="btnlogin">
 			    </form>
 			   </div>	
@@ -148,8 +147,8 @@ if(isset($_POST["btnlogin"]))
 //$obj=new database();
 //$count=$obj->login($name,$enc_pass);
 $con=mysql_connect('localhost','root','');
-   mysql_select_db('medicine',$con);
-   $res=mysql_query("select * from user_tbl where email_id='$name' and  password='$enc_pass' and status='true'",$con);
+   mysql_select_db('racipe_database',$con);
+   $res=mysql_query("select * from user_tbl where email_id='$name' and  password='$enc_pass'",$con);
    $count=mysql_num_rows($res); 
 
 	  if ($count==1) 
@@ -162,7 +161,7 @@ $con=mysql_connect('localhost','root','');
    while($row=mysql_fetch_assoc($res))
    {
 	   $ty=$row["type"];
-	   $active=$row["status"];
+	  
    }
    if($ty=='user')
    {
@@ -170,50 +169,14 @@ $con=mysql_connect('localhost','root','');
 		  //header('location:user/pro.php');
 		  header('location:user/user_profile.php');
 	}	
-	else
-		{
-			
-			if($active=='false')
-			{
-			echo '<script type="text/javascript">';
-			echo "alert('First You should have to verify your email address than you can able to log in to our website');";
-			echo "</script>";
-				
-			}
-			else{	
-			echo '<script type="text/javascript">';
- echo "alert(' enter corrcet information');";
-   echo "</script>";
-			//echo "<h1>Invalid</h1> ";
-		}
-	}
+	
 	
 	}//if(count)
 		else
 		{
-		//	$obj2=new database();
-		//$res1=$obj2->login($name,$passs);
-        $con=mysql_connect('localhost','root','');
-       mysql_select_db('medicine',$con);
-       $res=mysql_query("select status from user_tbl where email_id='$name' and password='$enc_pass'",$con);
-		while($row=mysql_fetch_assoc($res))
-		{
-	//   $ty=$row["type"];
-			$active=$row["status"];
-		}
-			if(@$active=='false')
-			{
-			echo '<script type="text/javascript">';
-			echo "alert('First You should have to verify your email address than you can able to log in to our website');";
-			echo "</script>";
-				
-			}
-			else
-			{
 			echo '<script type="text/javascript">';
 			echo "alert('Plese enter corrcet information');";
 			echo "</script>";
-			}
 		//	echo "<h1>Invalid</h1> ";
 		}
 }

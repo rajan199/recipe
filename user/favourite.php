@@ -20,11 +20,11 @@ $res2=$obj->check_fav($email,$fid);
 if($res2==0){
 		
 $obj2=new database();
-$res1=$obj2->display_product($fid);
+$res1=$obj2->display_racipe($fid);
 while($row=mysql_fetch_array($res1))
 {
-	$nm=$row["product_name"];
-	$amt=$row["product_price"];
+	$nm=$row["racipe_name"];
+	$amt=$row["racipe_price"];
 	
 }
 
@@ -35,7 +35,7 @@ echo $amt;
 //$res=$res3->fav_add($fid,$nm,$amt);
 
 $con=mysql_connect('localhost','root','');
-    mysql_select_db('medicine',$con);
+    mysql_select_db('racipe_database',$con);
   $res=mysql_query("insert into favourite_tbl values('NULL','$fid','$nm','$amt','$email')",$con); 
 	
 
@@ -58,7 +58,7 @@ else
 else{
 	
 	echo '<script language=javascript>
-	alert("already add");
+	alert("Already added to the favourite");
 	window.location.href="user_profile.php"
 	</script>';
 }

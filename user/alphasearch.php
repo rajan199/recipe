@@ -12,7 +12,7 @@ if($_SESSION["uname"]=="")
 <!DOCTYPE html>
 <html>
 <head>
-<title>Jay Jalaram Medicine</title>
+<title>Recipe Express</title>
 <link href="../css/bootstrap.css" rel="stylesheet" type="text/css" media="all" />
 <!--theme-style-->
 <link href="../css/style.css" rel="stylesheet" type="text/css" media="all" />	
@@ -130,7 +130,7 @@ include 'alphaser.php';
 			
 			?>
 				<div class="products">
-	   		     	<h5 class="latest-product"><?php echo "Total products are ".$cnt; ?> </h5>	
+	   		     	<h5 class="latest-product"><?php echo "Total Recipes are ".$cnt; ?> </h5>	
 	   		     	  <a class="" href=""><span> </span></a> 		     
 	   		     </div>
 <div class="panel panel-default">
@@ -158,21 +158,21 @@ if(isset($_GET['letter']))
 	
  echo' <div class="col-sm-6 col-md-4">';
    echo  '<div class="thumbnail"style="height: 450px;">';
-     echo ' <img src="../images/'.$row["product_img"].'"  style="height: 145px;"></img>';
+     echo ' <img src="../images/'.$row["racipe_img"].'"  style="height: 145px;"></img>';
  echo    '<div class="caption">
-        <h3 style="font-size:16px">'.$row["product_name"].'</h3>
-  <h3>'.$row["product_price"].'</h3>
+        <h3 style="font-size:16px">'.$row["racipe_name"].'</h3>
+  <h3>'.$row["racipe_price"].'</h3>
                
-        <p><a href="single.php?id='.$row["product_id"].'"><button type="button" style="width: 117px;" name="btnbuy" class="btn btn-default btn-lg">
+        <p><a href="single.php?id='.$row["racipe_id"].'"><button type="button" style="width: 117px;" name="btnbuy" class="btn btn-default btn-lg">
   <span class="glyphicon glyphicon-buy" aria-hidden="true"></span> Preview
 </button></a>
 
-<a href="favourite.php?fid='.$row["product_id"].'"><button type="button" style="margin-left: 119px; margin-top: -71px;" class="btn btn-default btn-lg">
+<a href="favourite.php?fid='.$row["racipe_id"].'"><button type="button" style="margin-left: 119px; margin-top: -71px;" class="btn btn-default btn-lg">
   <span class="glyphicon glyphicon-heart" style="color: red;" aria-hidden="true"></span>
 </button></a>
 
 
-<a href="wishlist1.php?pid='.$row["product_id"].'"><button type="button" style="width: 200px; background:#323A45; color:white; " name="btncar" class="btn btn-default btn-lg">
+<a href="wishlist1.php?pid='.$row["racipe_id"].'"><button type="button" style="width: 200px; background:#323A45; color:white; " name="btncar" class="btn btn-default btn-lg">
   <span class="glyphicon glyphicon-shopping-cart" aria-hidden="true"></span> Add to cart
 </button></a>
 </p>

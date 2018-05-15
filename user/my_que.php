@@ -12,7 +12,7 @@ if($_SESSION["uname"]=="")
 <!DOCTYPE html>
 <html>
 <head>
-<title>Jay Jalaram Medicine</title>
+<title>Recipe Express</title>
 <link href="../css/bootstrap.css" rel="stylesheet" type="text/css" media="all" />
 <!--theme-style-->
 <link href="../css/style.css" rel="stylesheet" type="text/css" media="all" />	
@@ -52,7 +52,7 @@ $eid=$_SESSION["uname"];
 //$res1=$obj1->question_my($eid);
 	
 $con=mysql_connect('localhost','root','');
-    mysql_select_db('medicine',$con);
+    mysql_select_db('racipe_database',$con);
     $res1=mysql_query("select q.*,u.* from question_tbl as q,user_tbl as u  where q.email_id=u.email_id and q.email_id='$eid' and question_status='accept' order by question_id desc ",$con);
 	
 $cnt=mysql_num_rows($res1);
@@ -69,7 +69,7 @@ $cnt=mysql_num_rows($res1);
     //  $res=mysql_query("select q.*,u.* from question_tbl as q,user_tbl as u  where q.email_id=u.email_id and question_status='accept' order by question_id desc ",$con);
 	
 $con=mysql_connect('localhost','root','');
-    mysql_select_db('medicine',$con);
+    mysql_select_db('racipe_database',$con);
     $res2=mysql_query("select q.*,u.* from question_tbl as q,user_tbl as u  where q.email_id=u.email_id and q.email_id='$eid' and question_status='accept' order by question_id desc ",$con);
 	
 	

@@ -12,7 +12,7 @@ if($_SESSION["uname"]=="")
 <!DOCTYPE html>
 <html>
 <head>
-<title>Jay Jalaram Medicine</title>
+<title>Recipe Express</title>
 <link href="../css/bootstrap.css" rel="stylesheet" type="text/css" media="all" />
 <!--theme-style-->
 <link href="../css/style.css" rel="stylesheet" type="text/css" media="all" />	
@@ -70,13 +70,13 @@ $cntt=mysql_num_rows($res);
 
 
 ?>		
-<h1 align="center">Your Favourite Products (<?php  if($cntt==0){ echo "Empty"; }
+<h1 align="center">Your Favourite Recipes (<?php  if($cntt==0){ echo "Empty"; }
 else{ echo $cntt; } ?>)</h1>
 <table class="table table-striped">
-		<th>Product Photo</th>
-		<th>Product Name</th>
+		<th>Racipe Photo</th>
+		<th>Racipe Name</th>
 		
-		<th>Product Price</th>
+		<th>Racipe Price</th>
 		
 <th>Add to cart</th>
 <th>Action</th>
@@ -93,13 +93,18 @@ $res1=$cnt1->Favourite_join($eid);
 while($row=mysql_fetch_array($res1,MYSQL_ASSOC))
 {
 	echo "<tr><td>";
-	echo     '<img src="../images/'.$row["product_img"].'" alt="..." style="height: 145px; width:200px;"></td>';
-    echo "<td>". $row["product_name"]."</td>";
-    echo "<td>". $row["product_price"]."</td>";
+	echo     '<img src="../images/'.$row["racipe_img"].'" alt="..." style="height: 145px; width:200px;"></td>';
+    echo "<td>". $row["racipe_name"]."</td>";
+    echo "<td>". $row["racipe_price"]."</td>";
  echo '<td>
-<a href="wishlist1.php?pid='.$row["product_id"].'"><button type="button" style="width: 200px; background:#323A45; color:white; " name="btncar" class="btn btn-default btn-lg">
+<a href="wishlist1.php?pid='.$row["racipe_id"].'"><button type="button" style="width: 200px; background:#323A45; color:white; " name="btncar" class="btn btn-default btn-lg">
   <span class="glyphicon glyphicon-shopping-cart" aria-hidden="true"></span> Add to cart
-</button></a></td>';
+</button></a><br>
+<a href="single.php?id='.$row["racipe_id"].'"><button type="button" style="width: 200px; background:#323A45; color:white; " name="btncar" class="btn btn-default btn-lg">
+  <span class="glyphicon glyphicon-shopping-watch" aria-hidden="true"></span> Preview
+</button></a>
+
+</td>';
  
   echo '<td><a href="delet_fav.php?fid='.$row["favourite_id"].'"><button  type="button" class="btn btn-default btn-lg">
   <span class="glyphicon glyphicon-trash" style="color: red;"  aria-hidden="true"></span> Remove 

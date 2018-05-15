@@ -14,10 +14,10 @@ $res2=$obj->checkcart($email,$pid);
 if($res2==0){
 		
 $obj2=new database();
-$res1=$obj2->view_product($pid);
+$res1=$obj2->view_racipe($pid);
 while($row=mysql_fetch_array($res1))
 {
-	$amt=$row["product_price"];
+	$amt=$row["racipe_price"];
 }
 $date=date("d/m/y");
 echo $date;
@@ -40,7 +40,7 @@ else
 else{
 	
 	echo '<script language=javascript>
-	alert("The product is already added");
+	alert("The product is already added to the cart	");
 	window.location.href="user_profile.php"
 	</script>';
 }

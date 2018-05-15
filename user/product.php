@@ -138,7 +138,7 @@ include 'alphaser.php';
 				<a href="#"><h4>Total Products <span><?php echo $cnt; ?></span> </h4></a>
 				<ul class="w_nav">
 					<li style="font-size: 15px;">Other Products: </li>
-			     	<li><a style="font-size: 15px;" class="active" href="#">Injections</a></li> |
+			     	<li><a style="font-size: 15px;" class="active" href="injection.php">Injections</a></li> |
 			     	<li><a style="font-size: 15px;" href="skin.php">Skin care </a></li> |
 			     	<li><a style="font-size: 15px;" href="baby.php">Baby care</a></li> |
 			     	<li><a style="font-size: 15px;" href="hair.php">Hair care </a></li> 

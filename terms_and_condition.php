@@ -8,7 +8,7 @@ session_start();
 
 
 
-<title>Jay Jalaram MEDICINES</title>
+<title>Recipe Express</title>
 
 <link href="css/bootstrap.css" rel="stylesheet" type="text/css" media="all" />
 <!--theme-style-->
@@ -49,31 +49,25 @@ include 'header.php';
 				<h3><p>
 					<ol type="1">
 
+						
 						<li>Only Cash On Deliver (COD) is available.</li>
 
 						</br>
 
-						<li>We can deliver product in some areas as per our selling policy. </li>
+						<li>We can deliver Recipe items in some areas as per our selling policy. </li>
 
 						</br>
 
-						<li>To purchase medicine from our website you must upload the prescription 
-							of a certified Doctor otherwise we will not deliver the product. </li>
-
-						</br>
-
-						<li>You must be show the original copy of prescription which you will
-							upload for the order. </li>
-
-						</br>
-
-						<li>You should first sign up for our website than you must be verify your email address than you can able to log in to our website .</li>
+						
+						
+						
+						<li>You should first sign up and login to our website sothat you can able to access detail functionality.</li>
 
 						</br>
 						
 						
-						<li>Return policy is only on medicines* , it is not on other products and if you want to return the medicines you should have to bring the bill when you come at the shop. </li>
-
+						<li>
+						There is no Return policy </li>
 					</ol>
 				</p></h3>
 			</div>

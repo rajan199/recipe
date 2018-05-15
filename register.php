@@ -7,7 +7,7 @@ session_start();
 <!DOCTYPE html>
 <html>
 <head>
-<title>Jay Jalaram Medicine</title>
+<title>Racipe Express</title>
 <link href="css/bootstrap.css" rel="stylesheet" type="text/css" media="all" />
 <!--theme-style-->
 <link href="css/style.css" rel="stylesheet" type="text/css" media="all" />	
@@ -289,12 +289,6 @@ function allzip(uzip)
 					
 					<hr/>
 					
-				  <div>
-					<b><span style="color: black;font-size:15px;">Captcha Code<label>*</label></span></b>
-						<input  class="form-control" name="captcha_code" style="width: 550px; height: 40px;" type="text">
-                     <img src="captcha_code.php" />
-					</div>
-					
 					
 					 <div class="clearfix"> </div>
 					  
@@ -302,7 +296,6 @@ function allzip(uzip)
 				<div class="clearfix"> </div>
 				<div class="register-but">
 					   <input class="acount-btn" id="btn" type="submit" name="txtsign" value="Sign up">
-					   <h3><b>By clicking on sign up ,you should have to verify your email address ,than you can able to log in to our website.</b></h3>
 					   
 					   
 					   
@@ -382,7 +375,7 @@ else{
 	
 
 
-
+	
 
 }
 }

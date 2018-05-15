@@ -17,55 +17,8 @@ session_start();
       }
     </style>
 	
-    <script async defer
-    src="https://maps.googleapis.com/maps/api/js?key=AIzaSyB6S9Zli4v_L0pYZbOpDuk1k6fFX0JMqTA&callback=initMap">
-    </script>
 
-<script>
-
-function getLocation() {
-    if (navigator.geolocation) {
-        navigator.geolocation.getCurrentPosition(showPosition);
-    } else { 
-        x.innerHTML = "Geolocation is not supported by this browser.";
-    }
-
-}
-
-function showPosition(position) {
-
-    var x=position.coords.latitude 
-    var y=position.coords.longitude;
-	
-	initialize(x,y);
-}
-function initialize() {
-
-  var mapProp = {
-  
-    center:new google.maps.LatLng(22.996170,72.599586),
-    zoom:18,
-    mapTypeId:google.maps.MapTypeId.ROADMAP
-  };
-var map=new google.maps.Map(document.getElementById("googleMap"), mapProp);
-		
-		var labels = 'Jay Jalaram Medicine';
-var labelIndex = 3;
-		var marker = new google.maps.Marker({
-          position: {lat: 22.996170, lng: 72.599586},
-          map: map,
-		   label: "Jay Jalaram Medicine",
-          title: 'Jay Jalaram Medicine'
-	
-
-		  });
-  
-}
-google.maps.event.addDomListener(window, 'load', initialize);
-</script>
-
-
-<title>Jay Jalaram MEDICINES</title>
+<title>Recipe Express</title>
 
 <link href="css/bootstrap.css" rel="stylesheet" type="text/css" media="all" />
 <!--theme-style-->
@@ -101,43 +54,36 @@ include 'header.php';
 <form action="" method="post">
 
 	<div class="container">
-	<h2>Location on Map</h2>
-	<div class="col-md-3">
-	<div id="googleMap"style="width:500px;height:500px;"></div>
-</div>      	  
-
+	
 	<div class="col-md-9">
 	
-	<h2 style="margin-left: 669px;margin-top: -35px;">Contact: 9825181177 </h2>
+	<h2 style="margin-left: 669px;margin-top: -0px;">Contact: 9825181177 </h2>
 		  
-		  <div class="account_grid">
-		   
-			   <div class=" login-right" style="height:100px">
-			  	
+		    	
 				<p><h2>Feedback Form</h2></p>
 				<form>
 				  <div>
-					<b><span style="color: black;font-size:15px;">Email Address<label>*</label></span></b>
+					<b><span style="color: black;font-size:15px;">Email Address<label>*</label></span></b><br/>
 					<input type="email" style="width: 550px; height: 40px;" name="txtid"  placeholder="Enter Email Id" required> 
 				  </div>
 				  
 				  <br/>
 				  
 				  <div>
-					<b><span style="color: black;font-size:15px;">Password<label>*</label></span></b>
+					<b><span style="color: black;font-size:15px;">Feedback<label>*</label></span></b><br/>
 					<textarea style="width: 550px; height: 40px;" name="txtpass" placeholder="Enter Your feedback" required></textarea> 
 					
 				  </div>
-				  <input type="submit" value="Post Feedback" style="margin-top: 18px;" name="btnlogin">
+				  <input type="submit" class="acount-btn" value="Post Feedback" style="margin-top: 18px;" name="btnlogin">
 				 <?php 
 				 if(isset($_POST["btnlogin"]))
 				 {
 					 
 					$eid=$_POST["txtid"];
-					$pass=$_POST["txtpass"];
+					$feed=$_POST["txtpass"];
 					$con=mysql_connect("localhost","root","");
-					mysql_select_db("medicine",$con);
-					$res=mysql_query("insert into feedback_tbl values('$eid','$pass')");
+					mysql_select_db("racipe_database",$con);
+					$res=mysql_query("insert into feedback_tbl values('null','$feed','$eid')");
 				 if($res==1)
 				 {
 					 header('location:main.php');	
@@ -146,8 +92,7 @@ include 'header.php';
 				 ?>
 				 
 			    </form>
-			   </div>	
-	</div>		   
+					   
  </div>	
 	</div>		   
 

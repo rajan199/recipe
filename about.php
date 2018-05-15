@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html>
 <head>
-<title>Jay Jalaram Medicine</title>
+<title>Recipe Express</title>
 <link href="css/bootstrap.css" rel="stylesheet" type="text/css" media="all" />
 <!--theme-style-->
 <link href="css/style.css" rel="stylesheet" type="text/css" media="all" />	
@@ -49,11 +49,9 @@ include 'header.php';
 <center>
 <table width="100%" >
 <tr>
- <img src="images/shop.png" style="width:250px;" alt=" " /></a>
+ <img src="images/logo_rec.jpg" style="width:250px;" alt=" " /></a>
           
-           	  <h2>Name: JAY JALARAM MEDICINES </h2><br>
-			  <h3>Address :-  11-A, JalaramPlaza, JawaharChowk, Maninagar, Ahmedabad-380 008
-               </h3>
+           	  <h2>Name: Recipe Express </h2><br>
 			  
 			  
       
@@ -61,12 +59,9 @@ include 'header.php';
 <ul type="square">
 <li class="r">About Organization</li>
  <ol  type="i" class="g">
-<h4> <li>This medical store has been providing the medicines and various other related products to the customer since last 15 years, which is located at the maninagar area.</li>
- <li>The owner of the storeMr. Pravinbhai is self manages the medical records in the file.</li>
-<li> And they get the medicines and other products from many other company like Abbot India ltd, Aimmaxpharma, etc.</li>
- <li>It also contain all the type of medicines for the riddhi hospital which is above their store. </li>
-<li> And all the medicines are sells in reasonable rate so anyone can purchase the medicines from their store.</li>
-	
+<h4> <li>The organization is deals with the recipes which people post on the website about various items.</li>
+ <li>And also deliver the dishes to the user of website who want to have it.</li>
+<li> And also describe various racipes from which user can easily make it at home.</li>
 </h4>
 
 </ol>

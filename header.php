@@ -41,8 +41,8 @@
 			<div class="container">
 				<div class="header-bottom-left">
 					<div class="logo">
-					<a href="main.php"><img src="images/company.jpg" style="width:57px;margin-left: -64px;margin-bottom: -70px;" alt=" ">
-						<img src="images/jay_Jalaram.jpg" style="width:250px;" alt=" " /></a>
+					<a href="main.php">
+					<img src="images/rec_logo1.jpg" style="width:250px;" alt=" " /></a>
 					</div>
 <form action="" method="post">				
 				<div class="search">
@@ -84,12 +84,9 @@
 	<ul class="nav nav-tabs" style="background-color:lightseagreen;">
   <li role="presentation"><a href="main.php" style="color:black;font-size:18px; margin-right: 20;">Home</a></li>
   
-  <li role="presentation"><a href="skin.php" style="color:black;font-size:18px; margin-right: 20;">Skin Care</a></li>
-  <li role="presentation"><a href="baby.php" style="color:black;font-size:18px; margin-right: 20;">Baby Care</a></li>
-  
-  <li role="presentation"><a href="hair.php" style="color:black;font-size:18px; margin-right: 20;">Hair Care</a></li>
+  <li role="presentation"><a href="login.php" style="color:black;font-size:18px; margin-right: 20;">Add Your Racipe</a></li>
 
-  <li role="presentation"><a href="question.php" style="color:black;font-size:18px; margin-right: 20;">Question</a></li>
+  <li role="presentation"><a href="question.php" style="color:black;font-size:18px; margin-right: 20;">FAQ</a></li>
   
   
   </ul>

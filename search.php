@@ -8,7 +8,7 @@ session_start();
 <!DOCTYPE html>
 <html>
 <head>
-<title>Jay Jalaram Medicine</title>
+<title>Racipe Express</title>
 <link href="css/bootstrap.css" rel="stylesheet" type="text/css" media="all" />
 <!--theme-style-->
 <link href="css/style.css" rel="stylesheet" type="text/css" media="all" />	
@@ -64,7 +64,7 @@ include 'alphaser.php';
 							</div>
 							<div class="col-md-7 banner-off">							
 								<h2>Get register with us</h2>
-								<label>FOR ALL PURCHASE <b>MEDICINES</b></label>
+								<label>FOR ALL RECIPES <b></b></label>
 								<p></p>					
 								<span class="on-get">Get Register</span>
 							</div>
@@ -80,7 +80,7 @@ include 'alphaser.php';
 							</div>
 							<div class="col-md-7 banner-off">							
 								<h2>Get register with us</h2>
-								<label>FOR ALL PURCHASE <b>MEDICINES</b></label>
+								<label>FOR ALL RECIPES <b></b></label>
 								<span class="on-get">Get Register</span>
 							</div>
 							
@@ -95,7 +95,7 @@ include 'alphaser.php';
 							</div>
 							<div class="col-md-7 banner-off">							
 								<h2>Get register with us</h2>
-								<label>FOR ALL PURCHASE <b>MEDICINES</b></label>
+								<label>FOR ALL RECIPES <b></b></label>
 								<span class="on-get">Get Register</span>
 							</div>
 							
@@ -122,10 +122,11 @@ include 'alphaser.php';
 				<?php
 				
 				
+				 $x1=@$_SESSION["search"];
 	$con=mysql_connect('localhost','root','');
-    mysql_select_db('medicine',$con);
+    mysql_select_db('racipe_database',$con);
      
- $res1=mysql_query("select * from product_tbl",$con);
+ $res1=mysql_query("select * from racipe_tbl where racipe_name LIKE '$x1%'",$con);
 $cnt=mysql_num_rows($res1);
 
 
@@ -133,16 +134,8 @@ $cnt=mysql_num_rows($res1);
 				?>
 				<div class=" w_content">
 			<div class="women">
-				<a href="#"><h4>Total Products <span><?php echo $cnt; ?></span> </h4></a>
-				<ul class="w_nav">
-					<li style="font-size: 15px;">Other Products: </li>
-			     	<li><a style="font-size: 15px;" class="active" href="injection.php">Injections</a></li> |
-			     	<li><a style="font-size: 15px;" href="skin.php">Skin care </a></li> |
-			     	<li><a style="font-size: 15px;" href="baby.php">Baby care</a></li> |
-			     	<li><a style="font-size: 15px;" href="hair.php">Hair care </a></li> 
-			      <div class="clearfix"> </div>	
-			     </ul>
-			     <div class="clearfix"> </div>	
+				<a href="#"><h4>Total Search related Racipes <span><?php echo $cnt; ?></span> </h4></a>
+				 <div class="clearfix"> </div>	
 			</div>
 		</div>
 				
@@ -186,12 +179,15 @@ $cnt=mysql_num_rows($res1);
 
 				 <?php
 				 
-				 $x1=@$_SESSION["search"];
+				 //$x1=@$_SESSION["search"];
 				 $con=mysql_connect('localhost','root','');
-				 mysql_select_db('medicine',$con);
+				 mysql_select_db('racipe_database',$con);
      
-$cnt1=mysql_query("select * from product_tbl  where product_name LIKE '$x1%'",$con);
+$cnt1=mysql_query("select * from racipe_tbl  where racipe_name LIKE '$x1%'",$con);
 
+$cnt=mysql_num_rows($cnt1);
+if($cnt>=1)
+{
 while($row=mysql_fetch_assoc($cnt1))
   {
 
@@ -199,12 +195,12 @@ while($row=mysql_fetch_assoc($cnt1))
 
  echo' <div class="col-sm-6 col-md-4">';
    echo  '<div class="thumbnail" style="height: 450px;">';
-     echo ' <img src="images/'.$row["product_img"].'"  style="height: 145px;"></img>';
+     echo ' <img src="images/'.$row["racipe_img"].'"  style="height: 145px;"></img>';
  echo    '<div class="caption">
-        <h3 style="font-size:16px">'.$row["product_name"].'</h3>
-  <h3 >'.$row["product_price"].'</h3>
+        <h3 style="font-size:16px">'.$row["racipe_name"].'</h3>
+  <h3 >'.$row["racipe_price"].'</h3>
                
-        <p><a href="single.php?id='.$row["product_id"].'"><button type="button" style="width: 200px;" name="btnbuy" class="btn btn-default btn-lg">
+        <p><a href="login.php"><button type="button" style="width: 200px;" name="btnbuy" class="btn btn-default btn-lg">
   <span class="glyphicon glyphicon-buy" aria-hidden="true"></span> Preview
 </button>
 <a href="login.php"><button type="button" style="width: 200px; background:#323A45; color:white; " name="btncar" class="btn btn-default btn-lg">
@@ -217,7 +213,15 @@ while($row=mysql_fetch_assoc($cnt1))
   </div>
   ';
   }
-
+}
+else
+{
+	
+	echo "<script>";
+	echo "alert('Not found');";
+	echo "</script>";
+	
+}
    		     	
 ?>		
 </div>

@@ -2,7 +2,7 @@
 <!DOCTYPE html>
 <html>
 <head>
-<title>Jay Jalaram Medicine</title>
+<title>Recipe Express</title>
 <link href="css/bootstrap.css" rel="stylesheet" type="text/css" media="all" />
 <!--theme-style-->
 <link href="css/style.css" rel="stylesheet" type="text/css" media="all" />	
@@ -53,11 +53,11 @@ include 'alphaser.php';
 					   <article style="position: absolute; width: 100%; opacity: 0;">					
 						<div class="banner-matter">
 						<div class="col-md-5 banner-bag">
-							<img class="img-responsive " style="height:272px;" src="images/med.jpg" alt=" " />
+							<img class="img-responsive " style="height:272px;" src="images/racipe.jpg" alt=" " />
 							</div>
 							<div class="col-md-7 banner-off">							
 								<h2>Get register with us</h2>
-								<label>FOR ALL PURCHASE <b>MEDICINES</b></label>
+								<label>FOR ALL RECIPES <b></b></label>
 								<p></p>					
 								<span class="on-get">Get Register</span>
 							</div>
@@ -69,11 +69,12 @@ include 'alphaser.php';
 					 	<article style="position: absolute; width: 100%; opacity: 0;">					
 						<div class="banner-matter">
 						<div class="col-md-5 banner-bag">
-							<img class="img-responsive " style="height:272px;" src="images/med.jpg" alt=" " />
+							<img class="img-responsive " style="height:272px;" src="images/racipe.jpg" alt=" " />
 							</div>
 							<div class="col-md-7 banner-off">							
 								<h2>Get register with us</h2>
-								<label>FOR ALL PURCHASE <b>MEDICINES</b></label>
+								<label>FOR ALL RECIPES <b></b></label>
+								<p></p>		
 								<span class="on-get">Get Register</span>
 							</div>
 							
@@ -84,11 +85,12 @@ include 'alphaser.php';
 					 	<article style="position: absolute; width: 100%; opacity: 0;">					
 						<div class="banner-matter">
 						<div class="col-md-5 banner-bag">
-							<img class="img-responsive " style="height:272px;" src="images/med.jpg" alt=" " />
+							<img class="img-responsive " style="height:272px;" src="images/racipe.jpg" alt=" " />
 							</div>
 							<div class="col-md-7 banner-off">							
 								<h2>Get register with us</h2>
-								<label>FOR ALL PURCHASE <b>MEDICINES</b></label>
+								<label>FOR ALL RECIPES <b></b></label>
+								<p></p>		
 								<span class="on-get">Get Register</span>
 							</div>
 							
@@ -121,7 +123,7 @@ include 'alphaser.php';
 			?>
 		
 				<div class="products">
-	   		     	<h5 class="latest-product"><?php echo "Total products are ".$cnt; ?></h5>	
+	   		     	<h5 class="latest-product"><?php echo "Total Recipes are ".$cnt; ?></h5>	
 	   		     	  <a class="" href=""><span> </span></a> 		     
 	   		     </div>
 <div class="panel panel-default">
@@ -149,12 +151,12 @@ if(isset($_GET['letter']))
 	
  echo' <div class="col-sm-6 col-md-4">';
    echo  '<div class="thumbnail" style="height: 450px;">';
-     echo ' <img src="images/'.$row["product_img"].'"  style="height: 145px;"></img>';
+     echo ' <img src="images/'.$row["racipe_img"].'"  style="height: 145px;"></img>';
  echo    '<div class="caption">
-        <h3 style="font-size:16px">'.$row["product_name"].'</h3>
-  <h3 >'.$row["product_price"].'</h3>
+        <h3 style="font-size:16px">'.$row["racipe_name"].'</h3>
+  <h3 >'.$row["racipe_price"].'</h3>
                
-        <p><a href="single.php?id='.$row["product_id"].'"><button type="button" style="width: 200px;" name="btnbuy" class="btn btn-default btn-lg">
+        <p><a href="login.php"><button type="button" style="width: 200px;" name="btnbuy" class="btn btn-default btn-lg">
   <span class="glyphicon glyphicon-buy" aria-hidden="true"></span> Preview
 </button></a>
 <a href="login.php"><button type="button" style="width: 200px; background:#323A45; color:white; " name="btncar" class="btn btn-default btn-lg">

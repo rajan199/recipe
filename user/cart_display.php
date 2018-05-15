@@ -11,7 +11,7 @@ if($_SESSION["uname"]=="")
 <!DOCTYPE html>
 <html>
 <head>
-<title>Jay Jalaram Medicine</title>
+<title>Recipe Express</title>
 <link href="../css/bootstrap.css" rel="stylesheet" type="text/css" media="all" />
 <!--theme-style-->
 <link href="../css/style.css" rel="stylesheet" type="text/css" media="all" />	
@@ -72,10 +72,10 @@ $cntt=mysql_num_rows($res);
 <h1 align="center">Your Cart Item (<?php  if($cntt==0){ echo "Empty"; }
 else{ echo $cntt; } ?>)</h1>
 <table class="table table-striped">
-		<th>Product Photo</th>
-		<th>Product Name</th>
+		<th>Recipe Photo</th>
+		<th>Recipe Name</th>
 		
-		<th>Product Price</th>
+		<th>Recipe Dish Price</th>
 		<th>Order Date</th>
 		<th>Quantity</th>
 		<th>Total</th>
@@ -84,7 +84,7 @@ else{ echo $cntt; } ?>)</h1>
 
 
 $cnt1=new database();	
-$res1=$cnt1->product_join_cart($eid);
+$res1=$cnt1->recipe_join_cart($eid);
 
 $cntt=mysql_num_rows($res1);
 $i=0;
@@ -94,9 +94,9 @@ while($row=mysql_fetch_array($res1,MYSQL_ASSOC))
 	$id=$row["order_id"];
    
 	echo "<tr><td>";
-	echo     '<img src="../images/'.$row["product_img"].'" alt="..." style="height: 145px;width: 194px;"></td>';
-    echo "<td>". $row["product_name"]."</td>";
-    echo "<td>". $row["product_price"]."</td>";
+	echo     '<img src="../images/'.$row["racipe_img"].'" alt="..." style="height: 145px;width: 194px;"></td>';
+    echo "<td>". $row["racipe_name"]."</td>";
+    echo "<td>". $row["racipe_price"]."</td>";
     echo "<td>". $row["order_date"]."</td>";
 //	echo "<td>". $row["qty"]."</td>";
 echo '<form method="post" id="'.$i.'" name="'.$i.'" action="">
@@ -112,9 +112,9 @@ echo '<input name="upbtn'.$i.'" value="update quantity" class="acount-btn" type=
    // echo "<td>".$t=($row["amount"]*$row["qty"])."</td>";
 
 	
-   $p=$row["product_price"];
+   $p=$row["racipe_price"];
    
-   $pid=$row["product_id"];
+   $pid=$row["racipe_id"];
 		
 		$id=$row["order_id"];
    
@@ -138,7 +138,7 @@ if(isset($_POST["upbtn".$i]))
 		}
 		else{
 		$con=mysql_connect("localhost","root","");
-		mysql_select_db("medicine",$con);
+		mysql_select_db("racipe_database",$con);
 		$res=mysql_query("update order_tbl set quantity='$q',total_price='$t' where order_id=$id");
 		if($res==1)
 		{
@@ -235,8 +235,8 @@ else
 {
 	
 		$con=mysql_connect('localhost','root','');
-    mysql_select_db('medicine',$con);
-	$res4=mysql_query("select p.*,o.* from product_tbl as p,order_tbl as o where p.product_id=o.product_id and p.category_id in(11,12) and o.status='cart'",$con);
+    mysql_select_db('racipe_database',$con);
+	$res4=mysql_query("select r.*,o.* from racipe_tbl as r,order_tbl as o where r.racipe_id=o.racipe_id and o.status='cart'",$con);
 	$count=mysql_num_rows($res4);
 	if($count>=1)
 	{
@@ -245,14 +245,7 @@ width: 105px;
 height: 42px;
 font-size: larger;" enabled >Check_Out</a>';
 	}
-	else
-	{
-				echo '<a href="general_pro.php" name="chek" class="btn btn-primary" role="button" style="background-color: orangered;
-			width: 105px;
-			height: 42px;
-			font-size: larger;" enabled >Check_Out</a>';
-
-	}
+	
 }
 ?>
 <!--<input  type="submit" name="btnchk" value="checkout" style="background-color: orangered;">

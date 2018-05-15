@@ -12,7 +12,7 @@ if($_SESSION["uname"]=="")
 <!DOCTYPE html>
 <html>
 <head>
-<title>Jay Jalaram Medicine</title>
+<title>Recipe Express</title>
 <link href="../css/bootstrap.css" rel="stylesheet" type="text/css" media="all" />
 <!--theme-style-->
 <link href="../css/style.css" rel="stylesheet" type="text/css" media="all" />	
@@ -124,7 +124,7 @@ function allzip(uzip)
 $id=$_SESSION["uname"];
 
 $con=mysql_connect('localhost','root','');
-mysql_select_db('medicine',$con);
+mysql_select_db('racipe_database',$con);
 $res=mysql_query("select * from user_tbl where email_id='$id'",$con);
 
 while($row=mysql_fetch_array($res,MYSQL_ASSOC))

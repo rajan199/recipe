@@ -10,7 +10,7 @@ $pass3=$_POST["txtnewre"];
 
 $enc_pass=md5($pass1);
 $con=mysql_connect('localhost','root','');
-mysql_select_db('medicine',$con);
+mysql_select_db('racipe_database',$con);
 $res=mysql_query("select * from user_tbl where email_id='$email'",$con);
 while($row=mysql_fetch_array($res,MYSQL_ASSOC))
 {
@@ -23,7 +23,7 @@ if($pass==$enc_pass)
 		
 		$enc_new_pass=md5($pass2);
 		$con=mysql_connect('localhost','root',''); 
-        mysql_select_db('medicine',$con);
+        mysql_select_db('racipe_database',$con);
 		$res=mysql_query("update user_tbl set password='$enc_new_pass' where email_id='$email'",$con);
 		
 		if($res==1)

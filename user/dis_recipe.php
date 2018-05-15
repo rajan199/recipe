@@ -2,6 +2,7 @@
 <?php
 session_start();
 
+
 if($_SESSION["uname"]=="")
 {
 	header('location:../login.php');
@@ -41,6 +42,8 @@ $("#test").keyup(function() {
 });
 });
 
+
+
 </script>
 </head>
 <body> 
@@ -61,73 +64,57 @@ include 'user_header.php';
 $eid=$_SESSION["uname"];
 
 $cnt=new database();
-$res=$cnt->history_count($eid);
 
-$cntt=mysql_num_rows($res);
+		$con=mysql_connect('localhost','root','');
+        mysql_select_db('racipe_database',$con);  
+        $res1=mysql_query("select * from racipe_tbl where email_id='$eid'",$con);
+        $cntt=mysql_num_rows($res1);
+        
 
 
 ?>		
-<h1 align="center">Your Purchased Dishes (<?php  if($cntt==0){ echo "Empty"; }
+<h1 align="center">Your uploaded Recipes (<?php  if($cntt==0){ echo "Empty"; }
 else{ echo $cntt; } ?>)</h1>
 <table class="table table-striped">
-		<th>Recipe Photo</th>
-		<th>Recipe Name</th>
+		<th>Racipe Photo</th>
+		<th>Racipe Name</th>
+		<th>Ingredients</th>
+		<th>Method of making Dish</th>
 		
 		<th>Racipe Price</th>
-		<th>Order Date</th>
-		<th>Quantity</th>
-		<th>Total</th>
+		
+		<th>Action</th>
+		
+
+
 <?php
-
-
-$cnt1=new database();	
-$res1=$cnt1->racipe_join_history($eid);
 
 
 
 while($row=mysql_fetch_array($res1,MYSQL_ASSOC))
 {
 	echo "<tr><td>";
-	echo     '<img src="../images/'.$row["racipe_img"].'" alt="..." style="height: 145px;"></td>';
+	echo     '<img src="../images/'.$row["racipe_img"].'" alt="..." style="height: 145px; width:200px;"></td>';
     echo "<td>". $row["racipe_name"]."</td>";
-    echo "<td>". $row["racipe_price"]."</td>";
-    echo "<td>". $row["order_date"]."</td>";
-//	echo "<td>". $row["qty"]."</td>";
-    echo "<td>". $row["quantity"]."</td>";
-    echo "<td>". $row["total_price"]."</td>";
-
+    echo "<td>". $row["racipe_ingredient"]."</td>";
+	echo "<td>". $row["method"]."</td>";
+	echo "<td>". $row["racipe_price"]."</td>";
 	
+	 echo '<td><a href="delet_dis_rec.php?fid='.$row["racipe_id"].'"><button  type="button" class="btn btn-default btn-lg">
+  <span class="glyphicon glyphicon-trash" style="color: red;"  aria-hidden="true"></span> Remove 
+</button>
+</a></td>';
+ 
+ 
+    echo "</tr>";
+	echo "</form>";
 
 }
 
 ?>
 		
 
-<?php
 
-
-
-$cnt=new database();
-$res=$cnt->final_amount_history_page($eid);
-
-while($row=mysql_fetch_assoc($res))
-{
-	$amt=$row["total_amount"];
-}
-
-
-
-?>
-
-
-<tr>
-<td colspan="3"></td>
-<td></td>
-<td><h3>Total</h3></td>
-<td><h3><?php echo $amt; ?></h3></td>
-</tr>
-
-		
 <div>
 </div>
 </div>
